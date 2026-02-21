@@ -1,0 +1,29 @@
+﻿{
+    "settings":  {
+                     "files.exclude":  {
+                                           "**/__pycache__":  true,
+                                           "**/node_modules":  true,
+                                           "**/.venv":  true
+                                       }
+                 },
+    "folders":  [
+                    {
+                        "path":  "C:\\Users\\sean\\antigravity-awesome-skills"
+                    },
+                    {
+                        "path":  "G:\\residency-quest"
+                    },
+                    {
+                        "path":  "G:\\DOWNLOADS5\\1strobloxgame"
+                    },
+                    {
+                        "path":  "C:\\Users\\sean\\Desktop\\reidmd-theme"
+                    },
+                    {
+                        "path":  "G:\\StreamSegments\\local-clipper"
+                    },
+                    {
+                        "path":  "G:\\DOWNLOADS5\\reidchunes"
+                    }
+                ]
+}

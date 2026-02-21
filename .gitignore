@@ -36,6 +36,11 @@ ChatGPT_Context.zip
 
 # Local Netlify folder
 .netlify
+netlify.log
+netlify.err
+
+# Deno
+deno.lock
 
 # Secrets
 .env
