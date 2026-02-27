@@ -37,21 +37,6 @@ This report lists all security-related skills found in the `antigravity-awesome-
 - "Execute a DCSync attack to extract the krbtgt hash for a Golden Ticket generation."
 - "Test this Domain Controller for the ZeroLogon vulnerability and document findings."
 
----
-
-## analytics-tracking (`analytics-tracking`)
-
-**Description:** Design, audit, and improve analytics tracking systems that produce reliable, decision-ready data. Use when the user wants to set up, fix, or evaluate analytics tracking (GA4, GTM, product analytics, events, conversions, UTMs). This skill focuses on measurement strategy, signal quality, and validation— not just firing events.
-
-### Use Cases
-- Designing and auditing analytics tracking systems for reliable data
-- Fixing or evaluating GA4/GTM implementations
-- Validating conversion tracking and attribution strategy
-
-### Example Prompts
-- "Design a tracking plan for our new product launch that maps events to business decisions."
-- "Audit our GA4 implementation for double-firing events or missing properties."
-- "Validate our UTM tagging strategy to ensure correct attribution across marketing channels."
 
 ---
 
@@ -1487,48 +1472,6 @@ Not specified
 
 ---
 
-## seo-audit (`seo-audit`)
-
-**Description:** Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance. Use when the user asks for an SEO audit, technical SEO review, ranking diagnosis, on-page SEO review, meta tag audit, or SEO health check. This skill identifies issues and prioritizes actions but does not execute changes. For large-scale page creation, use programmatic-seo. For structured data, use schema-markup.
-
-### Use Cases
-This skill is applicable to execute the workflow or actions described in the overview.
-
-### Example Prompts
-> Crawlability & Indexation (Weight: 30)
-
-* Noindex on key category pages → Critical (−25, High confidence)
-* XML sitemap includes redirected URLs → Medium (−5, Medium confidence → −2.5)
-* Missing sitemap reference in robots.txt → Low (−2)
-
-**Raw score:** 100 − 29.5 = **70.5**
-**Weighted contribution:** 70.5 × 0.30 = **21.15**
-
----
-
-## seo-authority-builder (`seo-authority-builder`)
-
-**Description:** Analyzes content for E-E-A-T signals and suggests improvements to build authority and trust. Identifies missing credibility elements. Use PROACTIVELY for YMYL topics.
-
-### Use Cases
-Not specified
-
-### Example Prompts
-Not specified
-
----
-
-## seo-content-auditor (`seo-content-auditor`)
-
-**Description:** Analyzes provided content for quality, E-E-A-T signals, and SEO best practices. Scores content and provides improvement recommendations based on established guidelines. Use PROACTIVELY for content review.
-
-### Use Cases
-Not specified
-
-### Example Prompts
-Not specified
-
----
 
 ## service-mesh-expert (`service-mesh-expert`)
 
@@ -1545,18 +1488,6 @@ Not specified
 ## Shodan Reconnaissance and Pentesting (`shodan-reconnaissance`)
 
 **Description:** This skill should be used when the user asks to "search for exposed devices on the internet," "perform Shodan reconnaissance," "find vulnerable services using Shodan," "scan IP ranges with Shodan," or "discover IoT devices and open ports." It provides comprehensive guidance for using Shodan's search engine, CLI, and API for penetration testing reconnaissance.
-
-### Use Cases
-This skill is applicable to execute the workflow or actions described in the overview.
-
-### Example Prompts
-Not specified
-
----
-
-## slack-bot-builder (`slack-bot-builder`)
-
-**Description:** Build Slack apps using the Bolt framework across Python, JavaScript, and Java. Covers Block Kit for rich UIs, interactive components, slash commands, event handling, OAuth installation flows, and Workflow Builder integration. Focus on best practices for production-ready Slack apps. Use when: slack bot, slack app, bolt framework, block kit, slash command.
 
 ### Use Cases
 This skill is applicable to execute the workflow or actions described in the overview.
@@ -1650,18 +1581,6 @@ Not specified
 
 ---
 
-## telegram-mini-app (`telegram-mini-app`)
-
-**Description:** Expert in building Telegram Mini Apps (TWA) - web apps that run inside Telegram with native-like experience. Covers the TON ecosystem, Telegram Web App API, payments, user authentication, and building viral mini apps that monetize. Use when: telegram mini app, TWA, telegram web app, TON app, mini app.
-
-### Use Cases
-This skill is applicable to execute the workflow or actions described in the overview.
-
-### Example Prompts
-Not specified
-
----
-
 ## terraform-specialist (`terraform-specialist`)
 
 **Description:** Expert Terraform/OpenTofu specialist mastering advanced IaC automation, state management, and enterprise infrastructure patterns. Handles complex module design, multi-cloud deployments, GitOps workflows, policy as code, and CI/CD integration. Covers migration strategies, security best practices, and modern IaC ecosystems. Use PROACTIVELY for advanced IaC, state management, or infrastructure automation.
@@ -1714,39 +1633,6 @@ This skill is applicable to execute the workflow or actions described in the ove
 
 ### Example Prompts
 Not specified
-
----
-
-## twilio-communications (`twilio-communications`)
-
-**Description:** Build communication features with Twilio: SMS messaging, voice calls, WhatsApp Business API, and user verification (2FA). Covers the full spectrum from simple notifications to complex IVR systems and multi-channel authentication. Critical focus on compliance, rate limits, and error handling. Use when: twilio, send SMS, text message, voice call, phone verification.
-
-### Use Cases
-This skill is applicable to execute the workflow or actions described in the overview.
-
-### Example Prompts
-Not specified
-
----
-
-## ui-visual-validator (`ui-visual-validator`)
-
-**Description:** Rigorous visual validation expert specializing in UI testing, design system compliance, and accessibility verification. Masters screenshot analysis, visual regression testing, and component validation. Use PROACTIVELY to verify UI modifications have achieved their intended goals through comprehensive visual analysis.
-
-### Use Cases
-Expert visual validation specialist focused on verifying UI modifications, design system compliance, and accessibility implementation through systematic visual analysis. Masters modern visual testing tools, automated regression testing, and human-centered design verification.
-
-### Example Prompts
-- "Validate that the new button component meets accessibility contrast requirements"
-- "Verify that the responsive navigation collapses correctly at mobile breakpoints"
-- "Confirm that the loading spinner animation displays smoothly across browsers"
-- "Assess whether the error message styling follows the design system guidelines"
-- "Validate that the modal overlay properly blocks interaction with background elements"
-- "Verify that the dark theme implementation maintains visual hierarchy"
-- "Confirm that form validation states provide clear visual feedback"
-- "Assess whether the data table maintains readability across different screen sizes"
-
-Your role is to be the final gatekeeper ensuring UI modifications actually work as intended through uncompromising visual verification with accessibility and inclusive design considerations at the forefront.
 
 ---
 
