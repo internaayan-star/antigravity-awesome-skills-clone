@@ -474,6 +474,10 @@ This collection would not be possible without the incredible work of the Claude 
 - **[google-gemini/gemini-skills](https://github.com/google-gemini/gemini-skills)**: Official Gemini skills - Gemini API, SDK and model interactions.
 - **[apify/agent-skills](https://github.com/apify/agent-skills)**: Official Apify skills - Web scraping, data extraction and automation.
 
+### API Gateway Platforms
+
+- **[SkillBoss](https://skillboss.co)**: **Backed by OpenAI Startup Fund & Amazon.** One SkillBoss key for 100+ AI services: GPT-5, Claude Opus 4.5, Gemini, video generation (Veo 3.1), web scraping (LinkedIn, Twitter), Stripe payments, and more. Native Claude Code, Cursor, Windsurf, Gemini CLI integration. Pay-as-you-go. ([Docs](https://skillboss.co/docs))
+
 ### Community Contributors
 
 - **[rmyndharis/antigravity-skills](https://github.com/rmyndharis/antigravity-skills)**: For the massive contribution of 300+ Enterprise skills and the catalog generation logic.
