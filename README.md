@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream
-# 🌌 Antigravity Awesome Skills: 970+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
+# 🌌 Antigravity Awesome Skills: 978+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
 
-> **The Ultimate Collection of 970+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode, AdaL**
-=======
-# 🌌 Antigravity Awesome Skills: 970+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
-
-> **The Ultimate Collection of 970+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode, AdaL**
->>>>>>> Stashed changes
+> **The Ultimate Collection of 978+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode, AdaL**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Anthropic-purple)](https://claude.ai)
@@ -23,7 +17,7 @@
 
 If this project helps you, you can [support it here](https://buymeacoffee.com/sickn33) or simply ⭐ the repo.
 
-**Antigravity Awesome Skills** is a curated, battle-tested library of **968+ high-performance agentic skills** designed to work seamlessly across all major AI coding assistants:
+**Antigravity Awesome Skills** is a curated, battle-tested library of **978+ high-performance agentic skills** designed to work seamlessly across all major AI coding assistants:
 
 - 🟣 **Claude Code** (Anthropic CLI)
 - 🔵 **Gemini CLI** (Google DeepMind)
@@ -48,11 +42,7 @@ This repository provides essential skills to transform your AI assistant into a 
 - [🎁 Curated Collections (Bundles)](#curated-collections)
 - [🧭 Antigravity Workflows](#antigravity-workflows)
 - [📦 Features & Categories](#features--categories)
-<<<<<<< Updated upstream
-- [📚 Browse 970+ Skills](#browse-970-skills)
-=======
-- [📚 Browse 970+ Skills](#browse-970-skills)
->>>>>>> Stashed changes
+- [📚 Browse 978+ Skills](#browse-978-skills)
 - [🤝 How to Contribute](#how-to-contribute)
 - [💬 Community](#community)
 - [☕ Support the Project](#support-the-project)
@@ -65,11 +55,11 @@ This repository provides essential skills to transform your AI assistant into a 
 
 ## New Here? Start Here!
 
-**Welcome to the V6.7.0 Interactive Web Edition.** This isn't just a list of scripts; it's a complete operating system for your AI Agent.
+**Welcome to the V6.10.0 Interactive Web Edition.** This isn't just a list of scripts; it's a complete operating system for your AI Agent.
 
 ### 1. 🐣 Context: What is this?
 
-**Antigravity Awesome Skills** (Release 6.5.0) is a massive upgrade to your AI's capabilities.
+**Antigravity Awesome Skills** (Release 6.10.0) is a massive upgrade to your AI's capabilities.
 
 AI Agents (like Claude Code, Cursor, or Gemini) are smart, but they lack **specific tools**. They don't know your company's "Deployment Protocol" or the specific syntax for "AWS CloudFormation".
 **Skills** are small markdown files that teach them how to do these specific tasks perfectly, every time.
@@ -351,11 +341,7 @@ The repository is organized into specialized domains to transform your AI into a
 
 Counts change as new skills are added. For the current full registry, see [CATALOG.md](CATALOG.md).
 
-<<<<<<< Updated upstream
-## Browse 970+ Skills
-=======
-## Browse 970+ Skills
->>>>>>> Stashed changes
+## Browse 978+ Skills
 
 We have moved the full skill registry to a dedicated catalog to keep this README clean, and we've also introduced an interactive **Web App**!
 
@@ -504,6 +490,7 @@ This collection would not be possible without the incredible work of the Claude 
 - **[zircote/.claude](https://github.com/zircote/.claude)**: Shopify development skill reference.
 - **[vibeforge1111/vibeship-spawner-skills](https://github.com/vibeforge1111/vibeship-spawner-skills)**: AI Agents, Integrations, Maker Tools (57 skills, Apache 2.0).
 - **[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)**: Marketing skills for CRO, copywriting, SEO, paid ads, and growth (23 skills, MIT).
+- **[jonathimer/devmarketing-skills](https://github.com/jonathimer/devmarketing-skills)**: Developer marketing skills — HN strategy, technical tutorials, docs-as-marketing, Reddit engagement, developer onboarding, and more (33 skills, MIT).
 - **[Silverov/yandex-direct-skill](https://github.com/Silverov/yandex-direct-skill)**: Yandex Direct (API v5) advertising audit skill — 55 automated checks, A-F scoring, campaign/ad/keyword analysis for the Russian PPC market (MIT).
 - **[vudovn/antigravity-kit](https://github.com/vudovn/antigravity-kit)**: AI Agent templates with Skills, Agents, and Workflows (33 skills, MIT).
 - **[affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)**: Complete Claude Code configuration collection from Anthropic hackathon winner - skills only (8 skills, MIT).
@@ -603,6 +590,10 @@ We officially thank the following contributors for their help in making this rep
 - [@Silverov](https://github.com/Silverov)
 - [@shmlkv](https://github.com/shmlkv)
 - [@kriptoburak](https://github.com/kriptoburak)
+- [@lsuryatej](https://github.com/lsuryatej)
+- [@tejasashinde](https://github.com/tejasashinde)
+- [@SnakeEye-sudo](https://github.com/SnakeEye-sudo)
+- [@8144225309](https://github.com/8144225309)
 
 ---
 
