@@ -286,11 +286,8 @@
         "ui-ux-pro-max",
         "uniprot-database",
         "uv-package-manager",
-<<<<<<< add-skill-vercel-ai-sdk-expert
-        "vercel-ai-sdk-expert",
-=======
         "varlock",
->>>>>>> main
+        "vercel-ai-sdk-expert",
         "viral-generator-builder",
         "voice-ai-development",
         "web-artifacts-builder",

@@ -2,11 +2,7 @@
 
 Generated at: 2026-02-08T00:00:00.000Z
 
-<<<<<<< add-skill-vercel-ai-sdk-expert
-Total skills: 1008
-=======
-Total skills: 1206
->>>>>>> main
+Total skills: 1207
 
 ## architecture (78)
 
@@ -160,11 +156,7 @@ calculations | startup, business, analyst, market, opportunity | startup, busine
 | `startup-financial-modeling` | This skill should be used when the user asks to \\\"create financial projections", "build a financial model", "forecast revenue", "calculate burn rate", "est... | startup, financial, modeling | startup, financial, modeling, skill, should, used, user, asks, projections, model, forecast, revenue |
 | `whatsapp-automation` | Automate WhatsApp Business tasks via Rube MCP (Composio): send messages, manage templates, upload media, and handle contacts. Always search tools first for c... | whatsapp | whatsapp, automation, automate, business, tasks, via, rube, mcp, composio, send, messages, upload |
 
-<<<<<<< add-skill-vercel-ai-sdk-expert
-## data-ai (183)
-=======
-## data-ai (213)
->>>>>>> main
+## data-ai (214)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
