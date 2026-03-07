@@ -3,9 +3,47 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Copy, Check, FileCode, AlertTriangle, Loader2 } from 'lucide-react';
 import { SkillStarButton } from '../components/SkillStarButton';
 import { useSkills } from '../context/SkillContext';
+import remarkGfm from 'remark-gfm';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
 
 // Lazy load heavy markdown component
 const Markdown = lazy(() => import('react-markdown'));
+
+/** Split YAML frontmatter (--- ... ---) and markdown body */
+function splitFrontmatter(md: string): { frontmatter: string; body: string } {
+  const match = md.match(/^(---[\s\S]*?---)\s*\n?/);
+
+  if (!match) {
+    return { frontmatter: '', body: md };
+  }
+
+  return {
+    frontmatter: match[1],
+    body: md.slice(match[0].length),
+  };
+}
+
+function parseFrontmatterRows(frontmatter: string): Array<{ key: string; value: string }> {
+  return frontmatter
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line && line !== '---')
+    .map(line => {
+      const separatorIndex = line.indexOf(':');
+
+      if (separatorIndex === -1) {
+        return null;
+      }
+
+      const key = line.slice(0, separatorIndex).trim();
+      const rawValue = line.slice(separatorIndex + 1).trim();
+      const value = rawValue.replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1');
+
+      return key ? { key, value } : null;
+    })
+    .filter((row): row is { key: string; value: string } => row !== null);
+}
 
 interface RouteParams {
   id: string;
@@ -24,6 +62,8 @@ export function SkillDetail(): React.ReactElement {
 
   const skill = useMemo(() => skills.find(s => s.id === id), [skills, id]);
   const starCount = useMemo(() => (id ? stars[id] || 0 : 0), [stars, id]);
+  const { frontmatter, body: markdownBody } = useMemo(() => splitFrontmatter(content), [content]);
+  const frontmatterRows = useMemo(() => parseFrontmatterRows(frontmatter), [frontmatter]);
 
   useEffect(() => {
     if (contextLoading || !skill) return;
@@ -180,9 +220,50 @@ export function SkillDetail(): React.ReactElement {
 
       <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
         <div className="p-6 sm:p-8">
-          <div className="prose prose-slate dark:prose-invert max-w-none">
+          {frontmatterRows.length > 0 && (
+            <div className="mb-6">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-2">
+                Skill Metadata
+              </p>
+              <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
+                <table className="min-w-full text-sm text-left border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 dark:bg-slate-950">
+                      {frontmatterRows.map(({ key }) => (
+                        <th
+                          key={key}
+                          className="px-4 py-2 border-b border-slate-200 dark:border-slate-700 font-semibold text-slate-800 dark:text-slate-100"
+                        >
+                          {key}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="bg-white dark:bg-slate-900">
+                      {frontmatterRows.map(({ key, value }) => (
+                        <td
+                          key={key}
+                          className="px-4 py-2 border-t border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 align-top"
+                        >
+                          {value}
+                        </td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          <div className="markdown-body" style={{ backgroundColor: 'transparent' }}>
             <Suspense fallback={<div className="h-24 animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg"></div>}>
-              <Markdown>{content}</Markdown>
+              <Markdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeHighlight, rehypeRaw]}
+              >
+                {markdownBody}
+              </Markdown>
             </Suspense>
           </div>
         </div>

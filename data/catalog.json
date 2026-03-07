@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-02-08T00:00:00.000Z",
-  "total": 1207,
+  "total": 1271,
   "skills": [
     {
       "id": "00-andruia-consultant",
@@ -27,6 +27,35 @@
         "ia"
       ],
       "path": "skills/00-andruia-consultant/SKILL.md"
+    },
+    {
+      "id": "007",
+      "name": "007",
+      "description": "Security audit, hardening, threat modeling (STRIDE/PASTA), Red/Blue Team, OWASP checks, code review, incident response, and infrastructure security for any project.",
+      "category": "security",
+      "tags": [
+        "security",
+        "audit",
+        "owasp",
+        "threat-modeling",
+        "hardening",
+        "pentest"
+      ],
+      "triggers": [
+        "security",
+        "audit",
+        "owasp",
+        "threat-modeling",
+        "hardening",
+        "pentest",
+        "007",
+        "threat",
+        "modeling",
+        "stride",
+        "pasta",
+        "red"
+      ],
+      "path": "skills/007/SKILL.md"
     },
     {
       "id": "10-andruia-skill-smith",
@@ -259,6 +288,60 @@
       "path": "skills/advanced-evaluation/SKILL.md"
     },
     {
+      "id": "advogado-criminal",
+      "name": "advogado-criminal",
+      "description": "Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal.",
+      "category": "business",
+      "tags": [
+        "legal",
+        "brazilian-law",
+        "criminal-law",
+        "portuguese"
+      ],
+      "triggers": [
+        "legal",
+        "brazilian-law",
+        "criminal-law",
+        "portuguese",
+        "advogado",
+        "criminal",
+        "criminalista",
+        "especializado",
+        "em",
+        "maria",
+        "da",
+        "penha"
+      ],
+      "path": "skills/advogado-criminal/SKILL.md"
+    },
+    {
+      "id": "advogado-especialista",
+      "name": "advogado-especialista",
+      "description": "Advogado especialista em todas as areas do Direito brasileiro: familia, criminal, trabalhista, tributario, consumidor, imobiliario, empresarial, civil e constitucional.",
+      "category": "business",
+      "tags": [
+        "legal",
+        "brazilian-law",
+        "multi-domain",
+        "portuguese"
+      ],
+      "triggers": [
+        "legal",
+        "brazilian-law",
+        "multi-domain",
+        "portuguese",
+        "advogado",
+        "especialista",
+        "em",
+        "todas",
+        "areas",
+        "do",
+        "direito",
+        "brasileiro"
+      ],
+      "path": "skills/advogado-especialista/SKILL.md"
+    },
+    {
       "id": "agent-evaluation",
       "name": "agent-evaluation",
       "description": "Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and production monitoring—where even top agents achieve less than 50% on re...",
@@ -438,6 +521,33 @@
         "performance"
       ],
       "path": "skills/agent-orchestration-multi-agent-optimize/SKILL.md"
+    },
+    {
+      "id": "agent-orchestrator",
+      "name": "agent-orchestrator",
+      "description": "Meta-skill que orquestra todos os agentes do ecossistema. Scan automatico de skills, match por capacidades, coordenacao de workflows multi-skill e registry management.",
+      "category": "workflow",
+      "tags": [
+        "orchestration",
+        "multi-agent",
+        "workflow",
+        "automation"
+      ],
+      "triggers": [
+        "orchestration",
+        "multi-agent",
+        "workflow",
+        "automation",
+        "agent",
+        "orchestrator",
+        "meta",
+        "skill",
+        "que",
+        "orquestra",
+        "todos",
+        "os"
+      ],
+      "path": "skills/agent-orchestrator/SKILL.md"
     },
     {
       "id": "agent-tool-builder",
@@ -725,6 +835,33 @@
       "path": "skills/ai-product/SKILL.md"
     },
     {
+      "id": "ai-studio-image",
+      "name": "ai-studio-image",
+      "description": "Geracao de imagens humanizadas via Google AI Studio (Gemini). Fotos realistas estilo influencer ou educacional com iluminacao natural e imperfeicoes sutis.",
+      "category": "data-ai",
+      "tags": [
+        "image-generation",
+        "ai-studio",
+        "google",
+        "photography"
+      ],
+      "triggers": [
+        "image-generation",
+        "ai-studio",
+        "google",
+        "photography",
+        "ai",
+        "studio",
+        "image",
+        "geracao",
+        "de",
+        "imagens",
+        "humanizadas",
+        "via"
+      ],
+      "path": "skills/ai-studio-image/SKILL.md"
+    },
+    {
       "id": "ai-wrapper-product",
       "name": "ai-wrapper-product",
       "description": "Expert in building products that wrap AI APIs (OpenAI, Anthropic, etc.) into focused tools people will pay for. Not just 'ChatGPT but different' - products that solve specific problems with AI. Cov...",
@@ -873,6 +1010,34 @@
       "path": "skills/alpha-vantage/SKILL.md"
     },
     {
+      "id": "amazon-alexa",
+      "name": "amazon-alexa",
+      "description": "Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB,...",
+      "category": "general",
+      "tags": [
+        "voice",
+        "alexa",
+        "aws",
+        "smart-home",
+        "iot"
+      ],
+      "triggers": [
+        "voice",
+        "alexa",
+        "aws",
+        "smart-home",
+        "iot",
+        "amazon",
+        "integracao",
+        "completa",
+        "com",
+        "para",
+        "criar",
+        "skills"
+      ],
+      "path": "skills/amazon-alexa/SKILL.md"
+    },
+    {
       "id": "amplitude-automation",
       "name": "amplitude-automation",
       "description": "Automate Amplitude tasks via Rube MCP (Composio): events, user activity, cohorts, user identification. Always search tools first for current schemas.",
@@ -897,6 +1062,34 @@
       "path": "skills/amplitude-automation/SKILL.md"
     },
     {
+      "id": "analytics-product",
+      "name": "analytics-product",
+      "description": "Analytics de produto — PostHog, Mixpanel, eventos, funnels, cohorts, retencao, north star metric, OKRs e dashboards de produto. Ativar para: configurar tracking de eventos, criar funil de...",
+      "category": "data-ai",
+      "tags": [
+        "analytics",
+        "product",
+        "metrics",
+        "posthog",
+        "mixpanel"
+      ],
+      "triggers": [
+        "analytics",
+        "product",
+        "metrics",
+        "posthog",
+        "mixpanel",
+        "de",
+        "produto",
+        "eventos",
+        "funnels",
+        "cohorts",
+        "retencao",
+        "north"
+      ],
+      "path": "skills/analytics-product/SKILL.md"
+    },
+    {
       "id": "analytics-tracking",
       "name": "analytics-tracking",
       "description": "Design, audit, and improve analytics tracking systems that produce reliable, decision-ready data.",
@@ -916,6 +1109,33 @@
         "data"
       ],
       "path": "skills/analytics-tracking/SKILL.md"
+    },
+    {
+      "id": "andrej-karpathy",
+      "name": "andrej-karpathy",
+      "description": "Agente que simula Andrej Karpathy — ex-Director of AI da Tesla, co-fundador da OpenAI, fundador da Eureka Labs, e o maior educador de deep learning do mundo. Use quando quiser: aprender deep...",
+      "category": "data-ai",
+      "tags": [
+        "persona",
+        "ai-expert",
+        "deep-learning",
+        "education"
+      ],
+      "triggers": [
+        "persona",
+        "ai-expert",
+        "deep-learning",
+        "education",
+        "andrej",
+        "karpathy",
+        "agente",
+        "que",
+        "simula",
+        "ex",
+        "director",
+        "ai"
+      ],
+      "path": "skills/andrej-karpathy/SKILL.md"
     },
     {
       "id": "android-jetpack-compose-expert",
@@ -1088,6 +1308,30 @@
       "path": "skills/angular-ui-patterns/SKILL.md"
     },
     {
+      "id": "animejs-animation",
+      "name": "animejs-animation",
+      "description": "Advanced JavaScript animation library skill for creating complex, high-performance web animations.",
+      "category": "development",
+      "tags": [
+        "animejs",
+        "animation"
+      ],
+      "triggers": [
+        "animejs",
+        "animation",
+        "javascript",
+        "library",
+        "skill",
+        "creating",
+        "complex",
+        "high",
+        "performance",
+        "web",
+        "animations"
+      ],
+      "path": "skills/animejs-animation/SKILL.md"
+    },
+    {
       "id": "anti-reversing-techniques",
       "name": "anti-reversing-techniques",
       "description": "Understand anti-reversing, obfuscation, and protection techniques encountered during software analysis. Use when analyzing protected binaries, bypassing anti-debugging for authorized analysis, or u...",
@@ -1112,6 +1356,30 @@
         "protected"
       ],
       "path": "skills/anti-reversing-techniques/SKILL.md"
+    },
+    {
+      "id": "antigravity-design-expert",
+      "name": "antigravity-design-expert",
+      "description": "Core UI/UX engineering skill for building highly interactive, spatial, weightless, and glassmorphism-based web interfaces using GSAP and 3D CSS.",
+      "category": "general",
+      "tags": [
+        "antigravity"
+      ],
+      "triggers": [
+        "antigravity",
+        "core",
+        "ui",
+        "ux",
+        "engineering",
+        "skill",
+        "building",
+        "highly",
+        "interactive",
+        "spatial",
+        "weightless",
+        "glassmorphism"
+      ],
+      "path": "skills/antigravity-design-expert/SKILL.md"
     },
     {
       "id": "antigravity-workflows",
@@ -2113,6 +2381,33 @@
         "before"
       ],
       "path": "skills/audit-context-building/SKILL.md"
+    },
+    {
+      "id": "auri-core",
+      "name": "auri-core",
+      "description": "Auri: assistente de voz inteligente (Alexa + Claude claude-opus-4-20250805). Visao do produto, persona Vitoria Neural, stack AWS, modelo Free/Pro/Business/Enterprise, roadmap 4 fases, GTM, north...",
+      "category": "business",
+      "tags": [
+        "voice-assistant",
+        "product-vision",
+        "alexa",
+        "aws"
+      ],
+      "triggers": [
+        "voice-assistant",
+        "product-vision",
+        "alexa",
+        "aws",
+        "auri",
+        "core",
+        "assistente",
+        "de",
+        "voz",
+        "inteligente",
+        "claude",
+        "opus"
+      ],
+      "path": "skills/auri-core/SKILL.md"
     },
     {
       "id": "auth-implementation-patterns",
@@ -6049,6 +6344,33 @@
       "path": "skills/bevy-ecs-expert/SKILL.md"
     },
     {
+      "id": "bill-gates",
+      "name": "bill-gates",
+      "description": "Agente que simula Bill Gates — cofundador da Microsoft, arquiteto da industria de software comercial, estrategista tecnologico global, investidor sistemico e filantropo baseado em dados. Use...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "business-strategy",
+        "technology",
+        "philanthropy"
+      ],
+      "triggers": [
+        "persona",
+        "business-strategy",
+        "technology",
+        "philanthropy",
+        "bill",
+        "gates",
+        "agente",
+        "que",
+        "simula",
+        "cofundador",
+        "da",
+        "microsoft"
+      ],
+      "path": "skills/bill-gates/SKILL.md"
+    },
+    {
       "id": "billing-automation",
       "name": "billing-automation",
       "description": "Build automated billing systems for recurring payments, invoicing, subscription lifecycle, and dunning management. Use when implementing subscription billing, automating invoicing, or managing recu...",
@@ -7393,6 +7715,33 @@
       "path": "skills/claude-ally-health/SKILL.md"
     },
     {
+      "id": "claude-code-expert",
+      "name": "claude-code-expert",
+      "description": "Especialista profundo em Claude Code - CLI da Anthropic. Maximiza produtividade com atalhos, hooks, MCPs, configuracoes avancadas, workflows, CLAUDE.md, memoria, sub-agentes, permissoes e...",
+      "category": "general",
+      "tags": [
+        "claude-code",
+        "productivity",
+        "cli",
+        "configuration"
+      ],
+      "triggers": [
+        "claude-code",
+        "productivity",
+        "cli",
+        "configuration",
+        "claude",
+        "code",
+        "especialista",
+        "profundo",
+        "em",
+        "da",
+        "anthropic",
+        "maximiza"
+      ],
+      "path": "skills/claude-code-expert/SKILL.md"
+    },
+    {
       "id": "claude-code-guide",
       "name": "claude-code-guide",
       "description": "Master guide for using Claude Code effectively. Includes configuration templates, prompting strategies \\\"Thinking\\\" keywords, debugging techniques, and best practices for interacting wit...",
@@ -7469,6 +7818,33 @@
         "return"
       ],
       "path": "skills/claude-in-chrome-troubleshooting/SKILL.md"
+    },
+    {
+      "id": "claude-monitor",
+      "name": "claude-monitor",
+      "description": "Monitor de performance do Claude Code e sistema local. Diagnostica lentidao, mede CPU/RAM/disco, verifica API latency e gera relatorios de saude do sistema.",
+      "category": "infrastructure",
+      "tags": [
+        "monitoring",
+        "performance",
+        "diagnostics",
+        "system-health"
+      ],
+      "triggers": [
+        "monitoring",
+        "performance",
+        "diagnostics",
+        "system-health",
+        "claude",
+        "monitor",
+        "de",
+        "do",
+        "code",
+        "sistema",
+        "local",
+        "diagnostica"
+      ],
+      "path": "skills/claude-monitor/SKILL.md"
     },
     {
       "id": "claude-scientific-skills",
@@ -8183,6 +8559,33 @@
       "path": "skills/codex-review/SKILL.md"
     },
     {
+      "id": "comfyui-gateway",
+      "name": "comfyui-gateway",
+      "description": "REST API gateway for ComfyUI servers. Workflow management, job queuing, webhooks, caching, auth, rate limiting, and image delivery (URL + base64).",
+      "category": "security",
+      "tags": [
+        "comfyui",
+        "api-gateway",
+        "image-generation",
+        "typescript"
+      ],
+      "triggers": [
+        "comfyui",
+        "api-gateway",
+        "image-generation",
+        "typescript",
+        "gateway",
+        "rest",
+        "api",
+        "servers",
+        "job",
+        "queuing",
+        "webhooks",
+        "caching"
+      ],
+      "path": "skills/comfyui-gateway/SKILL.md"
+    },
+    {
       "id": "commit",
       "name": "commit",
       "description": "ALWAYS use this skill when committing code changes — never commit directly without it. Creates commits following Sentry conventions with proper conventional commit format and issue references. Trigger on any commit, git commit, save changes, or commit message task.",
@@ -8628,6 +9031,33 @@
       "path": "skills/content-marketer/SKILL.md"
     },
     {
+      "id": "context-agent",
+      "name": "context-agent",
+      "description": "Agente de contexto para continuidade entre sessoes. Salva resumos, decisoes, tarefas pendentes e carrega briefing automatico na sessao seguinte.",
+      "category": "general",
+      "tags": [
+        "context",
+        "session-management",
+        "continuity",
+        "memory"
+      ],
+      "triggers": [
+        "context",
+        "session-management",
+        "continuity",
+        "memory",
+        "agent",
+        "agente",
+        "de",
+        "contexto",
+        "para",
+        "continuidade",
+        "entre",
+        "sessoes"
+      ],
+      "path": "skills/context-agent/SKILL.md"
+    },
+    {
       "id": "context-compression",
       "name": "context-compression",
       "description": "This skill should be used when the user asks to \"compress context\", \"summarize conversation history\", \"implement compaction\", \"reduce token usage\", or mentions context compression, structured summarization, tokens-per-task optimization, or long-running agent sessions...",
@@ -8722,6 +9152,33 @@
         "architecture"
       ],
       "path": "skills/context-fundamentals/SKILL.md"
+    },
+    {
+      "id": "context-guardian",
+      "name": "context-guardian",
+      "description": "Guardiao de contexto que preserva dados criticos antes da compactacao automatica. Snapshots, verificacao de integridade e zero perda de informacao.",
+      "category": "security",
+      "tags": [
+        "context",
+        "data-integrity",
+        "snapshots",
+        "verification"
+      ],
+      "triggers": [
+        "context",
+        "data-integrity",
+        "snapshots",
+        "verification",
+        "guardian",
+        "guardiao",
+        "de",
+        "contexto",
+        "que",
+        "preserva",
+        "dados",
+        "criticos"
+      ],
+      "path": "skills/context-guardian/SKILL.md"
     },
     {
       "id": "context-management-context-restore",
@@ -9143,6 +9600,34 @@
       "path": "skills/create-pr/SKILL.md"
     },
     {
+      "id": "cred-omega",
+      "name": "cred-omega",
+      "description": "CISO operacional enterprise para gestao total de credenciais e segredos. Descobre, classifica, protege e governa TODAS as API keys, tokens, secrets, service accounts e credenciais em qualquer...",
+      "category": "security",
+      "tags": [
+        "credentials",
+        "secrets",
+        "security",
+        "api-keys",
+        "vault"
+      ],
+      "triggers": [
+        "credentials",
+        "secrets",
+        "security",
+        "api-keys",
+        "vault",
+        "cred",
+        "omega",
+        "ciso",
+        "operacional",
+        "enterprise",
+        "para",
+        "gestao"
+      ],
+      "path": "skills/cred-omega/SKILL.md"
+    },
+    {
       "id": "crewai",
       "name": "crewai",
       "description": "Expert in CrewAI - the leading role-based multi-agent framework used by 60% of Fortune 500 companies. Covers agent design with roles and goals, task definition, crew orchestration, process types (s...",
@@ -9281,6 +9766,22 @@
         "party"
       ],
       "path": "skills/customs-trade-compliance/SKILL.md"
+    },
+    {
+      "id": "daily",
+      "name": "daily",
+      "description": "Documentation and capabilities reference for Daily",
+      "category": "general",
+      "tags": [
+        "daily"
+      ],
+      "triggers": [
+        "daily",
+        "documentation",
+        "capabilities",
+        "reference"
+      ],
+      "path": "skills/daily/SKILL.md"
     },
     {
       "id": "daily-news-report",
@@ -10256,6 +10757,28 @@
       "path": "skills/design-orchestration/SKILL.md"
     },
     {
+      "id": "design-spells",
+      "name": "design-spells",
+      "description": "Curated micro-interactions and design details that add \"magic\" and personality to websites and apps.",
+      "category": "general",
+      "tags": [
+        "spells"
+      ],
+      "triggers": [
+        "spells",
+        "curated",
+        "micro",
+        "interactions",
+        "details",
+        "add",
+        "magic",
+        "personality",
+        "websites",
+        "apps"
+      ],
+      "path": "skills/design-spells/SKILL.md"
+    },
+    {
       "id": "devcontainer-setup",
       "name": "devcontainer-setup",
       "description": "Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding devcontainer support to a project, setting up isolated development environments, or configuring sandboxed Claude Code workspaces.",
@@ -10300,6 +10823,35 @@
         "delivery"
       ],
       "path": "skills/development/SKILL.md"
+    },
+    {
+      "id": "devops-deploy",
+      "name": "devops-deploy",
+      "description": "DevOps e deploy de aplicacoes — Docker, CI/CD com GitHub Actions, AWS Lambda, SAM, Terraform, infraestrutura como codigo e monitoramento. Ativar para: dockerizar aplicacao, configurar pipeline...",
+      "category": "infrastructure",
+      "tags": [
+        "devops",
+        "docker",
+        "ci-cd",
+        "aws",
+        "terraform",
+        "github-actions"
+      ],
+      "triggers": [
+        "devops",
+        "docker",
+        "ci-cd",
+        "aws",
+        "terraform",
+        "github-actions",
+        "deploy",
+        "de",
+        "aplicacoes",
+        "ci",
+        "cd",
+        "com"
+      ],
+      "path": "skills/devops-deploy/SKILL.md"
     },
     {
       "id": "devops-troubleshooter",
@@ -10978,6 +11530,34 @@
       "path": "skills/e2e-testing-patterns/SKILL.md"
     },
     {
+      "id": "earllm-build",
+      "name": "earllm-build",
+      "description": "Build, maintain, and extend the EarLLM One Android project — a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline. Use this skill whenever working on the earbudllm...",
+      "category": "infrastructure",
+      "tags": [
+        "android",
+        "kotlin",
+        "bluetooth",
+        "llm",
+        "voice"
+      ],
+      "triggers": [
+        "android",
+        "kotlin",
+        "bluetooth",
+        "llm",
+        "voice",
+        "earllm",
+        "maintain",
+        "extend",
+        "one",
+        "compose",
+        "app",
+        "connects"
+      ],
+      "path": "skills/earllm-build/SKILL.md"
+    },
+    {
       "id": "elixir-pro",
       "name": "elixir-pro",
       "description": "Write idiomatic Elixir code with OTP patterns, supervision trees, and Phoenix LiveView. Masters concurrency, fault tolerance, and distributed systems.",
@@ -11000,6 +11580,33 @@
         "concurrency"
       ],
       "path": "skills/elixir-pro/SKILL.md"
+    },
+    {
+      "id": "elon-musk",
+      "name": "elon-musk",
+      "description": "Agente que simula Elon Musk com profundidade psicologica e comunicacional de alta fidelidade. Ativado para: \"fale como Elon\", \"simule Elon Musk\", \"o que Elon diria sobre X\", \"first principles...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "first-principles",
+        "innovation",
+        "strategy"
+      ],
+      "triggers": [
+        "persona",
+        "first-principles",
+        "innovation",
+        "strategy",
+        "elon",
+        "musk",
+        "agente",
+        "que",
+        "simula",
+        "com",
+        "profundidade",
+        "psicologica"
+      ],
+      "path": "skills/elon-musk/SKILL.md"
     },
     {
       "id": "email-sequence",
@@ -13663,6 +14270,33 @@
       "path": "skills/geo-fundamentals/SKILL.md"
     },
     {
+      "id": "geoffrey-hinton",
+      "name": "geoffrey-hinton",
+      "description": "Agente que simula Geoffrey Hinton — Godfather of Deep Learning, Prêmio Turing 2018, criador do backpropagation e das Deep Belief Networks. Use quando quiser: perspectivas históricas sobre deep...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "deep-learning",
+        "ai-safety",
+        "neural-networks"
+      ],
+      "triggers": [
+        "persona",
+        "deep-learning",
+        "ai-safety",
+        "neural-networks",
+        "geoffrey",
+        "hinton",
+        "agente",
+        "que",
+        "simula",
+        "godfather",
+        "deep",
+        "learning"
+      ],
+      "path": "skills/geoffrey-hinton/SKILL.md"
+    },
+    {
       "id": "gh-review-requests",
       "name": "gh-review-requests",
       "description": "Fetch unread GitHub notifications for open PRs where review is requested from a specified team or opened by a team member. Use when asked to \"find PRs I need to review\", \"show my review requests\", \"what needs my review\", \"fetch GitHub review requests\", or \"check team review queue\".",
@@ -13736,6 +14370,31 @@
         "history"
       ],
       "path": "skills/git-advanced-workflows/SKILL.md"
+    },
+    {
+      "id": "git-hooks-automation",
+      "name": "git-hooks-automation",
+      "description": "Master Git hooks setup with Husky, lint-staged, pre-commit framework, and commitlint. Automate code quality gates, formatting, linting, and commit message enforcement before code reaches CI.",
+      "category": "infrastructure",
+      "tags": [
+        "git",
+        "hooks"
+      ],
+      "triggers": [
+        "git",
+        "hooks",
+        "automation",
+        "setup",
+        "husky",
+        "lint",
+        "staged",
+        "pre",
+        "commit",
+        "framework",
+        "commitlint",
+        "automate"
+      ],
+      "path": "skills/git-hooks-automation/SKILL.md"
     },
     {
       "id": "git-pr-workflows-git-workflow",
@@ -14483,6 +15142,34 @@
         "grimoire"
       ],
       "path": "skills/grimoire/SKILL.md"
+    },
+    {
+      "id": "growth-engine",
+      "name": "growth-engine",
+      "description": "Motor de crescimento para produtos digitais -- growth hacking, SEO, ASO, viral loops, email marketing, CRM, referral programs e aquisicao organica. Ativar para: criar estrategia de growth, SEO...",
+      "category": "business",
+      "tags": [
+        "growth",
+        "seo",
+        "marketing",
+        "viral",
+        "acquisition"
+      ],
+      "triggers": [
+        "growth",
+        "seo",
+        "marketing",
+        "viral",
+        "acquisition",
+        "engine",
+        "motor",
+        "de",
+        "crescimento",
+        "para",
+        "produtos",
+        "digitais"
+      ],
+      "path": "skills/growth-engine/SKILL.md"
     },
     {
       "id": "grpc-golang",
@@ -15411,6 +16098,30 @@
       "path": "skills/i18n-localization/SKILL.md"
     },
     {
+      "id": "iconsax-library",
+      "name": "iconsax-library",
+      "description": "Extensive icon library and AI-driven icon generation skill for premium UI/UX design.",
+      "category": "data-ai",
+      "tags": [
+        "iconsax",
+        "library"
+      ],
+      "triggers": [
+        "iconsax",
+        "library",
+        "extensive",
+        "icon",
+        "ai",
+        "driven",
+        "generation",
+        "skill",
+        "premium",
+        "ui",
+        "ux"
+      ],
+      "path": "skills/iconsax-library/SKILL.md"
+    },
+    {
       "id": "idor-testing",
       "name": "idor-testing",
       "description": "This skill should be used when the user asks to \"test for insecure direct object references,\" \"find IDOR vulnerabilities,\" \"exploit broken access control,\" \"enumerate user IDs or obje...",
@@ -15433,6 +16144,61 @@
         "references"
       ],
       "path": "skills/idor-testing/SKILL.md"
+    },
+    {
+      "id": "ilya-sutskever",
+      "name": "ilya-sutskever",
+      "description": "Agente que simula Ilya Sutskever — co-fundador da OpenAI, ex-Chief Scientist, fundador da SSI. Use quando quiser perspectivas sobre: AGI safety-first, consciência de IA, scaling laws, deep...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "agi",
+        "safety",
+        "scaling-laws",
+        "openai"
+      ],
+      "triggers": [
+        "persona",
+        "agi",
+        "safety",
+        "scaling-laws",
+        "openai",
+        "ilya",
+        "sutskever",
+        "agente",
+        "que",
+        "simula",
+        "co",
+        "fundador"
+      ],
+      "path": "skills/ilya-sutskever/SKILL.md"
+    },
+    {
+      "id": "image-studio",
+      "name": "image-studio",
+      "description": "Studio de geracao de imagens inteligente — roteamento automatico entre ai-studio-image (fotos humanizadas/influencer) e stability-ai (arte/ ilustracao/edicao). Detecta o tipo de imagem solicitada...",
+      "category": "data-ai",
+      "tags": [
+        "image-generation",
+        "routing",
+        "ai-art",
+        "photography"
+      ],
+      "triggers": [
+        "image-generation",
+        "routing",
+        "ai-art",
+        "photography",
+        "image",
+        "studio",
+        "de",
+        "geracao",
+        "imagens",
+        "inteligente",
+        "roteamento",
+        "automatico"
+      ],
+      "path": "skills/image-studio/SKILL.md"
     },
     {
       "id": "imagen",
@@ -15594,6 +16360,33 @@
         "queues"
       ],
       "path": "skills/inngest/SKILL.md"
+    },
+    {
+      "id": "instagram",
+      "name": "instagram",
+      "description": "Integracao completa com Instagram via Graph API. Publicacao, analytics, comentarios, DMs, hashtags, agendamento, templates e gestao de contas Business/Creator.",
+      "category": "data-ai",
+      "tags": [
+        "social-media",
+        "instagram",
+        "graph-api",
+        "content"
+      ],
+      "triggers": [
+        "social-media",
+        "instagram",
+        "graph-api",
+        "content",
+        "integracao",
+        "completa",
+        "com",
+        "via",
+        "graph",
+        "api",
+        "publicacao",
+        "analytics"
+      ],
+      "path": "skills/instagram/SKILL.md"
     },
     {
       "id": "instagram-automation",
@@ -16034,6 +16827,33 @@
       "path": "skills/julia-pro/SKILL.md"
     },
     {
+      "id": "junta-leiloeiros",
+      "name": "junta-leiloeiros",
+      "description": "Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON.",
+      "category": "development",
+      "tags": [
+        "scraping",
+        "brazilian-data",
+        "auctioneers",
+        "api"
+      ],
+      "triggers": [
+        "scraping",
+        "brazilian-data",
+        "auctioneers",
+        "api",
+        "junta",
+        "leiloeiros",
+        "coleta",
+        "consulta",
+        "dados",
+        "de",
+        "oficiais",
+        "todas"
+      ],
+      "path": "skills/junta-leiloeiros/SKILL.md"
+    },
+    {
       "id": "jupyter-workflow",
       "name": "jupyter-workflow",
       "description": "Jupyter Workflow",
@@ -16459,6 +17279,168 @@
         "texts"
       ],
       "path": "skills/legal-advisor/SKILL.md"
+    },
+    {
+      "id": "leiloeiro-avaliacao",
+      "name": "leiloeiro-avaliacao",
+      "description": "Avaliacao pericial de imoveis em leilao. Valor de mercado, liquidacao forcada, ABNT NBR 14653, metodos comparativo/renda/custo, CUB e margem de seguranca.",
+      "category": "general",
+      "tags": [
+        "real-estate",
+        "valuation",
+        "appraisal",
+        "brazilian"
+      ],
+      "triggers": [
+        "real-estate",
+        "valuation",
+        "appraisal",
+        "brazilian",
+        "leiloeiro",
+        "avaliacao",
+        "pericial",
+        "de",
+        "imoveis",
+        "em",
+        "leilao",
+        "valor"
+      ],
+      "path": "skills/leiloeiro-avaliacao/SKILL.md"
+    },
+    {
+      "id": "leiloeiro-edital",
+      "name": "leiloeiro-edital",
+      "description": "Analise e auditoria de editais de leilao judicial e extrajudicial. Riscos ocultos, clausulas perigosas, debitos, ocupante e classificacao da oportunidade.",
+      "category": "security",
+      "tags": [
+        "auction",
+        "legal-analysis",
+        "risk",
+        "brazilian"
+      ],
+      "triggers": [
+        "auction",
+        "legal-analysis",
+        "risk",
+        "brazilian",
+        "leiloeiro",
+        "edital",
+        "analise",
+        "auditoria",
+        "de",
+        "editais",
+        "leilao",
+        "judicial"
+      ],
+      "path": "skills/leiloeiro-edital/SKILL.md"
+    },
+    {
+      "id": "leiloeiro-ia",
+      "name": "leiloeiro-ia",
+      "description": "Especialista em leiloes judiciais e extrajudiciais de imoveis. Analise juridica, pericial e de mercado integrada. Orquestra os 5 modulos especializados.",
+      "category": "general",
+      "tags": [
+        "auction",
+        "ai-analysis",
+        "real-estate",
+        "brazilian"
+      ],
+      "triggers": [
+        "auction",
+        "ai-analysis",
+        "real-estate",
+        "brazilian",
+        "leiloeiro",
+        "ia",
+        "especialista",
+        "em",
+        "leiloes",
+        "judiciais",
+        "extrajudiciais",
+        "de"
+      ],
+      "path": "skills/leiloeiro-ia/SKILL.md"
+    },
+    {
+      "id": "leiloeiro-juridico",
+      "name": "leiloeiro-juridico",
+      "description": "Analise juridica de leiloes: nulidades, bem de familia, alienacao fiduciaria, CPC arts 829-903, Lei 9514/97, onus reais, embargos e jurisprudencia.",
+      "category": "business",
+      "tags": [
+        "legal",
+        "auction-law",
+        "brazilian",
+        "judicial"
+      ],
+      "triggers": [
+        "legal",
+        "auction-law",
+        "brazilian",
+        "judicial",
+        "leiloeiro",
+        "juridico",
+        "analise",
+        "juridica",
+        "de",
+        "leiloes",
+        "nulidades",
+        "bem"
+      ],
+      "path": "skills/leiloeiro-juridico/SKILL.md"
+    },
+    {
+      "id": "leiloeiro-mercado",
+      "name": "leiloeiro-mercado",
+      "description": "Analise de mercado imobiliario para leiloes. Liquidez, desagio tipico, ROI, estrategias de saida (flip/reforma/renda), Selic 2025 e benchmark CDI/FII.",
+      "category": "general",
+      "tags": [
+        "market-analysis",
+        "real-estate",
+        "roi",
+        "brazilian"
+      ],
+      "triggers": [
+        "market-analysis",
+        "real-estate",
+        "roi",
+        "brazilian",
+        "leiloeiro",
+        "mercado",
+        "analise",
+        "de",
+        "imobiliario",
+        "para",
+        "leiloes",
+        "liquidez"
+      ],
+      "path": "skills/leiloeiro-mercado/SKILL.md"
+    },
+    {
+      "id": "leiloeiro-risco",
+      "name": "leiloeiro-risco",
+      "description": "Analise de risco em leiloes de imoveis. Score 36 pontos, riscos juridicos/financeiros/operacionais, stress test 4 cenarios e ROI ponderado por risco.",
+      "category": "testing",
+      "tags": [
+        "risk-analysis",
+        "scoring",
+        "stress-test",
+        "brazilian"
+      ],
+      "triggers": [
+        "risk-analysis",
+        "scoring",
+        "stress-test",
+        "brazilian",
+        "leiloeiro",
+        "risco",
+        "analise",
+        "de",
+        "em",
+        "leiloes",
+        "imoveis",
+        "score"
+      ],
+      "path": "skills/leiloeiro-risco/SKILL.md"
     },
     {
       "id": "libreoffice/base",
@@ -17014,6 +17996,34 @@
       "path": "skills/llm-evaluation/SKILL.md"
     },
     {
+      "id": "llm-ops",
+      "name": "llm-ops",
+      "description": "LLM Operations -- RAG, embeddings, vector databases, fine-tuning, prompt engineering avancado, custos de LLM, evals de qualidade e arquiteturas de IA para producao. Ativar para: implementar RAG,...",
+      "category": "data-ai",
+      "tags": [
+        "llm",
+        "rag",
+        "embeddings",
+        "vector-db",
+        "fine-tuning"
+      ],
+      "triggers": [
+        "llm",
+        "rag",
+        "embeddings",
+        "vector-db",
+        "fine-tuning",
+        "ops",
+        "operations",
+        "vector",
+        "databases",
+        "fine",
+        "tuning",
+        "prompt"
+      ],
+      "path": "skills/llm-ops/SKILL.md"
+    },
+    {
       "id": "llm-prompt-optimizer",
       "name": "llm-prompt-optimizer",
       "description": "Use when improving prompts for any LLM. Applies proven prompt engineering techniques to boost output quality, reduce hallucinations, and cut token usage.",
@@ -17213,6 +18223,57 @@
         "arguments"
       ],
       "path": "skills/machine-learning-ops-ml-pipeline/SKILL.md"
+    },
+    {
+      "id": "magic-animator",
+      "name": "magic-animator",
+      "description": "AI-powered animation tool for creating motion in logos, UI, icons, and social media assets.",
+      "category": "data-ai",
+      "tags": [
+        "magic",
+        "animator"
+      ],
+      "triggers": [
+        "magic",
+        "animator",
+        "ai",
+        "powered",
+        "animation",
+        "creating",
+        "motion",
+        "logos",
+        "ui",
+        "icons",
+        "social",
+        "media"
+      ],
+      "path": "skills/magic-animator/SKILL.md"
+    },
+    {
+      "id": "magic-ui-generator",
+      "name": "magic-ui-generator",
+      "description": "Utilizes Magic by 21st.dev to generate, compare, and integrate multiple production-ready UI component variations.",
+      "category": "general",
+      "tags": [
+        "magic",
+        "ui",
+        "generator"
+      ],
+      "triggers": [
+        "magic",
+        "ui",
+        "generator",
+        "utilizes",
+        "21st",
+        "dev",
+        "generate",
+        "compare",
+        "integrate",
+        "multiple",
+        "component",
+        "variations"
+      ],
+      "path": "skills/magic-ui-generator/SKILL.md"
     },
     {
       "id": "mailchimp-automation",
@@ -17706,6 +18767,33 @@
         "feasibility"
       ],
       "path": "skills/marketing-psychology/SKILL.md"
+    },
+    {
+      "id": "matematico-tao",
+      "name": "matematico-tao",
+      "description": "Matemático ultra-avançado inspirado em Terence Tao. Análise rigorosa de código e arquitetura com teoria matemática profunda: teoria da informação, teoria dos grafos, complexidade computacional,...",
+      "category": "general",
+      "tags": [
+        "mathematics",
+        "code-analysis",
+        "algorithms",
+        "formal-methods"
+      ],
+      "triggers": [
+        "mathematics",
+        "code-analysis",
+        "algorithms",
+        "formal-methods",
+        "matematico",
+        "tao",
+        "matem",
+        "tico",
+        "ultra",
+        "avan",
+        "ado",
+        "inspirado"
+      ],
+      "path": "skills/matematico-tao/SKILL.md"
     },
     {
       "id": "matplotlib",
@@ -18308,6 +19396,34 @@
       "path": "skills/monday-automation/SKILL.md"
     },
     {
+      "id": "monetization",
+      "name": "monetization",
+      "description": "Estrategia e implementacao de monetizacao para produtos digitais - Stripe, subscriptions, pricing experiments, freemium, upgrade flows, churn prevention, revenue optimization e modelos de negocio...",
+      "category": "general",
+      "tags": [
+        "monetization",
+        "stripe",
+        "saas",
+        "pricing",
+        "subscriptions"
+      ],
+      "triggers": [
+        "monetization",
+        "stripe",
+        "saas",
+        "pricing",
+        "subscriptions",
+        "estrategia",
+        "implementacao",
+        "de",
+        "monetizacao",
+        "para",
+        "produtos",
+        "digitais"
+      ],
+      "path": "skills/monetization/SKILL.md"
+    },
+    {
       "id": "monorepo-architect",
       "name": "monorepo-architect",
       "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,",
@@ -18441,6 +19557,33 @@
         "securing"
       ],
       "path": "skills/mtls-configuration/SKILL.md"
+    },
+    {
+      "id": "multi-advisor",
+      "name": "multi-advisor",
+      "description": "Conselho de especialistas — consulta multiplos agentes do ecossistema em paralelo para analise multi-perspectiva de qualquer topico. Ativa personas, especialistas e agentes tecnicos...",
+      "category": "general",
+      "tags": [
+        "multi-agent",
+        "advisory",
+        "parallel-analysis",
+        "synthesis"
+      ],
+      "triggers": [
+        "multi-agent",
+        "advisory",
+        "parallel-analysis",
+        "synthesis",
+        "multi",
+        "advisor",
+        "conselho",
+        "de",
+        "especialistas",
+        "consulta",
+        "multiplos",
+        "agentes"
+      ],
+      "path": "skills/multi-advisor/SKILL.md"
     },
     {
       "id": "multi-agent-brainstorming",
@@ -21300,6 +22443,61 @@
       "path": "skills/privilege-escalation-methods/SKILL.md"
     },
     {
+      "id": "product-design",
+      "name": "product-design",
+      "description": "Design de produto nivel Apple — sistemas visuais, UX flows, acessibilidade, linguagem visual proprietaria, design tokens, prototipagem e handoff. Cobre Figma, design systems, tipografia, cor,...",
+      "category": "business",
+      "tags": [
+        "design",
+        "ux",
+        "design-systems",
+        "accessibility",
+        "figma"
+      ],
+      "triggers": [
+        "design",
+        "ux",
+        "design-systems",
+        "accessibility",
+        "figma",
+        "product",
+        "de",
+        "produto",
+        "nivel",
+        "apple",
+        "sistemas",
+        "visuais"
+      ],
+      "path": "skills/product-design/SKILL.md"
+    },
+    {
+      "id": "product-inventor",
+      "name": "product-inventor",
+      "description": "Product Inventor e Design Alchemist de nivel maximo — combina Product Thinking, Design Systems, UI Engineering, Psicologia Cognitiva, Storytelling e execucao impecavel nivel Jobs/Apple. Use quando...",
+      "category": "business",
+      "tags": [
+        "product-thinking",
+        "innovation",
+        "ux-design",
+        "storytelling"
+      ],
+      "triggers": [
+        "product-thinking",
+        "innovation",
+        "ux-design",
+        "storytelling",
+        "product",
+        "inventor",
+        "alchemist",
+        "de",
+        "nivel",
+        "maximo",
+        "combina",
+        "thinking"
+      ],
+      "path": "skills/product-inventor/SKILL.md"
+    },
+    {
       "id": "product-manager",
       "name": "product-manager",
       "description": "Senior PM agent with 6 knowledge domains, 30+ frameworks, 12 templates, and 32 SaaS metrics with formulas. Pure Markdown, zero scripts.",
@@ -23121,6 +24319,34 @@
       "path": "skills/salesforce-development/SKILL.md"
     },
     {
+      "id": "sam-altman",
+      "name": "sam-altman",
+      "description": "Agente que simula Sam Altman — CEO da OpenAI, ex-presidente da Y Combinator, arquiteto da era AGI. Use quando quiser: perspectivas sobre startups e fundraising (YC playbook completo), visão sobre...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "startups",
+        "agi",
+        "yc",
+        "fundraising"
+      ],
+      "triggers": [
+        "persona",
+        "startups",
+        "agi",
+        "yc",
+        "fundraising",
+        "sam",
+        "altman",
+        "agente",
+        "que",
+        "simula",
+        "ceo",
+        "da"
+      ],
+      "path": "skills/sam-altman/SKILL.md"
+    },
+    {
       "id": "sast-configuration",
       "name": "sast-configuration",
       "description": "Configure Static Application Security Testing (SAST) tools for automated vulnerability detection in application code. Use when setting up security scanning, implementing DevSecOps practices, or aut...",
@@ -24716,6 +25942,33 @@
       "path": "skills/skill-improver/SKILL.md"
     },
     {
+      "id": "skill-installer",
+      "name": "skill-installer",
+      "description": "Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao.",
+      "category": "infrastructure",
+      "tags": [
+        "skill-management",
+        "deployment",
+        "validation",
+        "installation"
+      ],
+      "triggers": [
+        "skill-management",
+        "deployment",
+        "validation",
+        "installation",
+        "skill",
+        "installer",
+        "instala",
+        "valida",
+        "registra",
+        "verifica",
+        "novas",
+        "skills"
+      ],
+      "path": "skills/skill-installer/SKILL.md"
+    },
+    {
       "id": "skill-rails-upgrade",
       "name": "skill-rails-upgrade",
       "description": "Analyze Rails apps and provide upgrade assessments",
@@ -24810,6 +26063,33 @@
         "skills"
       ],
       "path": "skills/skill-seekers/SKILL.md"
+    },
+    {
+      "id": "skill-sentinel",
+      "name": "skill-sentinel",
+      "description": "Auditoria e evolucao do ecossistema de skills. Qualidade de codigo, seguranca, custos, gaps, duplicacoes, dependencias e relatorios de saude.",
+      "category": "general",
+      "tags": [
+        "governance",
+        "audit",
+        "quality",
+        "skill-health"
+      ],
+      "triggers": [
+        "governance",
+        "audit",
+        "quality",
+        "skill-health",
+        "skill",
+        "sentinel",
+        "auditoria",
+        "evolucao",
+        "do",
+        "ecossistema",
+        "de",
+        "skills"
+      ],
+      "path": "skills/skill-sentinel/SKILL.md"
     },
     {
       "id": "skill-writer",
@@ -25026,6 +26306,33 @@
       "path": "skills/social-content/SKILL.md"
     },
     {
+      "id": "social-orchestrator",
+      "name": "social-orchestrator",
+      "description": "Orquestrador unificado de canais sociais — coordena Instagram, Telegram e WhatsApp em um unico fluxo de trabalho. Publicacao cross-channel, metricas unificadas, reutilizacao de conteudo por...",
+      "category": "general",
+      "tags": [
+        "social-media",
+        "cross-channel",
+        "scheduling",
+        "campaigns"
+      ],
+      "triggers": [
+        "social-media",
+        "cross-channel",
+        "scheduling",
+        "campaigns",
+        "social",
+        "orchestrator",
+        "orquestrador",
+        "unificado",
+        "de",
+        "canais",
+        "sociais",
+        "coordena"
+      ],
+      "path": "skills/social-orchestrator/SKILL.md"
+    },
+    {
       "id": "software-architecture",
       "name": "software-architecture",
       "description": "Guide for quality focused software architecture. This skill should be used when users want to write code, design architecture, analyze code, in any case that relates to software development.",
@@ -25160,6 +26467,32 @@
         "text"
       ],
       "path": "skills/speed/SKILL.md"
+    },
+    {
+      "id": "spline-3d-integration",
+      "name": "spline-3d-integration",
+      "description": "Use when adding interactive 3D scenes from Spline.design to web projects, including React embedding and runtime control API.",
+      "category": "data-ai",
+      "tags": [
+        "spline",
+        "3d",
+        "integration"
+      ],
+      "triggers": [
+        "spline",
+        "3d",
+        "integration",
+        "adding",
+        "interactive",
+        "scenes",
+        "web",
+        "including",
+        "react",
+        "embedding",
+        "runtime",
+        "control"
+      ],
+      "path": "skills/spline-3d-integration/SKILL.md"
     },
     {
       "id": "sql-injection-testing",
@@ -25360,6 +26693,33 @@
       "path": "skills/ssh-penetration-testing/SKILL.md"
     },
     {
+      "id": "stability-ai",
+      "name": "stability-ai",
+      "description": "Geracao de imagens via Stability AI (SD3.5, Ultra, Core). Text-to-image, img2img, inpainting, upscale, remove-bg, search-replace. 15 estilos artisticos.",
+      "category": "data-ai",
+      "tags": [
+        "image-generation",
+        "stable-diffusion",
+        "ai-art",
+        "api"
+      ],
+      "triggers": [
+        "image-generation",
+        "stable-diffusion",
+        "ai-art",
+        "api",
+        "stability",
+        "ai",
+        "geracao",
+        "de",
+        "imagens",
+        "via",
+        "sd3",
+        "ultra"
+      ],
+      "path": "skills/stability-ai/SKILL.md"
+    },
+    {
       "id": "startup-analyst",
       "name": "startup-analyst",
       "description": "Expert startup business analyst specializing in market sizing, financial modeling, competitive analysis, and strategic planning for early-stage companies.",
@@ -25553,6 +26913,33 @@
         "arima"
       ],
       "path": "skills/statsmodels/SKILL.md"
+    },
+    {
+      "id": "steve-jobs",
+      "name": "steve-jobs",
+      "description": "Agente que simula Steve Jobs — cofundador da Apple, CEO da Pixar, fundador da NeXT, o maior designer de produtos tecnologicos da historia e o mais influente apresentador de produtos do mundo. Use...",
+      "category": "business",
+      "tags": [
+        "persona",
+        "design-thinking",
+        "product",
+        "presentations"
+      ],
+      "triggers": [
+        "persona",
+        "design-thinking",
+        "product",
+        "presentations",
+        "steve",
+        "jobs",
+        "agente",
+        "que",
+        "simula",
+        "cofundador",
+        "da",
+        "apple"
+      ],
+      "path": "skills/steve-jobs/SKILL.md"
     },
     {
       "id": "stitch-loop",
@@ -25909,6 +27296,58 @@
       "path": "skills/tailwind-patterns/SKILL.md"
     },
     {
+      "id": "tanstack-query-expert",
+      "name": "tanstack-query-expert",
+      "description": "Expert in TanStack Query (React Query) — asynchronous state management. Covers data fetching, stale time configuration, mutations, optimistic updates, and Next.js App Router (SSR) integration.",
+      "category": "data-ai",
+      "tags": [
+        "tanstack",
+        "query"
+      ],
+      "triggers": [
+        "tanstack",
+        "query",
+        "react",
+        "asynchronous",
+        "state",
+        "covers",
+        "data",
+        "fetching",
+        "stale",
+        "time",
+        "configuration",
+        "mutations"
+      ],
+      "path": "skills/tanstack-query-expert/SKILL.md"
+    },
+    {
+      "id": "task-intelligence",
+      "name": "task-intelligence",
+      "description": "Protocolo de Inteligência Pré-Tarefa — ativa TODOS os agentes relevantes do ecossistema ANTES de executar qualquer tarefa solicitada pelo usuário. Enriquece o contexto com análise paralela...",
+      "category": "workflow",
+      "tags": [
+        "planning",
+        "pre-task",
+        "risk-analysis",
+        "orchestration"
+      ],
+      "triggers": [
+        "planning",
+        "pre-task",
+        "risk-analysis",
+        "orchestration",
+        "task",
+        "intelligence",
+        "protocolo",
+        "de",
+        "intelig",
+        "ncia",
+        "pr",
+        "tarefa"
+      ],
+      "path": "skills/task-intelligence/SKILL.md"
+    },
+    {
       "id": "tavily-web",
       "name": "tavily-web",
       "description": "Web search, content extraction, crawling, and research capabilities using Tavily API",
@@ -26148,6 +27587,33 @@
         "hiring"
       ],
       "path": "skills/team-composition-analysis/SKILL.md"
+    },
+    {
+      "id": "telegram",
+      "name": "telegram",
+      "description": "Integracao completa com Telegram Bot API. Setup com BotFather, mensagens, webhooks, inline keyboards, grupos, canais. Boilerplates Node.js e Python.",
+      "category": "development",
+      "tags": [
+        "messaging",
+        "telegram",
+        "bots",
+        "webhooks"
+      ],
+      "triggers": [
+        "messaging",
+        "telegram",
+        "bots",
+        "webhooks",
+        "integracao",
+        "completa",
+        "com",
+        "bot",
+        "api",
+        "setup",
+        "botfather",
+        "mensagens"
+      ],
+      "path": "skills/telegram/SKILL.md"
     },
     {
       "id": "telegram-automation",
@@ -27476,6 +28942,29 @@
       "path": "skills/unreal-engine-cpp-pro/SKILL.md"
     },
     {
+      "id": "unsplash-integration",
+      "name": "unsplash-integration",
+      "description": "Integration skill for searching and fetching high-quality, free-to-use professional photography from Unsplash.",
+      "category": "general",
+      "tags": [
+        "unsplash",
+        "integration"
+      ],
+      "triggers": [
+        "unsplash",
+        "integration",
+        "skill",
+        "searching",
+        "fetching",
+        "high",
+        "quality",
+        "free",
+        "professional",
+        "photography"
+      ],
+      "path": "skills/unsplash-integration/SKILL.md"
+    },
+    {
       "id": "upgrading-expo",
       "name": "upgrading-expo",
       "description": "Upgrade Expo SDK versions",
@@ -28023,6 +29512,28 @@
       "path": "skills/viral-generator-builder/SKILL.md"
     },
     {
+      "id": "vizcom",
+      "name": "vizcom",
+      "description": "AI-powered product design tool for transforming sketches into full-fidelity 3D renders.",
+      "category": "data-ai",
+      "tags": [
+        "vizcom"
+      ],
+      "triggers": [
+        "vizcom",
+        "ai",
+        "powered",
+        "product",
+        "transforming",
+        "sketches",
+        "full",
+        "fidelity",
+        "3d",
+        "renders"
+      ],
+      "path": "skills/vizcom/SKILL.md"
+    },
+    {
       "id": "voice-agents",
       "name": "voice-agents",
       "description": "Voice agents represent the frontier of AI interaction - humans speaking naturally with AI systems. The challenge isn't just speech recognition and synthesis, it's achieving natural conversation flo...",
@@ -28122,6 +29633,33 @@
         "mapping"
       ],
       "path": "skills/vulnerability-scanner/SKILL.md"
+    },
+    {
+      "id": "warren-buffett",
+      "name": "warren-buffett",
+      "description": "Agente que simula Warren Buffett — o maior investidor do seculo XX e XXI, CEO da Berkshire Hathaway, discipulo de Benjamin Graham e socio intelectual de Charlie Munger. Use quando quiser: analise...",
+      "category": "business",
+      "tags": [
+        "persona",
+        "investing",
+        "value-investing",
+        "business"
+      ],
+      "triggers": [
+        "persona",
+        "investing",
+        "value-investing",
+        "business",
+        "warren",
+        "buffett",
+        "agente",
+        "que",
+        "simula",
+        "maior",
+        "investidor",
+        "do"
+      ],
+      "path": "skills/warren-buffett/SKILL.md"
     },
     {
       "id": "wcag-audit-patterns",
@@ -28224,6 +29762,33 @@
         "bundle"
       ],
       "path": "skills/web-performance-optimization/SKILL.md"
+    },
+    {
+      "id": "web-scraper",
+      "name": "web-scraper",
+      "description": "Web scraping inteligente multi-estrategia. Extrai dados estruturados de paginas web (tabelas, listas, precos). Paginacao, monitoramento e export CSV/JSON.",
+      "category": "workflow",
+      "tags": [
+        "scraping",
+        "data-extraction",
+        "automation",
+        "csv"
+      ],
+      "triggers": [
+        "scraping",
+        "data-extraction",
+        "automation",
+        "csv",
+        "web",
+        "scraper",
+        "inteligente",
+        "multi",
+        "estrategia",
+        "extrai",
+        "dados",
+        "estruturados"
+      ],
+      "path": "skills/web-scraper/SKILL.md"
     },
     {
       "id": "web-security-testing",
@@ -28385,6 +29950,33 @@
         "upload"
       ],
       "path": "skills/whatsapp-automation/SKILL.md"
+    },
+    {
+      "id": "whatsapp-cloud-api",
+      "name": "whatsapp-cloud-api",
+      "description": "Integracao com WhatsApp Business Cloud API (Meta). Mensagens, templates, webhooks HMAC-SHA256, automacao de atendimento. Boilerplates Node.js e Python.",
+      "category": "infrastructure",
+      "tags": [
+        "messaging",
+        "whatsapp",
+        "meta",
+        "webhooks"
+      ],
+      "triggers": [
+        "messaging",
+        "whatsapp",
+        "meta",
+        "webhooks",
+        "cloud",
+        "api",
+        "integracao",
+        "com",
+        "business",
+        "mensagens",
+        "hmac",
+        "sha256"
+      ],
+      "path": "skills/whatsapp-cloud-api/SKILL.md"
     },
     {
       "id": "wiki-architect",
@@ -28982,6 +30574,116 @@
         "cross"
       ],
       "path": "skills/xss-html-injection/SKILL.md"
+    },
+    {
+      "id": "yann-lecun",
+      "name": "yann-lecun",
+      "description": "Agente que simula Yann LeCun — inventor das Convolutional Neural Networks, Chief AI Scientist da Meta, Prêmio Turing 2018. Use quando quiser: perspectivas sobre deep learning e visão...",
+      "category": "data-ai",
+      "tags": [
+        "persona",
+        "cnn",
+        "meta",
+        "ai-safety-critic",
+        "open-source"
+      ],
+      "triggers": [
+        "persona",
+        "cnn",
+        "meta",
+        "ai-safety-critic",
+        "open-source",
+        "yann",
+        "lecun",
+        "agente",
+        "que",
+        "simula",
+        "inventor",
+        "das"
+      ],
+      "path": "skills/yann-lecun/SKILL.md"
+    },
+    {
+      "id": "yann-lecun-debate",
+      "name": "yann-lecun-debate",
+      "description": "Sub-skill de debates e posições de Yann LeCun. Cobre críticas técnicas detalhadas aos LLMs, rivalidades intelectuais (LeCun vs Hinton, Sutskever, Russell, Yudkowsky, Bostrom), lista completa de...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "ai-debate",
+        "llm-criticism",
+        "open-source"
+      ],
+      "triggers": [
+        "persona",
+        "ai-debate",
+        "llm-criticism",
+        "open-source",
+        "yann",
+        "lecun",
+        "debate",
+        "sub",
+        "skill",
+        "de",
+        "debates",
+        "posi"
+      ],
+      "path": "skills/yann-lecun-debate/SKILL.md"
+    },
+    {
+      "id": "yann-lecun-filosofia",
+      "name": "yann-lecun-filosofia",
+      "description": "Sub-skill filosófica e pedagógica de Yann LeCun. Cobre filosofia do open source (LLaMA, soberania tecnológica, analogia Linux), análise de incentivos Meta vs OpenAI vs Google, modo professor...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "ai-philosophy",
+        "open-source",
+        "education"
+      ],
+      "triggers": [
+        "persona",
+        "ai-philosophy",
+        "open-source",
+        "education",
+        "yann",
+        "lecun",
+        "filosofia",
+        "sub",
+        "skill",
+        "filos",
+        "fica",
+        "pedag"
+      ],
+      "path": "skills/yann-lecun-filosofia/SKILL.md"
+    },
+    {
+      "id": "yann-lecun-tecnico",
+      "name": "yann-lecun-tecnico",
+      "description": "Sub-skill técnica de Yann LeCun. Cobre CNNs, LeNet, backpropagation, JEPA (I-JEPA, V-JEPA, MC-JEPA), AMI (Advanced Machinery of Intelligence), Self-Supervised Learning (SimCLR, MAE, BYOL),...",
+      "category": "general",
+      "tags": [
+        "persona",
+        "cnn",
+        "jepa",
+        "self-supervised",
+        "pytorch"
+      ],
+      "triggers": [
+        "persona",
+        "cnn",
+        "jepa",
+        "self-supervised",
+        "pytorch",
+        "yann",
+        "lecun",
+        "tecnico",
+        "sub",
+        "skill",
+        "cnica",
+        "de"
+      ],
+      "path": "skills/yann-lecun-tecnico/SKILL.md"
     },
     {
       "id": "yara-authoring",

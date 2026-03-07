@@ -1,13 +1,7 @@
-<!-- registry-sync: version=7.0.1; skills=1207; stars=21187; updated_at=2026-03-07T09:22:43+00:00 -->
-<<<<<<< add-skill-vercel-ai-sdk-expert
-# 🌌 Antigravity Awesome Skills: 1,207+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
+<!-- registry-sync: version=7.0.1; skills=1271; stars=21189; updated_at=2026-03-07T09:27:19+00:00 -->
+# 🌌 Antigravity Awesome Skills: 1,271+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
 
-> **The Ultimate Collection of 1,207+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode, AdaL**
-=======
-# 🌌 Antigravity Awesome Skills: 1,206+ Agentic Skills for Claude Code, Gemini CLI, Cursor, Copilot & More
-
-> **The Ultimate Collection of 1,206+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode, AdaL**
->>>>>>> main
+> **The Ultimate Collection of 1,271+ Universal Agentic Skills for AI Coding Assistants — Claude Code, Gemini CLI, Codex CLI, Antigravity IDE, GitHub Copilot, Cursor, OpenCode, AdaL**
 
 [![GitHub stars](https://img.shields.io/badge/⭐%2021%2C000%2B%20Stars-gold?style=for-the-badge)](https://github.com/sickn33/antigravity-awesome-skills/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -24,7 +18,7 @@
 [![Web App](https://img.shields.io/badge/Web%20App-Browse%20Skills-blue)](apps/web-app)
 [![Buy Me a Book](https://img.shields.io/badge/Buy%20me%20a-book-d13610?logo=buymeacoffee&logoColor=white)](https://buymeacoffee.com/sickn33)
 
-**Antigravity Awesome Skills** is a curated, battle-tested library of **1,207+ high-performance agentic skills** designed to work seamlessly across the major AI coding assistants.
+**Antigravity Awesome Skills** is a curated, battle-tested library of **1,271+ high-performance agentic skills** designed to work seamlessly across the major AI coding assistants.
 
 **Welcome to the V7.0.1 21k Stars Patch Release!** This repository gives your agent reusable playbooks for planning, coding, debugging, testing, security review, infrastructure work, product thinking, and much more.
 
@@ -32,109 +26,6 @@
 
 ## Table of Contents
 
-<<<<<<< add-skill-vercel-ai-sdk-expert
-- [🚀 New Here? Start Here!](#new-here-start-here)
-- [📖 Complete Usage Guide](docs/USAGE.md) - **Start here if confused after installation!**
-- [🔌 Compatibility & Invocation](#compatibility--invocation)
-- [🛠️ Installation](#installation)
-- [🧯 Troubleshooting](#troubleshooting)
-- [🎁 Curated Collections (Bundles)](#curated-collections)
-- [🧭 Antigravity Workflows](#antigravity-workflows)
-- [📦 Features & Categories](#features--categories)
-- [📚 Browse 1,207+ Skills](#browse-1207-skills)
-- [🤝 How to Contribute](#how-to-contribute)
-- [💬 Community](#community)
-- [☕ Support the Project](#support-the-project)
-- [🏆 Credits & Sources](#credits--sources)
-- [👥 Repo Contributors](#repo-contributors)
-- [⚖️ License](#license)
-- [🌟 Star History](#star-history)
-
----
-
-## New Here? Start Here!
-
-**Welcome to the V6.10.0 Interactive Web Edition.** This isn't just a list of scripts; it's a complete operating system for your AI Agent.
-
-### 1. 🐣 Context: What is this?
-
-**Antigravity Awesome Skills** (Release 6.10.0) is a massive upgrade to your AI's capabilities.
-
-AI Agents (like Claude Code, Cursor, or Gemini) are smart, but they lack **specific tools**. They don't know your company's "Deployment Protocol" or the specific syntax for "AWS CloudFormation".
-**Skills** are small markdown files that teach them how to do these specific tasks perfectly, every time.
-
-### 2. ⚡️ Quick Start (1 minute)
-
-Install once; then use Starter Packs in [docs/BUNDLES.md](docs/BUNDLES.md) to focus on your role.
-
-1. **Install**:
-
-   ```bash
-   # Default: ~/.gemini/antigravity/skills (Antigravity global). Use --path for other locations.
-   npx antigravity-awesome-skills
-   ```
-
-2. **Verify**:
-
-   ```bash
-   test -d ~/.gemini/antigravity/skills && echo "Skills installed in ~/.gemini/antigravity/skills"
-   ```
-
-3. **Run your first skill**:
-
-   > "Use **@brainstorming** to plan a SaaS MVP."
-
-4. **Pick a bundle**:
-   - **Web Dev?** start with `Web Wizard`.
-   - **Security?** start with `Security Engineer`.
-   - **General use?** start with `Essentials`.
-
-### 3. 🧠 How to use
-
-Once installed, just ask your agent naturally:
-
-> "Use the **@brainstorming** skill to help me plan a SaaS."
-> "Run **@lint-and-validate** on this file."
-
-👉 **NEW:** [**Complete Usage Guide - Read This First!**](docs/USAGE.md) (answers: "What do I do after installation?", "How do I execute skills?", "What should prompts look like?")
-
-👉 **[Full Getting Started Guide](docs/GETTING_STARTED.md)**
-
----
-
-## Compatibility & Invocation
-
-These skills follow the universal **SKILL.md** format and work with any AI coding assistant that supports agentic skills.
-
-| Tool            | Type | Invocation Example                | Path                                                                  |
-| :-------------- | :--- | :-------------------------------- | :-------------------------------------------------------------------- |
-| **Claude Code** | CLI  | `>> /skill-name help me...`       | `.claude/skills/`                                                     |
-| **Gemini CLI**  | CLI  | `(User Prompt) Use skill-name...` | `.gemini/skills/`                                                     |
-| **Codex CLI**   | CLI  | `(User Prompt) Use skill-name...` | `.codex/skills/`                                                      |
-| **Kiro CLI**    | CLI  | `(Auto) Skills load on-demand`    | Global: `~/.kiro/skills/` · Workspace: `.kiro/skills/`                |
-| **Kiro IDE**    | IDE  | `/skill-name or (Auto)`           | Global: `~/.kiro/skills/` · Workspace: `.kiro/skills/`                |
-| **Antigravity** | IDE  | `(Agent Mode) Use skill...`       | Global: `~/.gemini/antigravity/skills/` · Workspace: `.agent/skills/` |
-| **Cursor**      | IDE  | `@skill-name (in Chat)`           | `.cursor/skills/`                                                     |
-| **Copilot**     | Ext  | `(Paste content manually)`        | N/A                                                                   |
-| **OpenCode**    | CLI  | `opencode run @skill-name`        | `.agents/skills/`                                                     |
-| **AdaL CLI**    | CLI  | `(Auto) Skills load on-demand`    | `.adal/skills/`                                                       |
-
-> [!TIP]
-> **Default installer path**: `~/.gemini/antigravity/skills` (Antigravity global). Use `--path ~/.agent/skills` for workspace-specific install. For manual clone, `.agent/skills/` works as workspace path for Antigravity.
-> **OpenCode Path Update**: opencode path is changed to `.agents/skills` for global skills. See [Place Files](https://opencode.ai/docs/skills/#place-files) directive on OpenCode Docs.
-
-> [!WARNING]
-> **Windows Users**: this repository uses **symlinks** for official skills.
-> See [Troubleshooting](#troubleshooting) for the exact fix.
-
----
-
-## Installation
-
-To use these skills with **Claude Code**, **Gemini CLI**, **Codex CLI**, **Kiro CLI**, **Kiro IDE**, **Cursor**, **Antigravity**, **OpenCode**, or **AdaL**:
-
-### Option A: npx (recommended)
-=======
 - [Quick Start](#quick-start)
 - [Choose Your Tool](#choose-your-tool)
 - [What This Repo Includes](#what-this-repo-includes)
@@ -155,7 +46,6 @@ To use these skills with **Claude Code**, **Gemini CLI**, **Codex CLI**, **Kiro 
 ## Quick Start
 
 1. Install once:
->>>>>>> main
 
 ```bash
 npx antigravity-awesome-skills
@@ -177,19 +67,19 @@ Use @brainstorming to plan a SaaS MVP.
 
 ## Choose Your Tool
 
-| Tool | Install | First Use |
-| --- | --- | --- |
-| Claude Code | `npx antigravity-awesome-skills --claude` | `>> /brainstorming help me plan a feature` |
-| Cursor | `npx antigravity-awesome-skills --cursor` | `@brainstorming help me plan a feature` |
-| Gemini CLI | `npx antigravity-awesome-skills --gemini` | `Use brainstorming to plan a feature` |
-| Codex CLI | `npx antigravity-awesome-skills --codex` | `Use brainstorming to plan a feature` |
-| Antigravity | `npx antigravity-awesome-skills --antigravity` | `Use @brainstorming to plan a feature` |
-| Kiro CLI | `npx antigravity-awesome-skills --kiro` | `Use brainstorming to plan a feature` |
-| Kiro IDE | `npx antigravity-awesome-skills --path ~/.kiro/skills` | `Use @brainstorming to plan a feature` |
-| GitHub Copilot | _No installer — paste skills or rules manually_ | `Ask Copilot to use brainstorming to plan a feature` |
-| OpenCode | `npx antigravity-awesome-skills --path .agents/skills` | `opencode run @brainstorming help me plan a feature` |
-| AdaL CLI | `npx antigravity-awesome-skills --path .adal/skills` | `Use brainstorming to plan a feature` |
-| Custom path | `npx antigravity-awesome-skills --path ./my-skills` | Depends on your tool |
+| Tool           | Install                                                | First Use                                            |
+| -------------- | ------------------------------------------------------ | ---------------------------------------------------- |
+| Claude Code    | `npx antigravity-awesome-skills --claude`              | `>> /brainstorming help me plan a feature`           |
+| Cursor         | `npx antigravity-awesome-skills --cursor`              | `@brainstorming help me plan a feature`              |
+| Gemini CLI     | `npx antigravity-awesome-skills --gemini`              | `Use brainstorming to plan a feature`                |
+| Codex CLI      | `npx antigravity-awesome-skills --codex`               | `Use brainstorming to plan a feature`                |
+| Antigravity    | `npx antigravity-awesome-skills --antigravity`         | `Use @brainstorming to plan a feature`               |
+| Kiro CLI       | `npx antigravity-awesome-skills --kiro`                | `Use brainstorming to plan a feature`                |
+| Kiro IDE       | `npx antigravity-awesome-skills --path ~/.kiro/skills` | `Use @brainstorming to plan a feature`               |
+| GitHub Copilot | _No installer — paste skills or rules manually_        | `Ask Copilot to use brainstorming to plan a feature` |
+| OpenCode       | `npx antigravity-awesome-skills --path .agents/skills` | `opencode run @brainstorming help me plan a feature` |
+| AdaL CLI       | `npx antigravity-awesome-skills --path .adal/skills`   | `Use brainstorming to plan a feature`                |
+| Custom path    | `npx antigravity-awesome-skills --path ./my-skills`    | Depends on your tool                                 |
 
 ## What This Repo Includes
 
@@ -202,16 +92,16 @@ Use @brainstorming to plan a SaaS MVP.
 
 ## Project Structure
 
-| Path | Purpose |
-| --- | --- |
-| `skills/` | The canonical skill library |
-| `docs/users/` | Getting started, usage, bundles, workflows, visual guides |
+| Path                 | Purpose                                                   |
+| -------------------- | --------------------------------------------------------- |
+| `skills/`            | The canonical skill library                               |
+| `docs/users/`        | Getting started, usage, bundles, workflows, visual guides |
 | `docs/contributors/` | Templates, anatomy, examples, quality bar, community docs |
-| `docs/maintainers/` | Release, audit, CI drift, metadata maintenance docs |
-| `docs/sources/` | Attribution and licensing references |
-| `apps/web-app/` | Interactive browser for the skill catalog |
-| `tools/` | Installer, validators, generators, and support scripts |
-| `data/` | Generated catalog, aliases, bundles, and workflows |
+| `docs/maintainers/`  | Release, audit, CI drift, metadata maintenance docs       |
+| `docs/sources/`      | Attribution and licensing references                      |
+| `apps/web-app/`      | Interactive browser for the skill catalog                 |
+| `tools/`             | Installer, validators, generators, and support scripts    |
+| `data/`              | Generated catalog, aliases, bundles, and workflows        |
 
 ## Top Starter Skills
 
@@ -236,99 +126,11 @@ Use @brainstorming to turn this product idea into a concrete MVP plan.
 Use @security-auditor to review this API endpoint for auth and validation risks.
 ```
 
-<<<<<<< add-skill-vercel-ai-sdk-expert
----
-
-## Curated Collections
-
-**Bundles** are curated groups of skills for a specific role or goal (for example: `Web Wizard`, `Security Engineer`, `OSS Maintainer`).
-
-They help you avoid picking from 1006+ skills one by one.
-
-### ⚠️ Important: Bundles Are NOT Separate Installations!
-
-**Common confusion:** "Do I need to install each bundle separately?"
-
-**Answer: NO!** Here's what bundles actually are:
-
-**What bundles ARE:**
-
-- ✅ Recommended skill lists organized by role
-- ✅ Curated starting points to help you decide what to use
-- ✅ Time-saving shortcuts for discovering relevant skills
-
-**What bundles are NOT:**
-
-- ❌ Separate installations or downloads
-- ❌ Different git commands
-- ❌ Something you need to "activate"
-
-### How to use bundles:
-
-1. **Install the repository once** (you already have all skills)
-2. **Browse bundles** in [docs/BUNDLES.md](docs/BUNDLES.md) to find your role
-3. **Pick 3-5 skills** from that bundle to start using in your prompts
-4. **Reference them in your conversations** with your AI (e.g., "Use @brainstorming...")
-
-For detailed examples of how to actually use skills, see the [**Usage Guide**](docs/USAGE.md).
-
-### Examples:
-
-- Building a SaaS MVP: `Essentials` + `Full-Stack Developer` + `QA & Testing`.
-- Hardening production: `Security Developer` + `DevOps & Cloud` + `Observability & Monitoring`.
-- Shipping OSS changes: `Essentials` + `OSS Maintainer`.
-
-## Antigravity Workflows
-
-Bundles help you choose skills. Workflows help you execute them in order.
-
-- Use bundles when you need curated recommendations by role.
-- Use workflows when you need step-by-step execution for a concrete goal.
-
-Start here:
-
-- [docs/WORKFLOWS.md](docs/WORKFLOWS.md): human-readable playbooks.
-- [data/workflows.json](data/workflows.json): machine-readable workflow metadata.
-
-Initial workflows include:
-
-- Ship a SaaS MVP
-- Security Audit for a Web App
-- Build an AI Agent System
-- QA and Browser Automation (with optional `@go-playwright` support for Go stacks)
-
-## Features & Categories
-
-The repository is organized into specialized domains to transform your AI into an expert across the entire software development lifecycle:
-
-| Category       | Focus                                              | Example skills                                                                  |
-| :------------- | :------------------------------------------------- | :------------------------------------------------------------------------------ |
-| Architecture   | System design, ADRs, C4, and scalable patterns     | `architecture`, `c4-context`, `senior-architect`                                |
-| Business       | Growth, pricing, CRO, SEO, and go-to-market        | `copywriting`, `pricing-strategy`, `seo-audit`                                  |
-| Data & AI      | LLM apps, RAG, agents, observability, analytics    | `rag-engineer`, `prompt-engineer`, `langgraph`                                  |
-| Development    | Language mastery, framework patterns, code quality | `typescript-expert`, `python-patterns`, `react-patterns`                        |
-| General        | Planning, docs, product ops, writing, guidelines   | `brainstorming`, `doc-coauthoring`, `writing-plans`                             |
-| Infrastructure | DevOps, cloud, serverless, deployment, CI/CD       | `docker-expert`, `aws-serverless`, `vercel-deployment`                          |
-| Security       | AppSec, pentesting, vuln analysis, compliance      | `api-security-best-practices`, `sql-injection-testing`, `vulnerability-scanner` |
-| Testing        | TDD, test design, fixes, QA workflows              | `test-driven-development`, `testing-patterns`, `test-fixing`                    |
-| Workflow       | Automation, orchestration, jobs, agents            | `workflow-automation`, `inngest`, `trigger-dev`                                 |
-
-Counts change as new skills are added. For the current full registry, see [CATALOG.md](CATALOG.md).
-
-## Browse 1,207+ Skills
-
-We have moved the full skill registry to a dedicated catalog to keep this README clean, and we've also introduced an interactive **Web App**!
-
-### 🌐 Interactive Skills Web App
-
-A modern web interface to explore, search, and use the 1006+ skills directly from your browser.
-=======
 ```text
 Use @doc-coauthoring to rewrite our setup guide for first-time contributors.
 ```
->>>>>>> main
 
-## Browse 1,206+ Skills
+## Browse 1,271+ Skills
 
 - Open the interactive browser in [`apps/web-app`](apps/web-app).
 - Read the full catalog in [`CATALOG.md`](CATALOG.md).
@@ -338,12 +140,12 @@ Use @doc-coauthoring to rewrite our setup guide for first-time contributors.
 
 ## Documentation
 
-| For Users | For Contributors | For Maintainers |
-| --- | --- | --- |
-| [`docs/users/getting-started.md`](docs/users/getting-started.md) | [`CONTRIBUTING.md`](CONTRIBUTING.md) | [`docs/maintainers/release-process.md`](docs/maintainers/release-process.md) |
-| [`docs/users/usage.md`](docs/users/usage.md) | [`docs/contributors/skill-anatomy.md`](docs/contributors/skill-anatomy.md) | [`docs/maintainers/audit.md`](docs/maintainers/audit.md) |
-| [`docs/users/faq.md`](docs/users/faq.md) | [`docs/contributors/quality-bar.md`](docs/contributors/quality-bar.md) | [`docs/maintainers/ci-drift-fix.md`](docs/maintainers/ci-drift-fix.md) |
-| [`docs/users/visual-guide.md`](docs/users/visual-guide.md) | [`docs/contributors/examples.md`](docs/contributors/examples.md) | [`docs/maintainers/skills-update-guide.md`](docs/maintainers/skills-update-guide.md) |
+| For Users                                                        | For Contributors                                                           | For Maintainers                                                                      |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`docs/users/getting-started.md`](docs/users/getting-started.md) | [`CONTRIBUTING.md`](CONTRIBUTING.md)                                       | [`docs/maintainers/release-process.md`](docs/maintainers/release-process.md)         |
+| [`docs/users/usage.md`](docs/users/usage.md)                     | [`docs/contributors/skill-anatomy.md`](docs/contributors/skill-anatomy.md) | [`docs/maintainers/audit.md`](docs/maintainers/audit.md)                             |
+| [`docs/users/faq.md`](docs/users/faq.md)                         | [`docs/contributors/quality-bar.md`](docs/contributors/quality-bar.md)     | [`docs/maintainers/ci-drift-fix.md`](docs/maintainers/ci-drift-fix.md)               |
+| [`docs/users/visual-guide.md`](docs/users/visual-guide.md)       | [`docs/contributors/examples.md`](docs/contributors/examples.md)           | [`docs/maintainers/skills-update-guide.md`](docs/maintainers/skills-update-guide.md) |
 
 ## Web App
 
@@ -436,6 +238,7 @@ This collection would not be possible without the incredible work of the Claude 
 - **[MojoAuth/skills](https://github.com/MojoAuth/skills)**: Production-ready MojoAuth guides and examples for popular frameworks like Node.js, Next.js, React, Java, .NET Core, Go, iOS, and Android.
 - **[Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper)**: X (Twitter) data platform — tweet search, user lookup, follower extraction, engagement metrics, giveaway draws, monitoring, webhooks, 19 extraction tools, MCP server.
 - **[shmlkv/dna-claude-analysis](https://github.com/shmlkv/dna-claude-analysis)**: Personal genome analysis toolkit — Python scripts analyzing raw DNA data across 17 categories (health risks, ancestry, pharmacogenomics, nutrition, psychology, etc.) with terminal-style single-page HTML visualization.
+- **[AlmogBaku/debug-skill](https://github.com/AlmogBaku/debug-skill)**: Interactive debugger skill for AI agents — breakpoints, stepping, variable inspection, and stack traces via the `dap` CLI. Supports Python, Go, Node.js/TypeScript, Rust, and C/C++.
 
 ### Inspirations
 
@@ -536,6 +339,10 @@ We officially thank the following contributors for their help in making this rep
 - [@devchangjun](https://github.com/devchangjun)
 - [@raeef1001](https://github.com/raeef1001)
 - [@1bcMax](https://github.com/1bcMax)
+- [@Sayeem3051](https://github.com/Sayeem3051)
+- [@AlmogBaku](https://github.com/AlmogBaku)
+- [@ProgramadorBrasil](https://github.com/ProgramadorBrasil)
+- [@shubhamdevx](https://github.com/shubhamdevx)
 
 ---
 

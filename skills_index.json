@@ -10,6 +10,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "007",
+    "path": "skills/007",
+    "category": "uncategorized",
+    "name": "007",
+    "description": "Security audit, hardening, threat modeling (STRIDE/PASTA), Red/Blue Team, OWASP checks, code review, incident response, and infrastructure security for any project.",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "10-andruia-skill-smith",
     "path": "skills/10-andruia-skill-smith",
     "category": "andruia",
@@ -120,6 +130,26 @@
     "date_added": null
   },
   {
+    "id": "advogado-criminal",
+    "path": "skills/advogado-criminal",
+    "category": "uncategorized",
+    "name": "advogado-criminal",
+    "description": "Advogado criminalista especializado em Maria da Penha, violencia domestica, feminicidio, direito penal brasileiro, medidas protetivas, inquerito policial e acao penal.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "advogado-especialista",
+    "path": "skills/advogado-especialista",
+    "category": "uncategorized",
+    "name": "advogado-especialista",
+    "description": "Advogado especialista em todas as areas do Direito brasileiro: familia, criminal, trabalhista, tributario, consumidor, imobiliario, empresarial, civil e constitucional.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "agent-evaluation",
     "path": "skills/agent-evaluation",
     "category": "uncategorized",
@@ -188,6 +218,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "agent-orchestrator",
+    "path": "skills/agent-orchestrator",
+    "category": "uncategorized",
+    "name": "agent-orchestrator",
+    "description": "Meta-skill que orquestra todos os agentes do ecossistema. Scan automatico de skills, match por capacidades, coordenacao de workflows multi-skill e registry management.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "agent-tool-builder",
@@ -310,6 +350,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "ai-studio-image",
+    "path": "skills/ai-studio-image",
+    "category": "uncategorized",
+    "name": "ai-studio-image",
+    "description": "Geracao de imagens humanizadas via Google AI Studio (Gemini). Fotos realistas estilo influencer ou educacional com iluminacao natural e imperfeicoes sutis.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "ai-wrapper-product",
     "path": "skills/ai-wrapper-product",
     "category": "uncategorized",
@@ -370,6 +420,16 @@
     "date_added": null
   },
   {
+    "id": "amazon-alexa",
+    "path": "skills/amazon-alexa",
+    "category": "uncategorized",
+    "name": "amazon-alexa",
+    "description": "Integracao completa com Amazon Alexa para criar skills de voz inteligentes, transformar Alexa em assistente com Claude como cerebro (projeto Auri) e integrar com AWS ecosystem (Lambda, DynamoDB,...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "amplitude-automation",
     "path": "skills/amplitude-automation",
     "category": "uncategorized",
@@ -380,6 +440,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "analytics-product",
+    "path": "skills/analytics-product",
+    "category": "uncategorized",
+    "name": "analytics-product",
+    "description": "Analytics de produto \u2014 PostHog, Mixpanel, eventos, funnels, cohorts, retencao, north star metric, OKRs e dashboards de produto. Ativar para: configurar tracking de eventos, criar funil de...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "analytics-tracking",
     "path": "skills/analytics-tracking",
     "category": "uncategorized",
@@ -388,6 +458,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "andrej-karpathy",
+    "path": "skills/andrej-karpathy",
+    "category": "uncategorized",
+    "name": "andrej-karpathy",
+    "description": "Agente que simula Andrej Karpathy \u2014 ex-Director of AI da Tesla, co-fundador da OpenAI, fundador da Eureka Labs, e o maior educador de deep learning do mundo. Use quando quiser: aprender deep...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "android-jetpack-compose-expert",
@@ -460,6 +540,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "animejs-animation",
+    "path": "skills/animejs-animation",
+    "category": "uncategorized",
+    "name": "animejs-animation",
+    "description": "Advanced JavaScript animation library skill for creating complex, high-performance web animations.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
     "id": "anti-reversing-techniques",
     "path": "skills/anti-reversing-techniques",
     "category": "uncategorized",
@@ -468,6 +558,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "antigravity-design-expert",
+    "path": "skills/antigravity-design-expert",
+    "category": "uncategorized",
+    "name": "antigravity-design-expert",
+    "description": "Core UI/UX engineering skill for building highly interactive, spatial, weightless, and glassmorphism-based web interfaces using GSAP and 3D CSS.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
   },
   {
     "id": "antigravity-workflows",
@@ -858,6 +958,16 @@
     "risk": "unknown",
     "source": "unknown",
     "date_added": null
+  },
+  {
+    "id": "auri-core",
+    "path": "skills/auri-core",
+    "category": "uncategorized",
+    "name": "auri-core",
+    "description": "Auri: assistente de voz inteligente (Alexa + Claude claude-opus-4-20250805). Visao do produto, persona Vitoria Neural, stack AWS, modelo Free/Pro/Business/Enterprise, roadmap 4 fases, GTM, north...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "auth-implementation-patterns",
@@ -2450,6 +2560,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "bill-gates",
+    "path": "skills/bill-gates",
+    "category": "uncategorized",
+    "name": "bill-gates",
+    "description": "Agente que simula Bill Gates \u2014 cofundador da Microsoft, arquiteto da industria de software comercial, estrategista tecnologico global, investidor sistemico e filantropo baseado em dados. Use...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "billing-automation",
     "path": "skills/billing-automation",
     "category": "uncategorized",
@@ -3020,6 +3140,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "claude-code-expert",
+    "path": "skills/claude-code-expert",
+    "category": "uncategorized",
+    "name": "claude-code-expert",
+    "description": "Especialista profundo em Claude Code - CLI da Anthropic. Maximiza produtividade com atalhos, hooks, MCPs, configuracoes avancadas, workflows, CLAUDE.md, memoria, sub-agentes, permissoes e...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "claude-code-guide",
     "path": "skills/claude-code-guide",
     "category": "uncategorized",
@@ -3048,6 +3178,16 @@
     "risk": "unknown",
     "source": "unknown",
     "date_added": null
+  },
+  {
+    "id": "claude-monitor",
+    "path": "skills/claude-monitor",
+    "category": "uncategorized",
+    "name": "claude-monitor",
+    "description": "Monitor de performance do Claude Code e sistema local. Diagnostica lentidao, mede CPU/RAM/disco, verifica API latency e gera relatorios de saude do sistema.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "claude-scientific-skills",
@@ -3340,6 +3480,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "comfyui-gateway",
+    "path": "skills/comfyui-gateway",
+    "category": "uncategorized",
+    "name": "comfyui-gateway",
+    "description": "REST API gateway for ComfyUI servers. Workflow management, job queuing, webhooks, caching, auth, rate limiting, and image delivery (URL + base64).",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "commit",
     "path": "skills/commit",
     "category": "uncategorized",
@@ -3530,6 +3680,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "context-agent",
+    "path": "skills/context-agent",
+    "category": "uncategorized",
+    "name": "context-agent",
+    "description": "Agente de contexto para continuidade entre sessoes. Salva resumos, decisoes, tarefas pendentes e carrega briefing automatico na sessao seguinte.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "context-compression",
     "path": "skills/context-compression",
     "category": "uncategorized",
@@ -3568,6 +3728,16 @@
     "risk": "unknown",
     "source": "unknown",
     "date_added": null
+  },
+  {
+    "id": "context-guardian",
+    "path": "skills/context-guardian",
+    "category": "uncategorized",
+    "name": "context-guardian",
+    "description": "Guardiao de contexto que preserva dados criticos antes da compactacao automatica. Snapshots, verificacao de integridade e zero perda de informacao.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "context-management-context-restore",
@@ -3750,6 +3920,16 @@
     "date_added": null
   },
   {
+    "id": "cred-omega",
+    "path": "skills/cred-omega",
+    "category": "uncategorized",
+    "name": "cred-omega",
+    "description": "CISO operacional enterprise para gestao total de credenciais e segredos. Descobre, classifica, protege e governa TODAS as API keys, tokens, secrets, service accounts e credenciais em qualquer...",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "crewai",
     "path": "skills/crewai",
     "category": "uncategorized",
@@ -3808,6 +3988,16 @@
     "risk": "safe",
     "source": "https://github.com/ai-evos/agent-skills",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "daily",
+    "path": "skills/daily",
+    "category": "uncategorized",
+    "name": "daily",
+    "description": "Documentation and capabilities reference for Daily",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
   },
   {
     "id": "daily-news-report",
@@ -4210,6 +4400,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "design-spells",
+    "path": "skills/design-spells",
+    "category": "uncategorized",
+    "name": "design-spells",
+    "description": "Curated micro-interactions and design details that add \"magic\" and personality to websites and apps.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
     "id": "devcontainer-setup",
     "path": "skills/devcontainer-setup",
     "category": "uncategorized",
@@ -4228,6 +4428,16 @@
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "devops-deploy",
+    "path": "skills/devops-deploy",
+    "category": "uncategorized",
+    "name": "devops-deploy",
+    "description": "DevOps e deploy de aplicacoes \u2014 Docker, CI/CD com GitHub Actions, AWS Lambda, SAM, Terraform, infraestrutura como codigo e monitoramento. Ativar para: dockerizar aplicacao, configurar pipeline...",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "devops-troubleshooter",
@@ -4520,6 +4730,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "earllm-build",
+    "path": "skills/earllm-build",
+    "category": "uncategorized",
+    "name": "earllm-build",
+    "description": "Build, maintain, and extend the EarLLM One Android project \u2014 a Kotlin/Compose app that connects Bluetooth earbuds to an LLM via voice pipeline. Use this skill whenever working on the earbudllm...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "elixir-pro",
     "path": "skills/elixir-pro",
     "category": "uncategorized",
@@ -4528,6 +4748,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "elon-musk",
+    "path": "skills/elon-musk",
+    "category": "uncategorized",
+    "name": "elon-musk",
+    "description": "Agente que simula Elon Musk com profundidade psicologica e comunicacional de alta fidelidade. Ativado para: \"fale como Elon\", \"simule Elon Musk\", \"o que Elon diria sobre X\", \"first principles...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "email-sequence",
@@ -5560,6 +5790,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "geoffrey-hinton",
+    "path": "skills/geoffrey-hinton",
+    "category": "uncategorized",
+    "name": "geoffrey-hinton",
+    "description": "Agente que simula Geoffrey Hinton \u2014 Godfather of Deep Learning, Pr\u00eamio Turing 2018, criador do backpropagation e das Deep Belief Networks. Use quando quiser: perspectivas hist\u00f3ricas sobre deep...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "gh-review-requests",
     "path": "skills/gh-review-requests",
     "category": "uncategorized",
@@ -5588,6 +5828,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "git-hooks-automation",
+    "path": "skills/git-hooks-automation",
+    "category": "uncategorized",
+    "name": "git-hooks-automation",
+    "description": "Master Git hooks setup with Husky, lint-staged, pre-commit framework, and commitlint. Automate code quality gates, formatting, linting, and commit message enforcement before code reaches CI.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
   },
   {
     "id": "git-pr-workflows-git-workflow",
@@ -5908,6 +6158,16 @@
     "risk": "unknown",
     "source": "unknown",
     "date_added": null
+  },
+  {
+    "id": "growth-engine",
+    "path": "skills/growth-engine",
+    "category": "uncategorized",
+    "name": "growth-engine",
+    "description": "Motor de crescimento para produtos digitais -- growth hacking, SEO, ASO, viral loops, email marketing, CRM, referral programs e aquisicao organica. Ativar para: criar estrategia de growth, SEO...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "grpc-golang",
@@ -6290,6 +6550,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "iconsax-library",
+    "path": "skills/iconsax-library",
+    "category": "uncategorized",
+    "name": "iconsax-library",
+    "description": "Extensive icon library and AI-driven icon generation skill for premium UI/UX design.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
     "id": "idor-testing",
     "path": "skills/idor-testing",
     "category": "uncategorized",
@@ -6298,6 +6568,26 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "ilya-sutskever",
+    "path": "skills/ilya-sutskever",
+    "category": "uncategorized",
+    "name": "ilya-sutskever",
+    "description": "Agente que simula Ilya Sutskever \u2014 co-fundador da OpenAI, ex-Chief Scientist, fundador da SSI. Use quando quiser perspectivas sobre: AGI safety-first, consci\u00eancia de IA, scaling laws, deep...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "image-studio",
+    "path": "skills/image-studio",
+    "category": "uncategorized",
+    "name": "image-studio",
+    "description": "Studio de geracao de imagens inteligente \u2014 roteamento automatico entre ai-studio-image (fotos humanizadas/influencer) e stability-ai (arte/ ilustracao/edicao). Detecta o tipo de imagem solicitada...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "imagen",
@@ -6378,6 +6668,16 @@
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "instagram",
+    "path": "skills/instagram",
+    "category": "uncategorized",
+    "name": "instagram",
+    "description": "Integracao completa com Instagram via Graph API. Publicacao, analytics, comentarios, DMs, hashtags, agendamento, templates e gestao de contas Business/Creator.",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "instagram-automation",
@@ -6570,6 +6870,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "junta-leiloeiros",
+    "path": "skills/junta-leiloeiros",
+    "category": "uncategorized",
+    "name": "junta-leiloeiros",
+    "description": "Coleta e consulta dados de leiloeiros oficiais de todas as 27 Juntas Comerciais do Brasil. Scraper multi-UF, banco SQLite, API FastAPI e exportacao CSV/JSON.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "jupyter-workflow",
     "path": "skills/jupyter-workflow",
     "category": "uncategorized",
@@ -6748,6 +7058,66 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "leiloeiro-avaliacao",
+    "path": "skills/leiloeiro-avaliacao",
+    "category": "uncategorized",
+    "name": "leiloeiro-avaliacao",
+    "description": "Avaliacao pericial de imoveis em leilao. Valor de mercado, liquidacao forcada, ABNT NBR 14653, metodos comparativo/renda/custo, CUB e margem de seguranca.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "leiloeiro-edital",
+    "path": "skills/leiloeiro-edital",
+    "category": "uncategorized",
+    "name": "leiloeiro-edital",
+    "description": "Analise e auditoria de editais de leilao judicial e extrajudicial. Riscos ocultos, clausulas perigosas, debitos, ocupante e classificacao da oportunidade.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "leiloeiro-ia",
+    "path": "skills/leiloeiro-ia",
+    "category": "uncategorized",
+    "name": "leiloeiro-ia",
+    "description": "Especialista em leiloes judiciais e extrajudiciais de imoveis. Analise juridica, pericial e de mercado integrada. Orquestra os 5 modulos especializados.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "leiloeiro-juridico",
+    "path": "skills/leiloeiro-juridico",
+    "category": "uncategorized",
+    "name": "leiloeiro-juridico",
+    "description": "Analise juridica de leiloes: nulidades, bem de familia, alienacao fiduciaria, CPC arts 829-903, Lei 9514/97, onus reais, embargos e jurisprudencia.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "leiloeiro-mercado",
+    "path": "skills/leiloeiro-mercado",
+    "category": "uncategorized",
+    "name": "leiloeiro-mercado",
+    "description": "Analise de mercado imobiliario para leiloes. Liquidez, desagio tipico, ROI, estrategias de saida (flip/reforma/renda), Selic 2025 e benchmark CDI/FII.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "leiloeiro-risco",
+    "path": "skills/leiloeiro-risco",
+    "category": "uncategorized",
+    "name": "leiloeiro-risco",
+    "description": "Analise de risco em leiloes de imoveis. Score 36 pontos, riscos juridicos/financeiros/operacionais, stress test 4 cenarios e ROI ponderado por risco.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "lightning-architecture-review",
@@ -6930,6 +7300,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "llm-ops",
+    "path": "skills/llm-ops",
+    "category": "uncategorized",
+    "name": "llm-ops",
+    "description": "LLM Operations -- RAG, embeddings, vector databases, fine-tuning, prompt engineering avancado, custos de LLM, evals de qualidade e arquiteturas de IA para producao. Ativar para: implementar RAG,...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "llm-prompt-optimizer",
     "path": "skills/llm-prompt-optimizer",
     "category": "uncategorized",
@@ -7008,6 +7388,26 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "magic-animator",
+    "path": "skills/magic-animator",
+    "category": "uncategorized",
+    "name": "magic-animator",
+    "description": "AI-powered animation tool for creating motion in logos, UI, icons, and social media assets.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
+    "id": "magic-ui-generator",
+    "path": "skills/magic-ui-generator",
+    "category": "uncategorized",
+    "name": "magic-ui-generator",
+    "description": "Utilizes Magic by 21st.dev to generate, compare, and integrate multiple production-ready UI component variations.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
   },
   {
     "id": "mailchimp-automation",
@@ -7208,6 +7608,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "matematico-tao",
+    "path": "skills/matematico-tao",
+    "category": "uncategorized",
+    "name": "matematico-tao",
+    "description": "Matem\u00e1tico ultra-avan\u00e7ado inspirado em Terence Tao. An\u00e1lise rigorosa de c\u00f3digo e arquitetura com teoria matem\u00e1tica profunda: teoria da informa\u00e7\u00e3o, teoria dos grafos, complexidade computacional,...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "matplotlib",
@@ -7470,6 +7880,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "monetization",
+    "path": "skills/monetization",
+    "category": "uncategorized",
+    "name": "monetization",
+    "description": "Estrategia e implementacao de monetizacao para produtos digitais - Stripe, subscriptions, pricing experiments, freemium, upgrade flows, churn prevention, revenue optimization e modelos de negocio...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "monorepo-architect",
     "path": "skills/monorepo-architect",
     "category": "uncategorized",
@@ -7528,6 +7948,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "multi-advisor",
+    "path": "skills/multi-advisor",
+    "category": "uncategorized",
+    "name": "multi-advisor",
+    "description": "Conselho de especialistas \u2014 consulta multiplos agentes do ecossistema em paralelo para analise multi-perspectiva de qualquer topico. Ativa personas, especialistas e agentes tecnicos...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "multi-agent-brainstorming",
@@ -7925,7 +8355,7 @@
     "category": "uncategorized",
     "name": "obsidian-clipper-template-creator",
     "description": "Guide for creating templates for the Obsidian Web Clipper. Use when you want to create a new clipping template, understand available variables, or format clipped content.",
-    "risk": "unknown",
+    "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27"
   },
@@ -8750,6 +9180,26 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "product-design",
+    "path": "skills/product-design",
+    "category": "uncategorized",
+    "name": "product-design",
+    "description": "Design de produto nivel Apple \u2014 sistemas visuais, UX flows, acessibilidade, linguagem visual proprietaria, design tokens, prototipagem e handoff. Cobre Figma, design systems, tipografia, cor,...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "product-inventor",
+    "path": "skills/product-inventor",
+    "category": "uncategorized",
+    "name": "product-inventor",
+    "description": "Product Inventor e Design Alchemist de nivel maximo \u2014 combina Product Thinking, Design Systems, UI Engineering, Psicologia Cognitiva, Storytelling e execucao impecavel nivel Jobs/Apple. Use quando...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "product-manager",
     "path": "skills/product-manager",
     "category": "uncategorized",
@@ -9530,6 +9980,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "sam-altman",
+    "path": "skills/sam-altman",
+    "category": "uncategorized",
+    "name": "sam-altman",
+    "description": "Agente que simula Sam Altman \u2014 CEO da OpenAI, ex-presidente da Y Combinator, arquiteto da era AGI. Use quando quiser: perspectivas sobre startups e fundraising (YC playbook completo), vis\u00e3o sobre...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "sast-configuration",
     "path": "skills/sast-configuration",
     "category": "uncategorized",
@@ -10140,6 +10600,16 @@
     "date_added": null
   },
   {
+    "id": "skill-installer",
+    "path": "skills/skill-installer",
+    "category": "uncategorized",
+    "name": "skill-installer",
+    "description": "Instala, valida, registra e verifica novas skills no ecossistema. 10 checks de seguranca, copia, registro no orchestrator e verificacao pos-instalacao.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "skill-rails-upgrade",
     "path": "skills/skill-rails-upgrade",
     "category": "uncategorized",
@@ -10178,6 +10648,16 @@
     "risk": "safe",
     "source": "https://github.com/yusufkaraaslan/Skill_Seekers",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "skill-sentinel",
+    "path": "skills/skill-sentinel",
+    "category": "uncategorized",
+    "name": "skill-sentinel",
+    "description": "Auditoria e evolucao do ecossistema de skills. Qualidade de codigo, seguranca, custos, gaps, duplicacoes, dependencias e relatorios de saude.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "skill-writer",
@@ -10270,6 +10750,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "social-orchestrator",
+    "path": "skills/social-orchestrator",
+    "category": "uncategorized",
+    "name": "social-orchestrator",
+    "description": "Orquestrador unificado de canais sociais \u2014 coordena Instagram, Telegram e WhatsApp em um unico fluxo de trabalho. Publicacao cross-channel, metricas unificadas, reutilizacao de conteudo por...",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "software-architecture",
     "path": "skills/software-architecture",
     "category": "uncategorized",
@@ -10328,6 +10818,16 @@
     "risk": "unknown",
     "source": "unknown",
     "date_added": null
+  },
+  {
+    "id": "spline-3d-integration",
+    "path": "skills/spline-3d-integration",
+    "category": "uncategorized",
+    "name": "spline-3d-integration",
+    "description": "Use when adding interactive 3D scenes from Spline.design to web projects, including React embedding and runtime control API.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
   },
   {
     "id": "sql-injection-testing",
@@ -10410,6 +10910,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "stability-ai",
+    "path": "skills/stability-ai",
+    "category": "uncategorized",
+    "name": "stability-ai",
+    "description": "Geracao de imagens via Stability AI (SD3.5, Ultra, Core). Text-to-image, img2img, inpainting, upscale, remove-bg, search-replace. 15 estilos artisticos.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "startup-analyst",
     "path": "skills/startup-analyst",
     "category": "uncategorized",
@@ -10488,6 +10998,16 @@
     "risk": "unknown",
     "source": "unknown",
     "date_added": null
+  },
+  {
+    "id": "steve-jobs",
+    "path": "skills/steve-jobs",
+    "category": "uncategorized",
+    "name": "steve-jobs",
+    "description": "Agente que simula Steve Jobs \u2014 cofundador da Apple, CEO da Pixar, fundador da NeXT, o maior designer de produtos tecnologicos da historia e o mais influente apresentador de produtos do mundo. Use...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "stitch-loop",
@@ -10640,6 +11160,26 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "tanstack-query-expert",
+    "path": "skills/tanstack-query-expert",
+    "category": "uncategorized",
+    "name": "tanstack-query-expert",
+    "description": "Expert in TanStack Query (React Query) \u2014 asynchronous state management. Covers data fetching, stale time configuration, mutations, optimistic updates, and Next.js App Router (SSR) integration.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
+    "id": "task-intelligence",
+    "path": "skills/task-intelligence",
+    "category": "uncategorized",
+    "name": "task-intelligence",
+    "description": "Protocolo de Intelig\u00eancia Pr\u00e9-Tarefa \u2014 ativa TODOS os agentes relevantes do ecossistema ANTES de executar qualquer tarefa solicitada pelo usu\u00e1rio. Enriquece o contexto com an\u00e1lise paralela...",
+    "risk": "none",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "tavily-web",
     "path": "skills/tavily-web",
     "category": "uncategorized",
@@ -10748,6 +11288,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "telegram",
+    "path": "skills/telegram",
+    "category": "uncategorized",
+    "name": "telegram",
+    "description": "Integracao completa com Telegram Bot API. Setup com BotFather, mensagens, webhooks, inline keyboards, grupos, canais. Boilerplates Node.js e Python.",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "telegram-automation",
@@ -11320,6 +11870,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "unsplash-integration",
+    "path": "skills/unsplash-integration",
+    "category": "uncategorized",
+    "name": "unsplash-integration",
+    "description": "Integration skill for searching and fetching high-quality, free-to-use professional photography from Unsplash.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
     "id": "upgrading-expo",
     "path": "skills/upgrading-expo",
     "category": "uncategorized",
@@ -11540,6 +12100,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "vizcom",
+    "path": "skills/vizcom",
+    "category": "uncategorized",
+    "name": "vizcom",
+    "description": "AI-powered product design tool for transforming sketches into full-fidelity 3D renders.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
     "id": "voice-agents",
     "path": "skills/voice-agents",
     "category": "uncategorized",
@@ -11590,6 +12160,16 @@
     "date_added": "2026-02-27"
   },
   {
+    "id": "warren-buffett",
+    "path": "skills/warren-buffett",
+    "category": "uncategorized",
+    "name": "warren-buffett",
+    "description": "Agente que simula Warren Buffett \u2014 o maior investidor do seculo XX e XXI, CEO da Berkshire Hathaway, discipulo de Benjamin Graham e socio intelectual de Charlie Munger. Use quando quiser: analise...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
     "id": "wcag-audit-patterns",
     "path": "skills/wcag-audit-patterns",
     "category": "uncategorized",
@@ -11638,6 +12218,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "web-scraper",
+    "path": "skills/web-scraper",
+    "category": "uncategorized",
+    "name": "web-scraper",
+    "description": "Web scraping inteligente multi-estrategia. Extrai dados estruturados de paginas web (tabelas, listas, precos). Paginacao, monitoramento e export CSV/JSON.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "web-security-testing",
@@ -11708,6 +12298,16 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "whatsapp-cloud-api",
+    "path": "skills/whatsapp-cloud-api",
+    "category": "uncategorized",
+    "name": "whatsapp-cloud-api",
+    "description": "Integracao com WhatsApp Business Cloud API (Meta). Mensagens, templates, webhooks HMAC-SHA256, automacao de atendimento. Boilerplates Node.js e Python.",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "wiki-architect",
@@ -11968,6 +12568,46 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27"
+  },
+  {
+    "id": "yann-lecun",
+    "path": "skills/yann-lecun",
+    "category": "uncategorized",
+    "name": "yann-lecun",
+    "description": "Agente que simula Yann LeCun \u2014 inventor das Convolutional Neural Networks, Chief AI Scientist da Meta, Pr\u00eamio Turing 2018. Use quando quiser: perspectivas sobre deep learning e vis\u00e3o...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "yann-lecun-debate",
+    "path": "skills/yann-lecun-debate",
+    "category": "uncategorized",
+    "name": "yann-lecun-debate",
+    "description": "Sub-skill de debates e posi\u00e7\u00f5es de Yann LeCun. Cobre cr\u00edticas t\u00e9cnicas detalhadas aos LLMs, rivalidades intelectuais (LeCun vs Hinton, Sutskever, Russell, Yudkowsky, Bostrom), lista completa de...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "yann-lecun-filosofia",
+    "path": "skills/yann-lecun-filosofia",
+    "category": "uncategorized",
+    "name": "yann-lecun-filosofia",
+    "description": "Sub-skill filos\u00f3fica e pedag\u00f3gica de Yann LeCun. Cobre filosofia do open source (LLaMA, soberania tecnol\u00f3gica, analogia Linux), an\u00e1lise de incentivos Meta vs OpenAI vs Google, modo professor...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
+  },
+  {
+    "id": "yann-lecun-tecnico",
+    "path": "skills/yann-lecun-tecnico",
+    "category": "uncategorized",
+    "name": "yann-lecun-tecnico",
+    "description": "Sub-skill t\u00e9cnica de Yann LeCun. Cobre CNNs, LeNet, backpropagation, JEPA (I-JEPA, V-JEPA, MC-JEPA), AMI (Advanced Machinery of Intelligence), Self-Supervised Learning (SimCLR, MAE, BYOL),...",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-06"
   },
   {
     "id": "yara-authoring",
