@@ -5,7 +5,7 @@
 This guide details the exact procedures for maintaining `antigravity-awesome-skills`.
 It covers the **Quality Bar**, **Documentation Consistency**, and **Release Workflows**.
 
-**Maintainer shortcuts:** [Merge a PR](#b-when-you-merge-a-pr-step-by-step) · [Post-merge & contributors](#c-post-merge-routine-must-do-before-a-release) · [Close issues](#when-to-close-an-issue) · [Create a release](#4-release-workflow)
+**Maintainer shortcuts:** [Merge a PR](#b-when-you-merge-a-pr-step-by-step) · [Reopen & merge a closed PR](#if-a-pr-was-closed-after-local-integration-reopen-and-merge) · [Post-merge & contributors](#c-post-merge-routine-must-do-before-a-release) · [Close issues](#when-to-close-an-issue) · [Create a release](#4-release-workflow)
 
 ---
 
@@ -84,6 +84,8 @@ Before ANY commit that adds/modifies skills, run the chain:
 
 ### B. When You Merge a PR (Step-by-Step)
 
+> **Agent instruction (when analyzing or handling PRs):** Always merge accepted PRs via GitHub (**Squash and merge**). Never integrate locally and then close the PR. If a PR is closed but its changes were integrated locally, reopen it and follow [Reopen & merge](#if-a-pr-was-closed-after-local-integration-reopen-and-merge) so it ends up **Merged**. Contributors must get credit.
+
 **Before merging:**
 
 1.  **CI is green** — Validation, reference checks, tests, and generated artifact steps passed (see [`.github/workflows/ci.yml`](workflows/ci.yml)).
@@ -96,6 +98,38 @@ Before ANY commit that adds/modifies skills, run the chain:
 - **Always merge via GitHub** so the PR shows as **Merged** and the contributor gets credit. Use **"Squash and merge"**. Do **not** integrate locally and then close the PR — that would show "Closed" and the contributor would not get proper attribution.
 - **If the PR has merge conflicts:** Resolve them **on the PR branch** (you or the contributor: merge `main` into the PR branch, fix conflicts, run `npm run chain` and `npm run catalog` if needed, push). Then use **"Squash and merge"** on GitHub. Full steps: [docs/maintainers/merging-prs.md](../docs/maintainers/merging-prs.md).
 - **Rare exception:** Only if merging via GitHub is not possible, you may integrate locally and close the PR; in that case you **must** add a Co-authored-by line to the commit and explain in a comment. Prefer to avoid this so PRs are always **Merged**.
+
+**If a PR was closed after local integration (reopen and merge):**
+
+If a PR was integrated via local squash and then **closed** (so it shows "Closed" instead of "Merged"), you can still give the contributor credit by reopening it and merging it on GitHub. The merge can be effectively "empty" (no new diff vs `main`); what matters is that the PR ends up **Merged**.
+
+1.  **Reopen the PR** on GitHub (Reopen button on the closed PR page), or: `gh pr reopen <PR_NUMBER>`.
+2.  **Fetch the PR branch** (the branch lives on the contributor's fork):
+    ```bash
+    git fetch origin pull/<PR_NUMBER>/head:pr-<PR_NUMBER>-tmp
+    git checkout pr-<PR_NUMBER>-tmp
+    ```
+3.  **Merge `main` into it** and resolve conflicts:
+    ```bash
+    git merge origin/main -m "chore: merge main to resolve conflicts"
+    ```
+    For conflicts in generated/registry files (`README.md`, `CATALOG.md`, `data/catalog.json`, etc.), keep **main's version**:  
+    `git checkout --theirs README.md CATALOG.md data/catalog.json` (and any other conflicted files), then `git add` them.
+4.  **Commit the merge** (if not already done):  
+    `git commit -m "chore: merge main to resolve conflicts" --no-edit`
+5.  **Push to the contributor's fork.** Add their fork as a remote if needed (replace `USER` and `BRANCH` with the PR head owner and branch from the PR page):
+    ```bash
+    git remote add <user>-fork https://github.com/<USER>/antigravity-awesome-skills.git
+    git push <user>-fork pr-<PR_NUMBER>-tmp:<BRANCH>
+    ```
+    This works if the contributor enabled **"Allow edits from maintainers"** (or you have push access). If push is denied, ask the contributor to merge `main` into their branch and push; then you use "Squash and merge" on GitHub.
+6.  **Merge the PR on GitHub:**  
+    `gh pr merge <PR_NUMBER> --squash`  
+    The PR will show as **Merged** and the contributor will get credit.
+7.  **Switch back to `main`:**  
+    `git checkout main`
+
+We used this flow for PRs [#220](https://github.com/sickn33/antigravity-awesome-skills/pull/220), [#224](https://github.com/sickn33/antigravity-awesome-skills/pull/224), and [#225](https://github.com/sickn33/antigravity-awesome-skills/pull/225) after they had been integrated locally and closed.
 
 **Right after merging:**
 
