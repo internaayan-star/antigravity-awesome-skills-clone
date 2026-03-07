@@ -11,6 +11,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [7.0.1] - 2026-03-06 - "Markdown & Wallet Patch"
+
+> **Patch release with web markdown improvements and new wallet skills, plus catalog sync.**
+
+This patch release adds new skills for AI-writing cleanup and multi-chain crypto wallets, while improving how markdown is rendered in the web app. It also syncs the generated catalog and metadata for a clean 7.0.1 state.
+
+## 🚀 New Skills
+
+### ✍️ avoid-ai-writing (skills/avoid-ai-writing/)
+
+**Remove AI-isms from generated prose**
+Audits and rewrites content to remove 21 categories of AI writing patterns, using a 43-entry replacement table and a structured four-step audit workflow.
+
+> **Try it:** `Use @avoid-ai-writing to clean up this AI-generated blog post before publishing.`
+
+### 🪙 emblemai-crypto-wallet (skills/emblemai-crypto-wallet/)
+
+**Multi-chain crypto wallet management via EmblemAI**
+Manages crypto wallets across 7 blockchains (Solana, Ethereum, Base, BSC, Polygon, Hedera, Bitcoin) for balance checks, swaps, transfers, and portfolio analysis via the EmblemAI Agent Hustle API.
+
+> **Try it:** `Use @emblemai-crypto-wallet to summarize my portfolio and estimate gas costs for a swap.`
+
+## 📦 Improvements
+
+- **Registry Update**: Catalog and bundles regenerated after adding the new skills.
+- **Risk Metadata**: `emblemai-crypto-wallet` now uses a `critical` risk level to reflect real-value asset operations.
+- **Validation**: Full validation chain and catalog build run successfully for 7.0.1.
+
+## 👥 Credits
+
+- **@conorbronsdon** for `avoid-ai-writing`.
+- **@decentraliser** for `emblemai-crypto-wallet`.
+
 ## [7.0.0] - 2026-03-06 - "20k Stars Celebration"
 
 > **300+ new skills added to celebrate 20,000 GitHub stars!**

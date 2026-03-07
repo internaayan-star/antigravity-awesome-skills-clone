@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-02-08T00:00:00.000Z",
-  "total": 1204,
+  "total": 1206,
   "skills": [
     {
       "id": "00-andruia-consultant",
@@ -2273,6 +2273,32 @@
         "toolkit"
       ],
       "path": "skills/avalonia-zafiro-development/SKILL.md"
+    },
+    {
+      "id": "avoid-ai-writing",
+      "name": "avoid-ai-writing",
+      "description": "Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table",
+      "category": "data-ai",
+      "tags": [
+        "avoid",
+        "ai",
+        "writing"
+      ],
+      "triggers": [
+        "avoid",
+        "ai",
+        "writing",
+        "audit",
+        "rewrite",
+        "content",
+        "remove",
+        "21",
+        "categories",
+        "43",
+        "entry",
+        "replacement"
+      ],
+      "path": "skills/avoid-ai-writing/SKILL.md"
     },
     {
       "id": "aws-agentic-ai",
@@ -11048,6 +11074,32 @@
         "chunking"
       ],
       "path": "skills/embedding-strategies/SKILL.md"
+    },
+    {
+      "id": "emblemai-crypto-wallet",
+      "name": "emblemai-crypto-wallet",
+      "description": "Crypto wallet management across 7 blockchains via EmblemAI Agent Hustle API. Balance checks, token swaps, portfolio analysis, and transaction execution for Solana, Ethereum, Base, BSC, Polygon, Hedera, and Bitcoin.",
+      "category": "development",
+      "tags": [
+        "emblemai",
+        "crypto",
+        "wallet"
+      ],
+      "triggers": [
+        "emblemai",
+        "crypto",
+        "wallet",
+        "blockchains",
+        "via",
+        "agent",
+        "hustle",
+        "api",
+        "balance",
+        "checks",
+        "token",
+        "swaps"
+      ],
+      "path": "skills/emblemai-crypto-wallet/SKILL.md"
     },
     {
       "id": "emergency-card",

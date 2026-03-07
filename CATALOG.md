@@ -2,7 +2,7 @@
 
 Generated at: 2026-02-08T00:00:00.000Z
 
-Total skills: 1204
+Total skills: 1206
 
 ## architecture (78)
 
@@ -156,7 +156,7 @@ calculations | startup, business, analyst, market, opportunity | startup, busine
 | `startup-financial-modeling` | This skill should be used when the user asks to \\\"create financial projections", "build a financial model", "forecast revenue", "calculate burn rate", "est... | startup, financial, modeling | startup, financial, modeling, skill, should, used, user, asks, projections, model, forecast, revenue |
 | `whatsapp-automation` | Automate WhatsApp Business tasks via Rube MCP (Composio): send messages, manage templates, upload media, and handle contacts. Always search tools first for c... | whatsapp | whatsapp, automation, automate, business, tasks, via, rube, mcp, composio, send, messages, upload |
 
-## data-ai (212)
+## data-ai (213)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -186,6 +186,7 @@ calculations | startup, business, analyst, market, opportunity | startup, busine
 | `audio-transcriber` | Transform audio recordings into professional Markdown documentation with intelligent summaries using LLM integration | [audio, transcription, whisper, meeting-minutes, speech-to-text] | [audio, transcription, whisper, meeting-minutes, speech-to-text], audio, transcriber, transform, recordings, professional, markdown, documentation |
 | `autonomous-agent-patterns` | Design patterns for building autonomous coding agents. Covers tool integration, permission systems, browser automation, and human-in-the-loop workflows. Use ... | autonomous, agent | autonomous, agent, building, coding, agents, covers, integration, permission, browser, automation, human, loop |
 | `autonomous-agents` | Autonomous agents are AI systems that can independently decompose goals, plan actions, execute tools, and self-correct without constant human guidance. The c... | autonomous, agents | autonomous, agents, ai, independently, decompose, goals, plan, actions, execute, self, correct, without |
+| `avoid-ai-writing` | Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table | avoid, ai, writing | avoid, ai, writing, audit, rewrite, content, remove, 21, categories, 43, entry, replacement |
 | `aws-agentic-ai` | Aws Agentic Ai | aws, agentic, ai | aws, agentic, ai |
 | `azure-ai-agents-persistent-dotnet` | Azure AI Agents Persistent SDK for .NET. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools. | azure, ai, agents, persistent, dotnet | azure, ai, agents, persistent, dotnet, sdk, net, low, level, creating, managing, threads |
 | `azure-ai-agents-persistent-java` | Azure AI Agents Persistent SDK for Java. Low-level SDK for creating and managing AI agents with threads, messages, runs, and tools. | azure, ai, agents, persistent, java | azure, ai, agents, persistent, java, sdk, low, level, creating, managing, threads, messages |
@@ -383,7 +384,7 @@ Scope::with_data, save state, load state, serde,
 | `xlsx-official` | Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization. When Claude needs to work ... | xlsx, official | xlsx, official, spreadsheet, creation, editing, analysis, formulas, formatting, data, visualization, claude, work |
 | `youtube-automation` | Automate YouTube tasks via Rube MCP (Composio): upload videos, manage playlists, search content, get analytics, and handle comments. Always search tools firs... | youtube | youtube, automation, automate, tasks, via, rube, mcp, composio, upload, videos, playlists, search |
 
-## development (171)
+## development (172)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -461,6 +462,7 @@ Scope::with_data, save state, load state, serde,
 | `documentation` | Documentation generation workflow covering API docs, architecture docs, README files, code comments, and technical writing. | documentation | documentation, generation, covering, api, docs, architecture, readme, files, code, comments, technical, writing |
 | `dotnet-architect` | Expert .NET backend architect specializing in C#, ASP.NET Core, Entity Framework, Dapper, and enterprise application patterns. | dotnet | dotnet, architect, net, backend, specializing, asp, core, entity, framework, dapper, enterprise, application |
 | `dotnet-backend-patterns` | Master C#/.NET backend development patterns for building robust APIs, MCP servers, and enterprise applications. Covers async/await, dependency injection, Ent... | dotnet, backend | dotnet, backend, net, development, building, robust, apis, mcp, servers, enterprise, applications, covers |
+| `emblemai-crypto-wallet` | Crypto wallet management across 7 blockchains via EmblemAI Agent Hustle API. Balance checks, token swaps, portfolio analysis, and transaction execution for S... | emblemai, crypto, wallet | emblemai, crypto, wallet, blockchains, via, agent, hustle, api, balance, checks, token, swaps |
 | `exa-search` | Semantic search, similar content discovery, and structured research using Exa API | exa, search | exa, search, semantic, similar, content, discovery, structured, research, api |
 | `expo-api-routes` | Guidelines for creating API routes in Expo Router with EAS Hosting | expo, api, routes | expo, api, routes, guidelines, creating, router, eas, hosting |
 | `expo-tailwind-setup` | Set up Tailwind CSS v4 in Expo with react-native-css and NativeWind v5 for universal styling | expo, tailwind, setup | expo, tailwind, setup, set, up, css, v4, react, native, nativewind, v5, universal |
