@@ -960,6 +960,16 @@
     "date_added": null
   },
   {
+    "id": "audit-skills",
+    "path": "skills/audit-skills",
+    "category": "security",
+    "name": "audit-skills",
+    "description": "Expert security auditor for AI Skills and Bundles. Performs non-intrusive static analysis to identify malicious patterns, data leaks, system stability risks, and obfuscated payloads across Windows, macOS, Linux/Unix, and Mobile (Android/iOS).",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-07"
+  },
+  {
     "id": "auri-core",
     "path": "skills/auri-core",
     "category": "uncategorized",

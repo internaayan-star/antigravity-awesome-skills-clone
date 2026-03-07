@@ -2,7 +2,7 @@
 
 Generated at: 2026-02-08T00:00:00.000Z
 
-Total skills: 1272
+Total skills: 1273
 
 ## architecture (79)
 
@@ -1080,7 +1080,7 @@ distri... | makepad, deployment | makepad, deployment, critical, packaging, trig
 | `workflow-automation` | Workflow automation is the infrastructure that makes AI agents reliable. Without durable execution, a network hiccup during a 10-step payment flow means lost... |  | automation, infrastructure, makes, ai, agents, reliable, without, durable, execution, network, hiccup, during |
 | `x-twitter-scraper` | X (Twitter) data platform skill — tweet search, user lookup, follower extraction, engagement metrics, giveaway draws, monitoring, webhooks, 19 extraction too... | [twitter, x-api, scraping, mcp, social-media, data-extraction, giveaway, monitoring, webhooks] | [twitter, x-api, scraping, mcp, social-media, data-extraction, giveaway, monitoring, webhooks], twitter, scraper, data |
 
-## security (148)
+## security (149)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -1096,6 +1096,7 @@ distri... | makepad, deployment | makepad, deployment, critical, packaging, trig
 | `api-security-testing` | API security testing workflow for REST and GraphQL APIs covering authentication, authorization, rate limiting, input validation, and security best practices. | api, security | api, security, testing, rest, graphql, apis, covering, authentication, authorization, rate, limiting, input |
 | `attack-tree-construction` | Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to s... | attack, tree, construction | attack, tree, construction, trees, visualize, threat, paths, mapping, scenarios, identifying, defense, gaps |
 | `audit-context-building` | Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding. | audit, building | audit, building, context, enables, ultra, granular, line, code, analysis, deep, architectural, before |
+| `audit-skills` | Expert security auditor for AI Skills and Bundles. Performs non-intrusive static analysis to identify malicious patterns, data leaks, system stability risks,... | security, audit, skills, bundles, cross-platform | security, audit, skills, bundles, cross-platform, auditor, ai, performs, non, intrusive, static, analysis |
 | `auth-implementation-patterns` | Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use wh... | auth | auth, authentication, authorization, including, jwt, oauth2, session, rbac, secure, scalable, access, control |
 | `aws-penetration-testing` | This skill should be used when the user asks to "pentest AWS", "test AWS security", "enumerate IAM", "exploit cloud infrastructure", "AWS privilege escalatio... | aws, penetration | aws, penetration, testing, skill, should, used, user, asks, pentest, test, security, enumerate |
 | `azure-cosmos-db-py` | Build Azure Cosmos DB NoSQL services with Python/FastAPI following production-grade patterns. Use when implementing database client setup with dual auth (Def... | azure, cosmos, db, py | azure, cosmos, db, py, nosql, python, fastapi, following, grade, implementing, database, client |
