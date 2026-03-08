@@ -348,48 +348,48 @@ npx antigravity-awesome-skills
 
 - 在[`apps/web-app`](apps/web-app)中打开交互式浏览器。
 - 阅读完整目录：[`CATALOG.md`](CATALOG.md)。
-- 从[`docs/users/bundles.md`](docs/users/bundles.md)中的基于角色的包开始。
-- 遵循[`docs/users/workflows.md`](docs/users/workflows.md)中以结果为导向的工作流。
-- 使用[`docs/users/getting-started.md`](docs/users/getting-started.md)和[`docs/users/usage.md`](docs/users/usage.md)中的入门指南。
+- 从[`docs_zh-CN/users/bundles.md`](docs_zh-CN/users/bundles.md)中的基于角色的包开始。
+- 遵循[`docs_zh-CN/users/workflows.md`](docs_zh-CN/users/workflows.md)中以结果为导向的工作流。
+- 使用[`docs_zh-CN/users/getting-started.md`](docs_zh-CN/users/getting-started.md)和[`docs_zh-CN/users/usage.md`](docs_zh-CN/users/usage.md)中的入门指南。
 
-## Documentation
+## 文档
 
-| For Users                                                        | For Contributors                                                           | For Maintainers                                                                      |
+| 面向用户                                                        | 面向贡献者                                                           | 面向维护者                                                                      |
 | ---------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [`docs/users/getting-started.md`](docs/users/getting-started.md) | [`CONTRIBUTING.md`](CONTRIBUTING.md)                                       | [`docs/maintainers/release-process.md`](docs/maintainers/release-process.md)         |
-| [`docs/users/usage.md`](docs/users/usage.md)                     | [`docs/contributors/skill-anatomy.md`](docs/contributors/skill-anatomy.md) | [`docs/maintainers/audit.md`](docs/maintainers/audit.md)                             |
-| [`docs/users/faq.md`](docs/users/faq.md)                         | [`docs/contributors/quality-bar.md`](docs/contributors/quality-bar.md)     | [`docs/maintainers/ci-drift-fix.md`](docs/maintainers/ci-drift-fix.md)               |
-| [`docs/users/visual-guide.md`](docs/users/visual-guide.md)       | [`docs/contributors/examples.md`](docs/contributors/examples.md)           | [`docs/maintainers/skills-update-guide.md`](docs/maintainers/skills-update-guide.md) |
+| [`docs_zh-CN/users/getting-started.md`](docs_zh-CN/users/getting-started.md) | [`CONTRIBUTING.md`](CONTRIBUTING.md)                                       | [`docs_zh-CN/maintainers/release-process.md`](docs_zh-CN/maintainers/release-process.md)         |
+| [`docs_zh-CN/users/usage.md`](docs_zh-CN/users/usage.md)                     | [`docs_zh-CN/contributors/skill-anatomy.md`](docs_zh-CN/contributors/skill-anatomy.md) | [`docs_zh-CN/maintainers/audit.md`](docs_zh-CN/maintainers/audit.md)                             |
+| [`docs_zh-CN/users/faq.md`](docs_zh-CN/users/faq.md)                         | [`docs_zh-CN/contributors/quality-bar.md`](docs_zh-CN/contributors/quality-bar.md)     | [`docs_zh-CN/maintainers/ci-drift-fix.md`](docs_zh-CN/maintainers/ci-drift-fix.md)               |
+| [`docs_zh-CN/users/visual-guide.md`](docs_zh-CN/users/visual-guide.md)       | [`docs_zh-CN/contributors/examples.md`](docs_zh-CN/contributors/examples.md)           | [`docs_zh-CN/maintainers/skills-update-guide.md`](docs_zh-CN/maintainers/skills-update-guide.md) |
 
-## Web App
+## Web应用
 
-The web app is the fastest way to navigate a large repository like this.
+Web应用是导航如此大型仓库的最快方式。
 
-**Run locally:**
+**本地运行：**
 
 ```bash
 npm run app:install
 npm run app:dev
 ```
 
-That will copy the generated skill index into `apps/web-app/public/skills.json`, mirror the current `skills/` tree into `apps/web-app/public/skills/`, and start the Vite development server.
+这会将生成的技能索引复制到`apps/web-app/public/skills.json`，将当前的`skills/`目录树镜像到`apps/web-app/public/skills/`，并启动Vite开发服务器。
 
-**Hosted online:** The same app is available at [https://sickn33.github.io/antigravity-awesome-skills/](https://sickn33.github.io/antigravity-awesome-skills/) and is deployed automatically on every push to `main`. To enable it once: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+**在线托管：**相同的应用可在[https://sickn33.github.io/antigravity-awesome-skills/](https://sickn33.github.io/antigravity-awesome-skills/)获得，并在每次推送到`main`时自动部署。要启用一次：**Settings → Pages → Build and deployment → Source: GitHub Actions**。
 
 
 
-## Contributing
+## 贡献
 
-- Add new skills under `skills/<skill-name>/SKILL.md`.
-- Follow the contributor guide in [`CONTRIBUTING.md`](CONTRIBUTING.md).
-- Use the template in [`docs/contributors/skill-template.md`](docs/contributors/skill-template.md).
-- Validate with `npm run validate` before opening a PR.
+- 在`skills/<skill-name>/SKILL.md`下添加新技能。
+- 遵循[`CONTRIBUTING.md`](CONTRIBUTING.md)中的贡献者指南。
+- 使用[`docs_zh-CN/contributors/skill-template.md`](docs_zh-CN/contributors/skill-template.md)中的模板。
+- 在打开PR之前使用`npm run validate`进行验证。
 
-## Community
+## 社区
 
-- [Discussions](https://github.com/sickn33/antigravity-awesome-skills/discussions) for questions and feedback.
-- [Issues](https://github.com/sickn33/antigravity-awesome-skills/issues) for bugs and improvement requests.
-- [`SECURITY.md`](SECURITY.md) for security reporting.
+- [Discussions](https://github.com/sickn33/antigravity-awesome-skills/discussions)用于提问和反馈。
+- [Issues](https://github.com/sickn33/antigravity-awesome-skills/issues)用于错误报告和改进请求。
+- [`SECURITY.md`](SECURITY.md)用于安全报告。
 
 ---
 
@@ -464,8 +464,8 @@ That will copy the generated skill index into `apps/web-app/public/skills.json`,
 ### 灵感来源
 - **[f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts)**：提示库的灵感。
 - **[leonardomso/33-js-concepts](https://github.com/leonardomso/33-js-concepts)**：JavaScript精通的灵感。
-### Additional Sources
-- **[agent-cards/skill](https://github.com/agent-cards/skill)**: Manage prepaid virtual Visa cards for AI agents. Create cards, check balances, view credentials, close cards, and get support via MCP tools.
+### 其他来源
+- **[agent-cards/skill](https://github.com/agent-cards/skill)**：为AI代理管理预付虚拟Visa卡。创建卡片、检查余额、查看凭证、关闭卡片，并通过MCP工具获取支持。
 ---
 
 ## 仓库贡献者
