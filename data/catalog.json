@@ -21171,14 +21171,16 @@
     {
       "id": "pakistan-payments-stack",
       "name": "pakistan-payments-stack",
-      "description": "Design and implement Pakistani payment gateways (JazzCash, Easypaisa, local banks) in production SaaS stacks with robust PKR billing, webhooks, and reconciliation.",
+      "description": "Design and implement production-grade Pakistani payment integrations (JazzCash, Easypaisa, bank/PSP rails, optional Raast) for SaaS with PKR billing, webhook reliability, and reconciliation.",
       "category": "development",
       "tags": [
         "saas",
         "payments",
         "pakistan",
         "nextjs",
-        "b2b"
+        "b2b",
+        "pkr",
+        "reconciliation"
       ],
       "triggers": [
         "saas",
@@ -21186,13 +21188,13 @@
         "pakistan",
         "nextjs",
         "b2b",
+        "pkr",
+        "reconciliation",
         "stack",
+        "grade",
         "pakistani",
         "payment",
-        "gateways",
-        "jazzcash",
-        "easypaisa",
-        "local"
+        "integrations"
       ],
       "path": "skills/pakistan-payments-stack/SKILL.md"
     },

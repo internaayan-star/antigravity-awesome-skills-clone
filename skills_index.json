@@ -8542,9 +8542,9 @@
   {
     "id": "pakistan-payments-stack",
     "path": "skills/pakistan-payments-stack",
-    "category": "development",
+    "category": "api-integration",
     "name": "pakistan-payments-stack",
-    "description": "Design and implement Pakistani payment gateways (JazzCash, Easypaisa, local banks) in production SaaS stacks with robust PKR billing, webhooks, and reconciliation.",
+    "description": "Design and implement production-grade Pakistani payment integrations (JazzCash, Easypaisa, bank/PSP rails, optional Raast) for SaaS with PKR billing, webhook reliability, and reconciliation.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-03-07"
