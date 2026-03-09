@@ -59,3 +59,6 @@ tools/
 !data/catalog.json
 !data/aliases.json
 !data/bundles.json
+!.agent/skills/
+
+*.log
