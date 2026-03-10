@@ -1281,7 +1281,7 @@
       if (activeController) activeController.abort();
       activeController = new AbortController();
 
-      const url = `/.netlify/functions/sc-search?q=${encodeURIComponent(q)}&kind=${encodeURIComponent(kind)}&limit=${encodeURIComponent(limit)}`;
+      const url = `/.netlify/functions/sc-official-search?q=${encodeURIComponent(q)}&kind=${encodeURIComponent(kind)}&limit=${encodeURIComponent(limit)}`;
       try {
         const r = await fetch(url, { cache: "no-store", signal: activeController.signal });
         const text = await r.text();
@@ -1293,7 +1293,7 @@
       }
     }
     async function scResolve(scUrl) {
-      const url = `/.netlify/functions/sc-resolve?url=${encodeURIComponent(scUrl)}`;
+      const url = `/.netlify/functions/sc-official-resolve?url=${encodeURIComponent(scUrl)}`;
       const r = await fetch(url, { cache: "no-store" });
       const text = await r.text();
       if (!r.ok) throw new Error(text || `HTTP ${r.status}`);

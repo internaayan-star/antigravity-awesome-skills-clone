@@ -1,5 +1,5 @@
 # ResidencySolutions Lane
-_Last updated: 2026-02-18 09:15 EST_
+_Last updated: 2026-03-10 02:45 EST_
 
 ## Overview
 ResidencySolutions has TWO subcomponents:
@@ -7,7 +7,7 @@ ResidencySolutions has TWO subcomponents:
 ### G1: Backend / Product Entitlements Core (NO UI)
 - **Status:** UI frozen. Focus on centralizing entitlements logic.
 - **Hard rule:** No UI changes. Run `scripts/guard-no-ui.ps1` if present.
-- **Path:** TBD (check if local repo exists)
+- **Path:** `G:\DOWNLOADS5\reidchunes\residencysolutions-core`
 
 ### G2: RESIDENCY+ SoundCloud Digger Prototype
 - **Live site:** [residencysolutions.netlify.app](https://residencysolutions.netlify.app)
@@ -63,13 +63,24 @@ Set `SOUNDCLOUD_CLIENT_ID` in: Netlify Dashboard → Site Settings → Environme
 
 ## Endpoints (Netlify Functions)
 
+### Primary Endpoints (Official OAuth)
+These use the **official SoundCloud OAuth2 client_credentials flow** (Bearer token) with origin allowlist + rate limiting.
+
 | Function | Path | Params | Purpose |
 |----------|------|--------|---------|
-| `sc-search` | `/.netlify/functions/sc-search` | `q` (required), `kind` (tracks\|playlists), `limit`, `offset` | Search SoundCloud |
-| `sc-resolve` | `/.netlify/functions/sc-resolve` | `url` (required, full SC URL) | Resolve SC URL to API object |
+| `sc-official-search` | `/.netlify/functions/sc-official-search` | `q` (required), `limit` (max 20) | Search via official API |
+| `sc-official-resolve`| `/.netlify/functions/sc-official-resolve`| `url` (required) | Resolve SC URL |
+
+### Legacy Endpoints (Fallback Only)
+Retained for rollback purposes only.
+
+| Function | Path | Params | Purpose |
+|----------|------|--------|---------|
+| `sc-search` | `/.netlify/functions/sc-search` | `q` (required), `kind`, `limit`, `offset` | Search SoundCloud |
+| `sc-resolve` | `/.netlify/functions/sc-resolve` | `url` (required, full SC URL) | Resolve SC URL |
 | `sc-related` | `/.netlify/functions/sc-related` | `url` (required), `limit`, `offset` | Get related tracks (v2→v1 fallback) |
 
-All functions return 400 JSON with a helpful message if `SOUNDCLOUD_CLIENT_ID` is missing or set to placeholder "YOUR_CLIENT_ID".
+All legacy functions return 400 JSON with a helpful message if `SOUNDCLOUD_CLIENT_ID` is missing.
 
 ---
 
@@ -84,13 +95,16 @@ All functions return 400 JSON with a helpful message if `SOUNDCLOUD_CLIENT_ID` i
 
 ```
 prototypes/residency-plus/
-├── index.html              # Full RESIDENCY+ app (1951 lines)
-├── netlify.toml            # Build config (publish=".", functions="netlify/functions")
+├── index.html              # Full RESIDENCY+ app
+├── netlify.toml            # Build config
 └── netlify/
     └── functions/
-        ├── sc-search.js    # Search proxy
-        ├── sc-resolve.js   # URL resolve proxy
-        └── sc-related.js   # Related tracks proxy (v2→v1 fallback)
+        ├── sc-auth-lib.js          # Shared OAuth / rate-limit / origin logic
+        ├── sc-official-search.js   # Target for search
+        ├── sc-official-resolve.js  # Target for resolve
+        ├── sc-search.js            # Legacy search (fallback)
+        ├── sc-resolve.js           # Legacy resolve (fallback)
+        └── sc-related.js           # Legacy related (fallback)
 ```
 ## Local Runbook (RESIDENCY+ prototype)
 
