@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-02-08T00:00:00.000Z",
-  "total": 1234,
+  "total": 1235,
   "skills": [
     {
       "id": "00-andruia-consultant",
@@ -6452,6 +6452,30 @@
         "voice"
       ],
       "path": "skills/blog-writing-guide/SKILL.md"
+    },
+    {
+      "id": "blueprint",
+      "name": "blueprint",
+      "description": "Turn a one-line objective into a step-by-step construction plan any coding agent can execute cold. Each step has a self-contained context brief — a fresh agent in a new session can pick up any step without reading prior steps.",
+      "category": "general",
+      "tags": [
+        "blueprint"
+      ],
+      "triggers": [
+        "blueprint",
+        "turn",
+        "one",
+        "line",
+        "objective",
+        "step",
+        "construction",
+        "plan",
+        "any",
+        "coding",
+        "agent",
+        "execute"
+      ],
+      "path": "skills/blueprint/SKILL.md"
     },
     {
       "id": "box-automation",
