@@ -24,7 +24,7 @@
 - **N-Lex (Central Access Point):** [europa.eu/n-lex](https://n-lex.europa.eu/) - The primary gateway to national law databases for all EU members.
 - **European e-Justice Portal:** [e-justice.europa.eu](https://e-justice.europa.eu/) - Detailed guides on national judicial systems.
 - **EUR-Lex (EU-wide Law):** [eur-lex.europa.eu](https://eur-lex.europa.eu/)
-- **GDPR (General Data Protection Regulation):** [gdpr.eu](https://gdpr.eu/)
+- **GDPR (General Data Protection Regulation):** [eur-lex.europa.eu - GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
 
 #### Individual EU Member State Databases
 | Country | Official Legal Portal / Gazette | URL |
