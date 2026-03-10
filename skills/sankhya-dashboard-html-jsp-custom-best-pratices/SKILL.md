@@ -100,7 +100,7 @@ Aplicar padrões de JSP/JSTL e organização server-side para reduzir erros de c
 <snk:query var="qAcessos">
     SELECT CODUSU, NOMEUSU
       FROM TSIUSU
-     WHERE CODUSU = ${codusu_seguro}
+     WHERE CODUSU = :codusu_seguro
 </snk:query>
 ```
 
