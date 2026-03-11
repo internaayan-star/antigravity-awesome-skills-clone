@@ -15,13 +15,23 @@
 
 import { getAccessToken, allowOrigin, checkRateLimit, json, logTelemetry } from "./sc-auth-lib.js";
 
-const _SAFE_FIELDS = ["id", "title", "permalink_url", "genre", "artwork_url"];
+const _SAFE_FIELDS = [
+    "id", "title", "permalink_url", "genre", "artwork_url",
+    // Engagement context for digging decisions (public counts, not credentials)
+    "playback_count", "favoritings_count", "comment_count",
+    // Duration + upload date for kind classification and display
+    "duration", "created_at",
+    // BPM (optional, not always present)
+    "bpm",
+];
 
 function shapeTrack(raw) {
     if (!raw || typeof raw !== "object") return null;
     const out = {};
     for (const f of _SAFE_FIELDS) out[f] = raw[f] ?? null;
     out.username = raw.user?.username ?? raw.username ?? null;
+    // Artist page URL (public permalink — safe to expose)
+    out.user_permalink_url = raw.user?.permalink_url ?? null;
     return out;
 }
 

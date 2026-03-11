@@ -14,8 +14,16 @@
 
 import { getAccessToken, allowOrigin, checkRateLimit, json, logTelemetry } from "./sc-auth-lib.js";
 
-const _SAFE_TRACK_FIELDS = ["id", "kind", "title", "permalink_url", "genre", "artwork_url"];
-const _SAFE_PLAYLIST_FIELDS = ["id", "kind", "title", "permalink_url", "genre", "artwork_url", "track_count"];
+const _SAFE_TRACK_FIELDS = [
+    "id", "kind", "title", "permalink_url", "genre", "artwork_url",
+    // Engagement context (public counts)
+    "playback_count", "favoritings_count", "comment_count",
+    // Duration + upload date
+    "duration", "created_at",
+    // BPM (optional)
+    "bpm",
+];
+const _SAFE_PLAYLIST_FIELDS = ["id", "kind", "title", "permalink_url", "genre", "artwork_url", "track_count", "duration", "created_at"];
 const _SAFE_USER_FIELDS = ["id", "kind", "username", "permalink_url", "avatar_url"];
 
 function shapeResource(raw) {
@@ -35,6 +43,7 @@ function shapeResource(raw) {
         out[f] = raw[f] ?? null;
     }
     out.username = raw.user?.username ?? raw.username ?? null;
+    out.user_permalink_url = raw.user?.permalink_url ?? null;
     return out;
 }
 
