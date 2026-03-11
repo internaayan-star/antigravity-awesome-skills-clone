@@ -1346,6 +1346,18 @@
     window.SC_OK = true;
 
     // ===== SUPABASE AUTH & SYNC (Slice 4) =====
+    let library = [];
+    let currentItem = null;
+    let crate = [];
+    let history = [];
+    let playlists = [];
+    let activePlaylistId = null;
+    let localSearch = "";
+    let stations = [];
+    let stationId = "__all__";
+    let playedMap = {};
+    let playedSet = new Set();
+
     // Fallback keys if env vars are missing during local dev
     const SUPA_URL = "%%SUPABASE_URL%%";
     const SUPA_KEY = "%%SUPABASE_ANON_KEY%%";
@@ -1881,18 +1893,6 @@
     const SEED_LIBRARY = [
       { kind: "track", title: "Seed", artist: "", url: "https://soundcloud.com/haszari/ambient-leftfield-dojo-twisted-frequency", bucket: "leftfield", tags: ["seed"], durationMs: 0, uploadedAt: "", bpmGuess: "", keyGuess: "", plays: null, likes: null, comments: null, _score: 50 }
     ];
-
-    let library = [];
-    let currentItem = null;
-    let crate = [];
-    let history = [];
-    let playlists = [];
-    let activePlaylistId = null;
-    let localSearch = "";
-    let stations = [];
-    let stationId = "__all__";
-    let playedMap = {};
-    let playedSet = new Set();
 
     // anti-skip / anti-double-shuffle
     let shuffleInFlight = false;
@@ -2536,8 +2536,8 @@
             const s = body.state;
             if (s.genre) { genreSelect.value = s.genre; localStorage.setItem(STORAGE_KEY_GENRE, s.genre); }
             if (s.source) { sourceSelect.value = s.source; localStorage.setItem(STORAGE_KEY_SOURCE, s.source); }
-            if (s.range) { obscureRange.value = s.range; localStorage.setItem(STORAGE_KEY_RANGE, s.range); }
-            if (s.station) { stationId = s.station; localStorage.setItem(STORAGE_KEY_STATION, s.station); renderStationsSelect(); }
+            if (s.dig_range) { obscureRange.value = s.dig_range; localStorage.setItem(STORAGE_KEY_RANGE, s.dig_range); }
+            if (s.station_id) { stationId = s.station_id; localStorage.setItem(STORAGE_KEY_STATION, s.station_id); renderStationsSelect(); }
           }
         }
         setProgress("");
