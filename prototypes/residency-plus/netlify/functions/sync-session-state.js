@@ -9,16 +9,22 @@ import { getJwtUser, supabaseRestCall } from "./sc-supabase-lib.js";
 export default async function handler(req) {
     if (req.method === "OPTIONS") {
         const origin = allowOrigin(req.headers.get("origin"));
-        return new Response("", { status: 204, headers: { "access-control-allow-origin": origin || "*", "access-control-allow-headers": "content-type, authorization", "access-control-allow-methods": "POST,OPTIONS" } });
+        return new Response("", { status: 204, headers: { "access-control-allow-origin": origin || "*", "access-control-allow-headers": "content-type, authorization", "access-control-allow-methods": "GET,POST,OPTIONS" } });
     }
 
     const origin = allowOrigin(req.headers.get("origin"));
     if (!origin && req.headers.get("origin")) return json(403, { error: "Origin not permitted." });
-    if (req.method !== "POST") return json(405, { error: "Method not allowed" }, origin);
+    if (req.method !== "POST" && req.method !== "GET") return json(405, { error: "Method not allowed" }, origin);
 
     try {
         const user = getJwtUser(req);
         if (!user) return json(401, { error: "Missing or invalid token" }, origin);
+
+        if (req.method === "GET") {
+            const data = await supabaseRestCall(`session_state?select=genre,source,dig_range,station_id&limit=1`, "GET", null, user.token);
+            if (!data || data.length === 0) return json(200, { hasData: false, state: null }, origin);
+            return json(200, { hasData: true, state: data[0] }, origin);
+        }
 
         const body = await req.json();
 

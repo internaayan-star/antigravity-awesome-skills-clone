@@ -10,16 +10,46 @@ import { getJwtUser, supabaseRestCall } from "./sc-supabase-lib.js";
 export default async function handler(req) {
     if (req.method === "OPTIONS") {
         const origin = allowOrigin(req.headers.get("origin"));
-        return new Response("", { status: 204, headers: { "access-control-allow-origin": origin || "*", "access-control-allow-headers": "content-type, authorization", "access-control-allow-methods": "POST,OPTIONS" } });
+        return new Response("", { status: 204, headers: { "access-control-allow-origin": origin || "*", "access-control-allow-headers": "content-type, authorization", "access-control-allow-methods": "GET,POST,OPTIONS" } });
     }
 
     const origin = allowOrigin(req.headers.get("origin"));
     if (!origin && req.headers.get("origin")) return json(403, { error: "Origin not permitted." });
-    if (req.method !== "POST") return json(405, { error: "Method not allowed" }, origin);
+    if (req.method !== "POST" && req.method !== "GET") return json(405, { error: "Method not allowed" }, origin);
 
     try {
         const user = getJwtUser(req);
         if (!user) return json(401, { error: "Missing or invalid token" }, origin);
+
+        if (req.method === "GET") {
+            const pls = await supabaseRestCall(`playlists?select=id,name,updated_at&order=updated_at.desc`, "GET", null, user.token);
+            if (!pls || pls.length === 0) return json(200, { hasData: false, playlists: [] }, origin);
+
+            const pItems = await supabaseRestCall(`playlist_items?select=playlist_id,soundcloud_url,title,artist,bucket,kind,duration_ms,added_at&order=added_at.asc`, "GET", null, user.token);
+            const itemsByPl = {};
+            if (pItems) {
+                for (const t of pItems) {
+                    if (!itemsByPl[t.playlist_id]) itemsByPl[t.playlist_id] = [];
+                    itemsByPl[t.playlist_id].push({
+                        url: t.soundcloud_url,
+                        title: t.title,
+                        artist: t.artist,
+                        bucket: t.bucket,
+                        kind: t.kind,
+                        durationMs: t.duration_ms,
+                        addedAt: t.added_at
+                    });
+                }
+            }
+
+            const mapped = pls.map(p => ({
+                id: p.id,
+                name: p.name,
+                updated_at: p.updated_at,
+                items: itemsByPl[p.id] || []
+            }));
+            return json(200, { hasData: true, playlists: mapped }, origin);
+        }
 
         const body = await req.json();
         const playlists = body.playlists || [];

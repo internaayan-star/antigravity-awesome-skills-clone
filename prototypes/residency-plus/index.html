@@ -1108,9 +1108,35 @@
         </div>
       </div>
     </div>
+    <!-- Auth Modal (Slice 4) -->
+    <div class="drawer" id="authModal"
+      style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:9000; width:90%; max-width:320px; box-shadow:0 8px 30px rgba(0,0,0,0.8);">
+      <div class="drawerHead">
+        <div class="drawerTitle" id="authTitle">Sign In</div>
+        <button class="miniBtn" id="closeAuthBtn">✕</button>
+      </div>
+      <div class="drawerBody" style="padding:16px; display:flex; flex-direction:column; gap:12px;">
+        <div id="authSignedOutState">
+          <input type="email" id="authEmail" placeholder="Email" class="playlist-select"
+            style="width:100%; box-sizing:border-box; margin-bottom:8px; padding:8px;">
+          <input type="password" id="authPassword" placeholder="Password" class="playlist-select"
+            style="width:100%; box-sizing:border-box; margin-bottom:12px; padding:8px;">
+          <button id="authSubmitBtn" class="btnPrimary" style="width:100%; justify-content:center;">Continue</button>
+          <div style="font-size:11px; margin-top:8px; opacity:0.7; text-align:center;" id="authToggleHint">Don't have an
+            account? <a href="#" id="authToggleMode" style="color:#a855f7;">Sign Up</a></div>
+          <div id="authError" style="color:#ef4444; font-size:12px; margin-top:8px; text-align:center; display:none;">
+          </div>
+        </div>
+        <div id="authSignedInState" style="display:none; text-align:center;">
+          <div style="margin-bottom:12px; font-size:14px;">Signed in as <strong id="authCurrentUser"></strong></div>
+          <button id="authSignOutBtn" class="btn" style="width:100%; justify-content:center;">Sign Out</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
     const MAX_TRACK_MS = 6 * 60 * 1000;
@@ -1318,6 +1344,168 @@
       okBox.style.display = "none";
     }
     window.SC_OK = true;
+
+    // ===== SUPABASE AUTH & SYNC (Slice 4) =====
+    // Fallback keys if env vars are missing during local dev
+    const SUPA_URL = "%%SUPABASE_URL%%";
+    const SUPA_KEY = "%%SUPABASE_ANON_KEY%%";
+
+    let supabase = null;
+    let currentUser = null;
+
+    try {
+      if (SUPA_URL && !SUPA_URL.includes("%%") && window.supabase) {
+        supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+      }
+    } catch (e) { console.warn("Supabase init failed", e); }
+
+    const accountBtn = document.getElementById("accountBtn");
+    const authModal = document.getElementById("authModal");
+    const closeAuthBtn = document.getElementById("closeAuthBtn");
+    const authSignedOutState = document.getElementById("authSignedOutState");
+    const authSignedInState = document.getElementById("authSignedInState");
+    const authEmail = document.getElementById("authEmail");
+    const authPassword = document.getElementById("authPassword");
+    const authSubmitBtn = document.getElementById("authSubmitBtn");
+    const authToggleMode = document.getElementById("authToggleMode");
+    const authTitle = document.getElementById("authTitle");
+    const authToggleHint = document.getElementById("authToggleHint");
+    const authError = document.getElementById("authError");
+    const authCurrentUser = document.getElementById("authCurrentUser");
+    const authSignOutBtn = document.getElementById("authSignOutBtn");
+
+    let isSignUpMode = false;
+
+    function resetAuthUI() {
+      authError.style.display = "none";
+      authEmail.value = "";
+      authPassword.value = "";
+      isSignUpMode = false;
+      authTitle.textContent = "Sign In";
+      authToggleHint.innerHTML = "Don't have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign Up</a>";
+      document.getElementById("authToggleMode").onclick = toggleAuthMode;
+    }
+
+    function toggleAuthMode(e) {
+      if (e) e.preventDefault();
+      isSignUpMode = !isSignUpMode;
+      authError.style.display = "none";
+      if (isSignUpMode) {
+        authTitle.textContent = "Create Account";
+        authToggleHint.innerHTML = "Already have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign In</a>";
+      } else {
+        authTitle.textContent = "Sign In";
+        authToggleHint.innerHTML = "Don't have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign Up</a>";
+      }
+      document.getElementById("authToggleMode").onclick = toggleAuthMode;
+    }
+
+    if (accountBtn) {
+      accountBtn.onclick = () => {
+        resetAuthUI();
+        authModal.style.display = "block";
+      };
+    }
+    if (closeAuthBtn) {
+      closeAuthBtn.onclick = () => {
+        authModal.style.display = "none";
+      };
+    }
+
+    if (authSignOutBtn) {
+      authSignOutBtn.onclick = async () => {
+        if (supabase) {
+          await supabase.auth.signOut();
+          authModal.style.display = "none";
+          // Local-first behavior: keep UI state, just stop syncing
+        }
+      };
+    }
+
+    if (authSubmitBtn) {
+      authSubmitBtn.onclick = async () => {
+        if (!supabase) return showError("Supabase not configured. Set environment variables.");
+        const email = authEmail.value.trim();
+        const password = authPassword.value;
+        if (!email || !password) {
+          authError.textContent = "Email and password required";
+          authError.style.display = "block";
+          return;
+        }
+        authSubmitBtn.disabled = true;
+        authSubmitBtn.textContent = "Working...";
+        authError.style.display = "none";
+
+        try {
+          if (isSignUpMode) {
+            const { error } = await supabase.auth.signUp({ email, password });
+            if (error) throw error;
+            authError.style.color = "#22c55e";
+            authError.textContent = "Success! Please sign in.";
+            authError.style.display = "block";
+            isSignUpMode = false; // flip to sign in
+          } else {
+            const { error } = await supabase.auth.signInWithPassword({ email, password });
+            if (error) throw error;
+            authModal.style.display = "none"; // onAuthStateChange handles rest
+          }
+        } catch (err) {
+          authError.style.color = "#ef4444";
+          authError.textContent = err.message;
+          authError.style.display = "block";
+        } finally {
+          authSubmitBtn.disabled = false;
+          authSubmitBtn.textContent = "Continue";
+        }
+      };
+    }
+
+    async function getNetlifyToken() {
+      if (!supabase) return null;
+      const { data: { session } } = await supabase.auth.getSession();
+      return session?.access_token || null;
+    }
+
+    // Wire Supabase state changes
+    if (supabase) {
+      if (accountBtn) {
+        accountBtn.disabled = false;
+        accountBtn.style.opacity = "1";
+      }
+
+      supabase.auth.onAuthStateChange(async (event, session) => {
+        const user = session?.user;
+        currentUser = user || null;
+
+        if (user) {
+          if (accountBtn) accountBtn.textContent = "Account";
+          if (authSignedOutState) authSignedOutState.style.display = "none";
+          if (authSignedInState) authSignedInState.style.display = "block";
+          if (authCurrentUser) authCurrentUser.textContent = user.email;
+
+          if (event === "SIGNED_IN") {
+            // 1. Prompt purely local data migration if needed
+            const hasLocalData = (typeof crate !== 'undefined' && crate.length > 0) ||
+              (typeof history !== 'undefined' && history.length > 0) ||
+              (typeof playlists !== 'undefined' && playlists.length > 0);
+            const migratedFlag = localStorage.getItem("residency_migrated_v1");
+            if (hasLocalData && !migratedFlag) {
+              if (confirm("You are signed in! Want to upload your existing local library to the cloud?")) {
+                if (typeof migrateToCloud === 'function') await migrateToCloud(session.access_token);
+              }
+              localStorage.setItem("residency_migrated_v1", "true");
+            }
+
+            // 2. Hydrate from Cloud to Local
+            if (typeof fetchCloudData === 'function') await fetchCloudData(session.access_token);
+          }
+        } else {
+          if (accountBtn) accountBtn.textContent = "Sign In";
+          if (authSignedOutState) authSignedOutState.style.display = "block";
+          if (authSignedInState) authSignedInState.style.display = "none";
+        }
+      });
+    }
 
     async function checkHealth() {
       try {
@@ -2291,6 +2479,155 @@
         // don’t spam UI; only show if user explicitly asked for stats and nothing is working
         // (silent fail keeps creative flow)
       }
+    }
+
+    // ===== Cloud State Hydration =====
+    async function fetchCloudData(token) {
+      if (!token) return;
+      try {
+        setProgress("Syncing cloud data...");
+        // Fetch Crate
+        const crateRes = await fetch("/.netlify/functions/sync-crate", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (crateRes.ok) {
+          const body = await crateRes.json();
+          if (body.hasData && Array.isArray(body.items)) {
+            crate = body.items;
+            saveJsonLS(STORAGE_KEY_CRATE, crate);
+            renderList(crateList, crate, "crate");
+          }
+        }
+
+        // Fetch History
+        const histRes = await fetch("/.netlify/functions/sync-history", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (histRes.ok) {
+          const body = await histRes.json();
+          if (body.hasData && Array.isArray(body.items)) {
+            history = body.items;
+            saveJsonLS(STORAGE_KEY_HISTORY, history);
+            renderList(historyList, history, "history");
+          }
+        }
+
+        // Fetch Playlists
+        const playRes = await fetch("/.netlify/functions/sync-playlists", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (playRes.ok) {
+          const body = await playRes.json();
+          if (body.hasData && Array.isArray(body.playlists)) {
+            playlists = body.playlists;
+            savePlaylists();
+            renderPlaylistsSelect();
+            renderPlaylistItems();
+          }
+        }
+
+        // Fetch Session State
+        const stateRes = await fetch("/.netlify/functions/sync-session-state", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (stateRes.ok) {
+          const body = await stateRes.json();
+          if (body.hasData && body.state) {
+            const s = body.state;
+            if (s.genre) { genreSelect.value = s.genre; localStorage.setItem(STORAGE_KEY_GENRE, s.genre); }
+            if (s.source) { sourceSelect.value = s.source; localStorage.setItem(STORAGE_KEY_SOURCE, s.source); }
+            if (s.range) { obscureRange.value = s.range; localStorage.setItem(STORAGE_KEY_RANGE, s.range); }
+            if (s.station) { stationId = s.station; localStorage.setItem(STORAGE_KEY_STATION, s.station); renderStationsSelect(); }
+          }
+        }
+        setProgress("");
+        showOk("Cloud data synced.");
+        setTimeout(clearStatus, 3000);
+      } catch (err) {
+        console.warn("Hydration failed", err);
+      }
+    }
+
+    // ===== Cloud State Push / Auto-Sync =====
+    // These debounce hooks allow the UI to freely manipulate local arrays 
+    // and they silently synchronize to Supabase in the background
+    const debouncedCrateSync = debounce(async () => {
+      const t = await getNetlifyToken();
+      if (!t) return;
+      try {
+        await fetch("/.netlify/functions/sync-crate", {
+          method: "POST", headers: { "Authorization": `Bearer ${t}` },
+          body: JSON.stringify({ tracks: crate })
+        });
+      } catch (e) { console.warn("Crate sync fail", e); }
+    }, 2000);
+
+    const debouncedHistorySync = debounce(async () => {
+      const t = await getNetlifyToken();
+      if (!t) return;
+      try {
+        await fetch("/.netlify/functions/sync-history", {
+          method: "POST", headers: { "Authorization": `Bearer ${t}` },
+          body: JSON.stringify({ tracks: history })
+        });
+      } catch (e) { console.warn("History sync fail", e); }
+    }, 3000);
+
+    const debouncedPlaylistSync = debounce(async () => {
+      const t = await getNetlifyToken();
+      if (!t) return;
+      try {
+        await fetch("/.netlify/functions/sync-playlists", {
+          method: "POST", headers: { "Authorization": `Bearer ${t}` },
+          body: JSON.stringify({ playlists })
+        });
+      } catch (e) { console.warn("Playlist sync fail", e); }
+    }, 2000);
+
+    const debouncedStateSync = debounce(async () => {
+      const t = await getNetlifyToken();
+      if (!t) return;
+      try {
+        await fetch("/.netlify/functions/sync-session-state", {
+          method: "POST", headers: { "Authorization": `Bearer ${t}` },
+          body: JSON.stringify({
+            genre: genreSelect.value,
+            source: sourceSelect.value,
+            dig_range: obscureRange.value,
+            station_id: stationId
+          })
+        });
+      } catch (e) { console.warn("State sync fail", e); }
+    }, 4000);
+
+    // One-off forced migration from local anonymity -> cloud account
+    async function migrateToCloud(token) {
+      if (!token) return;
+      setProgress("Migrating local library...");
+      try {
+        const payload = {
+          crate: crate,
+          history: history,
+          playlists: playlists,
+          session: {
+            genre: genreSelect.value,
+            source: sourceSelect.value,
+            dig_range: obscureRange.value,
+            station_id: stationId
+          }
+        };
+        const res = await fetch("/.netlify/functions/migrate-local-data", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${token}` },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error("Migration failed " + res.status);
+        showOk("Local library merged upward.");
+        setTimeout(clearStatus, 3000);
+      } catch (e) {
+        showError("Migration error: " + e.message);
+      }
+      setProgress("");
     }
 
     // ===== Export =====
