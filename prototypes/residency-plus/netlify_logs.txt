@@ -1,0 +1,345 @@
+Γ¼Ñ Ignored general context env var: LANG (defined in process)
+Γ¼Ñ Using simple static server because '--dir' flag was specified
+Γ¼Ñ Running static server from "residency-plus"
+Γ¼Ñ Setting up local dev server
+
+Γ¼Ñ Static server listening to 3999
+Γ¼Ñ Loaded function sc-health
+Γ¼Ñ Loaded function sc-supabase-lib
+Γ¼Ñ Loaded function sc-auth-lib
+
+   Γò¡ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ Γ¼ÑΓÇë ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+   Γöé                                                   Γöé
+   Γöé   Local dev server ready: http://localhost:8888   Γöé
+   Γöé                                                   Γöé
+   Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò»
+
+Γ¼Ñ Loaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function auth-session with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to auth-session.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+(node:38872) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 81 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Ffabyonthetrack%2Fkat-deluna-whine-up-dancehall-version
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fdj-royalty_cv%2Fkadhal-vaithu-dancehall-refix-dj-royalty
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:23:36.191Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:23:36.195Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:23:37.185Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":994}
+Response with status 200 in 1256 ms.
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:23:37.469Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1274}
+Response with status 200 in 1530 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 3 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fdj-royalty_cv%2Fkadhal-vaithu-dancehall-refix-dj-royalty
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fkingofsounds%2Fkadhal-vaithu-dancehall-refix
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:23:40.345Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:23:40.348Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:23:41.109Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":761}
+Response with status 200 in 957 ms.
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:23:41.333Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":988}
+Response with status 200 in 1181 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fkingofsounds%2Fkadhal-vaithu-dancehall-refix
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fwayne-prod-b-s%2Fwelcome-to-jamrock-dancehall
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:28:21.177Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:28:21.178Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:28:22.238Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1061}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:28:22.243Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1065}
+Response with status 200 in 1273 ms.
+Response with status 200 in 1281 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20white%20label&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T07:28:40.908Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T07:28:42.223Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":23,"upstream_status":200,"duration_ms":1315}
+Response with status 200 in 1615 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20instrumental&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T07:28:42.477Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T07:28:43.800Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":24,"upstream_status":200,"duration_ms":1323}
+Response with status 200 in 1566 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20dub&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T07:28:44.074Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T07:28:45.018Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":15,"upstream_status":200,"duration_ms":944}
+Response with status 200 in 1210 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fsubsquadprod%2Funderground-dub-mix-ix
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:28:45.278Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:28:46.268Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":990}
+Response with status 200 in 1234 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fwayne-prod-b-s%2Fwelcome-to-jamrock-dancehall
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Finfamousrs%2Ftqg-dancehall-version-2023
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:29:07.143Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:29:07.144Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:29:08.108Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":966}
+Response with status 200 in 1267 ms.
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:29:08.133Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":989}
+Response with status 200 in 1294 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20dub&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T07:30:14.298Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T07:30:15.335Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":15,"upstream_status":200,"duration_ms":1037}
+Response with status 200 in 1286 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20demo&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T07:30:15.560Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T07:30:16.786Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":16,"upstream_status":200,"duration_ms":1226}
+Response with status 200 in 1443 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20vip&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T07:30:17.008Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T07:30:18.011Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":15,"upstream_status":200,"duration_ms":1003}
+Response with status 200 in 1225 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Featbrain%2Ftesseracts-ceo-of-underground-vip-2
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T07:30:18.489Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T07:30:19.269Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":780}
+Response with status 200 in 1226 ms.
+Γ¼Ñ Reloading function sc-health...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-health
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-health...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-health
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 3 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Featbrain%2Ftesseracts-ceo-of-underground-vip-2
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Ftomas-pinho-aleivo%2Funderground-na-vip
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T09:06:35.902Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T09:06:35.903Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T09:06:36.959Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1057}
+Response with status 200 in 1342 ms.
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T09:06:37.208Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1305}
+Response with status 200 in 1588 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Frealgonekid%2Fglobal-underground-vip-mixer-ade-2016
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T09:06:38.415Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T09:06:39.420Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1005}
+Response with status 200 in 1186 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Falex-rodriguez-95%2Funderground-instrumental-19
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T09:06:41.536Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T09:06:42.548Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1012}
+Response with status 200 in 1196 ms.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient
+Response with status 200 in 274 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient
+Response with status 200 in 211 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Falex-rodriguez-95%2Funderground-instrumental-19
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fpj_millz%2Fthe-underground-demo-pj-millz
+Response with status 200 in 213 ms.
+Response with status 200 in 216 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fuser-229360166%2Fchuraq-sputnik-partyza-n
+Response with status 200 in 189 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fekortalproducer%2Funderground-dub-5_46-aggressive-1
+Response with status 200 in 200 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient
+Response with status 200 in 218 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https://soundcloud.com/fixture/ambient-1
+Response with status 200 in 191 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Finfamousrs%2Ftqg-dancehall-version-2023
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fmassivevibez%2Fbennie-man-dude-london-riddim
+Response with status 200 in 208 ms.
+Response with status 200 in 211 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient
+Response with status 200 in 202 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https://soundcloud.com/fixture/ambient-1
+Response with status 200 in 189 ms.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient
+Response with status 200 in 201 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https://soundcloud.com/fixture/ambient-1
+Response with status 200 in 190 ms.
+Γ¼Ñ Reloading function migrate-local-data...
+Γ¼Ñ Reloading function sc-auth-lib...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloading function sync-crate...
+Γ¼Ñ Reloading function sync-session-state...
+Γ¼Ñ Reloading function sync-history...
+Γ¼Ñ Reloading function auth-session...
+Γ¼Ñ Reloading function migrate-local-data...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-auth-lib
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloading function sync-crate...
+Γ¼Ñ Reloading function sync-history...
+Γ¼Ñ Reloading function sync-session-state...
+Γ¼Ñ Reloaded function sc-official-resolve
+Γ¼Ñ Reloaded function sc-official-search
+Γ¼Ñ Reloaded function sc-official-search
+Γ¼Ñ Reloaded function sc-official-search
+Γ¼Ñ Reloaded function sc-official-resolve
+Γ¼Ñ Reloaded function sc-official-resolve
+Γ¼Ñ Reloaded function auth-session with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to auth-session.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-playlists with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-playlists.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function migrate-local-data...
+Γ¼Ñ Reloading function sc-auth-lib...
+Γ¼Ñ Reloading function sync-crate...
+Γ¼Ñ Reloading function sync-session-state...
+Γ¼Ñ Reloading function sync-history...
+Γ¼Ñ Reloading function auth-session...
+Γ¼Ñ Reloading function sync-playlists...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloading function sc-official-resolve...
+ ┬╗   Error: Netlify CLI has terminated unexpectedly
+This is a problem with the Netlify CLI, not with your application.
+If you recently updated the CLI, consider reverting to an older version by running:
+
+npm install -g netlify-cli@VERSION
+
+You can use any version from https://ntl.fyi/cli-versions.
+
+Please report this problem at https://ntl.fyi/cli-error including the error details below.
+
+Γ¼Ñ Reloading function sync-history...
+Γ¼Ñ Reloading function sync-session-state...
+Γ¼Ñ Reloading function migrate-local-data...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloading function sync-crate...
+Γ¼Ñ Reloaded function sc-auth-lib
+Γ¼Ñ Removed function sync-playlists
+Γ¼Ñ Reloading function migrate-local-data...
+Γ¼Ñ Reloading function sc-auth-lib...
+Γ¼Ñ Reloading function sync-crate...
+Γ¼Ñ Reloading function sync-session-state...
+Γ¼Ñ Reloading function sync-history...
+Γ¼Ñ Reloading function auth-session...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function auth-session with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to auth-session.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function migrate-local-data...
+Γ¼Ñ Reloading function sync-crate...
+Γ¼Ñ Reloading function sync-session-state...
+Γ¼Ñ Reloading function sync-history...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function migrate-local-data
+Γ¼Ñ Reloaded function sc-auth-lib
+Γ¼Ñ Reloaded function sync-crate
+Γ¼Ñ Reloaded function sync-session-state
+Γ¼Ñ Reloaded function sync-history
+Γ¼Ñ Reloaded function sc-official-search
+Γ¼Ñ Reloaded function sc-official-resolve
+Γ¼Ñ Reloaded function sync-session-state
+Γ¼Ñ Reloaded function sync-crate
+Γ¼Ñ Reloaded function migrate-local-data
+Γ¼Ñ Reloaded function sync-history
+Γ¼Ñ Reloaded function sc-official-search
+Γ¼Ñ Reloaded function sc-official-resolve
+Γ¼Ñ Reloaded function auth-session with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to auth-session.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-playlists with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-playlists.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Error: ENOENT: no such file or directory, lstat 'C:\Users\sean\antigravity-awesome-skills\prototypes\residency-plus\netlify\functions\sync-playlists.js'
+    at Object.lstat (node:internal/fs/promises:1021:18)
+    at Object.findFunctionInPath (file:///C:/Users/sean/AppData/Roaming/npm/node_modules/netlify-cli/node_modules/@netlify/zip-it-and-ship-it/dist/runtimes/node/finder.js:40:18)
+    at getFunctionFromPath (file:///C:/Users/sean/AppData/Roaming/npm/node_modules/netlify-cli/node_modules/@netlify/zip-it-and-ship-it/dist/runtimes/index.js:81:22)
+    at listFunction (file:///C:/Users/sean/AppData/Roaming/npm/node_modules/netlify-cli/node_modules/@netlify/zip-it-and-ship-it/dist/main.js:46:18)
+    at getFunctionMetadata (file:///C:/Users/sean/AppData/Roaming/npm/node_modules/netlify-cli/src/lib/functions/runtimes/js/builders/zisi.ts:125:3)
+    at Module.getBuildFunction (file:///C:/Users/sean/AppData/Roaming/npm/node_modules/netlify-cli/src/lib/functions/runtimes/js/index.ts:36:20)
+    at NetlifyFunction.build (file:///C:/Users/sean/AppData/Roaming/npm/node_modules/netlify-cli/src/lib/functions/netlify-function.ts:198:27)
+    at FunctionsRegistry.buildFunctionAndWatchFiles (file:///C:/Users/sean/AppData/Roaming/npm/node_modules/netlify-cli/src/lib/functions/registry.ts:197:64)
+
+  System:
+    OS: Windows 11 10.0.26200
+    CPU: (16) x64 Intel(R) Core(TM) i7-10700KF CPU @ 3.80GHz
+  Binaries:
+    Node: 24.13.0 - C:\Program Files\nodejs\node.EXE
+    npm: 11.10.0 - ~\AppData\Roaming\npm\npm.CMD
+  Browsers:
+    Edge: Chromium (141.0.35)
+

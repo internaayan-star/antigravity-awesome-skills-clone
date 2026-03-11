@@ -74,3 +74,36 @@ CREATE TABLE public.session_state (
 );
 ALTER TABLE public.session_state ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Users fully own their session state" ON public.session_state FOR ALL USING (auth.uid() = user_id);
+<<<<<<< HEAD
+=======
+
+-- 5. Playlists
+CREATE TABLE public.playlists (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX idx_playlists_user ON public.playlists(user_id);
+ALTER TABLE public.playlists ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users fully own their playlists" ON public.playlists FOR ALL USING (auth.uid() = user_id);
+
+-- 6. Playlist Items
+CREATE TABLE public.playlist_items (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  playlist_id UUID NOT NULL REFERENCES public.playlists(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
+  soundcloud_url TEXT NOT NULL,
+  title TEXT,
+  artist TEXT,
+  bucket TEXT,
+  kind TEXT,
+  duration_ms INTEGER,
+  added_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX idx_playlist_items_playlist ON public.playlist_items(playlist_id);
+CREATE INDEX idx_playlist_items_user ON public.playlist_items(user_id);
+ALTER TABLE public.playlist_items ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users fully own their playlist items" ON public.playlist_items FOR ALL USING (auth.uid() = user_id);
+>>>>>>> main

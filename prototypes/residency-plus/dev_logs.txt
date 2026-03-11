@@ -1,0 +1,79 @@
+Γ¼Ñ Ignored general context env var: LANG (defined in process)
+Γ¼Ñ Using simple static server because '--dir' flag was specified
+Γ¼Ñ Running static server from "residency-plus"
+Γ¼Ñ Setting up local dev server
+
+Γ¼Ñ Static server listening to 3999
+Γ¼Ñ Loaded function sc-supabase-lib
+Γ¼Ñ Loaded function sc-health
+Γ¼Ñ Loaded function sc-auth-lib
+
+   Γò¡ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ Γ¼ÑΓÇë ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+   Γöé                                                   Γöé
+   Γöé   Local dev server ready: http://localhost:8889   Γöé
+   Γöé                                                   Γöé
+   Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò»
+
+Γ¼Ñ Loaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function auth-session with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to auth-session.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-playlists with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-playlists.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+(node:36744) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient&limit=2
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T04:30:44.469Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_fallback_error","timestamp":"2026-03-11T04:30:45.807Z","endpoint":"sc-official-search","error":"Fallback HTTP 400"}
+{"_telemetry":true,"event":"sc_search_error","timestamp":"2026-03-11T04:30:45.807Z","endpoint":"sc-official-search","origin":null,"status_code":400,"query_length":7,"duration_ms":1339}
+Response with status 400 in 1526 ms.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 5 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient&limit=2
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T04:33:35.883Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_fallback_error","timestamp":"2026-03-11T04:33:36.448Z","endpoint":"sc-official-search","error":"fallbackUrl is not defined"}
+{"_telemetry":true,"event":"sc_search_error","timestamp":"2026-03-11T04:33:36.448Z","endpoint":"sc-official-search","origin":null,"status_code":400,"query_length":7,"duration_ms":565}
+Response with status 400 in 754 ms.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient&limit=2
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T04:35:46.931Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T04:35:48.510Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":7,"upstream_status":200,"duration_ms":1579}
+Response with status 200 in 1767 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https://soundcloud.com/haszari/ambient-leftfield-dojo-twisted-frequency
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T04:36:02.765Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T04:36:03.311Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":546}
+Response with status 200 in 734 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient&limit=2
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T04:53:15.489Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T04:53:16.683Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":7,"upstream_status":200,"duration_ms":1194}
+Response with status 200 in 1368 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https://soundcloud.com/haszari/ambient-leftfield-dojo-twisted-frequency
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T04:53:16.903Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T04:53:17.724Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":821}
+Response with status 200 in 990 ms.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.

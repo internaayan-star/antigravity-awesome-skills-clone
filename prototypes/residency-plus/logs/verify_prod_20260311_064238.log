@@ -1,0 +1,11 @@
+[06:42:38] Starting Production Verification...
+[06:42:38] Checking target: sc-health -> https://residencysolutions.netlify.app/.netlify/functions/sc-health
+[06:42:39] HTTP 200
+[06:42:39] Response: {"ok":true,"message":"SoundCloud client id detected."}
+[06:42:39] Checking target: sc-official-search -> https://residencysolutions.netlify.app/.netlify/functions/sc-official-search?q=ambient
+[06:42:41] HTTP 200
+[06:42:41] Response: {"collection":[{"id":1908505082,"title":"Bình Yên - Vu�?. ft. Binz x minhnhat.","permalink_url":"https://soundcloud.com/minhnhat-prod/binh-yen-vu-ft...
+[06:42:41] Checking target: sc-official-resolve -> https://residencysolutions.netlify.app/.netlify/functions/sc-official-resolve?url=https://soundcloud.com/octobersveryown/drake-0-to-100
+[06:42:42] Request Failed: The remote server returned an error: (502) Bad Gateway.
+[06:42:42] 
+[06:42:42] RESULT: FAIL

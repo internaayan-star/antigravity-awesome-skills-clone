@@ -60,7 +60,45 @@ export default async function handler(req) {
             }
         }
 
+<<<<<<< HEAD
         return json(200, { migrated: true, crate_count: migratedCrate, session_state: migratedSession }, origin);
+=======
+        // 3. Migrate Playlists
+        const playlists = body.playlists || [];
+        let migratedPlaylists = 0;
+        if (Array.isArray(playlists) && playlists.length > 0) {
+            const SLICE_3_MAX_PLAYLISTS = 10;
+            const SLICE_3_MAX_ITEMS = 50;
+            for (const pl of playlists.slice(0, SLICE_3_MAX_PLAYLISTS)) {
+                const plPayload = {
+                    id: pl.id,
+                    user_id: user.uid,
+                    name: pl.name,
+                    updated_at: pl.updated_at || new Date().toISOString()
+                };
+                await supabaseRestCall(`playlists?on_conflict=id`, "POST", plPayload, user.token);
+
+                const items = Array.isArray(pl.items) ? pl.items : [];
+                const itemsPayload = items.slice(0, SLICE_3_MAX_ITEMS).map(t => ({
+                    playlist_id: pl.id,
+                    user_id: user.uid,
+                    soundcloud_url: t.url,
+                    title: t.title,
+                    artist: t.artist,
+                    bucket: t.bucket,
+                    kind: t.kind,
+                    duration_ms: t.durationMs,
+                    added_at: t.addedAt || new Date().toISOString()
+                }));
+                if (itemsPayload.length > 0) {
+                    await supabaseRestCall(`playlist_items`, "POST", itemsPayload, user.token);
+                }
+                migratedPlaylists++;
+            }
+        }
+
+        return json(200, { migrated: true, crate_count: migratedCrate, session_state: migratedSession, playlists_count: migratedPlaylists }, origin);
+>>>>>>> main
 
     } catch (err) {
         return json(500, { error: err.message }, origin);

@@ -1,0 +1,1 @@
+{"error":"[sc-auth-lib] Token endpoint rate-limited. Retry in 37s."}

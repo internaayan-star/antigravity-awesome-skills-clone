@@ -1,0 +1,1 @@
+{"error":"[sc-auth-lib] Token request failed — HTTP 429 (rate limited, no cached token available)"}

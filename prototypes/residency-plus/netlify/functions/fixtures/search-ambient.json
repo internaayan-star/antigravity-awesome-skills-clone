@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "id": 10001,
@@ -24,3 +25,39 @@
         }
     }
 ]
+=======
+{
+    "collection": [
+        {
+            "id": 11223344,
+            "title": "[DEV FIXTURE] Ambient Leftfield Dojo",
+            "permalink_url": "https://soundcloud.com/haszari/ambient-leftfield-dojo-twisted-frequency",
+            "genre": "Ambient",
+            "artwork_url": "https://i1.sndcdn.com/artworks-000456182-large.jpg",
+            "playback_count": 5200,
+            "favoritings_count": 310,
+            "comment_count": 15,
+            "duration": 420500,
+            "created_at": "2020-01-15T12:00:00Z",
+            "bpm": 120,
+            "username": "haszari",
+            "user_permalink_url": "https://soundcloud.com/haszari"
+        },
+        {
+            "id": 55667788,
+            "title": "[DEV FIXTURE] Deep Space Transmission",
+            "permalink_url": "https://soundcloud.com/fakeartist/deep-space-transmission",
+            "genre": "Electronic",
+            "artwork_url": "https://i1.sndcdn.com/artworks-000123456-large.jpg",
+            "playback_count": 12050,
+            "favoritings_count": 890,
+            "comment_count": 42,
+            "duration": 360000,
+            "created_at": "2021-05-10T08:30:00Z",
+            "bpm": null,
+            "username": "fakeartist",
+            "user_permalink_url": "https://soundcloud.com/fakeartist"
+        }
+    ]
+}
+>>>>>>> main

@@ -1,0 +1,122 @@
+Γ¼Ñ Ignored general context env var: LANG (defined in process)
+Γ¼Ñ Using simple static server because '--dir' flag was specified
+Γ¼Ñ Running static server from "residency-plus"
+Γ¼Ñ Setting up local dev server
+
+Γ¼Ñ Static server listening to 3999
+Γ¼Ñ Loaded function sc-health
+Γ¼Ñ Loaded function sc-auth-lib
+
+   Γò¡ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ Γ¼ÑΓÇë ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+   Γöé                                                   Γöé
+   Γöé   Local dev server ready: http://localhost:8888   Γöé
+   Γöé                                                   Γöé
+   Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò»
+
+Γ¼Ñ Loaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+(node:35168) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 13 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fhaszari%2Fambient-leftfield-dojo-twisted-frequency
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20promo&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:47:45.502Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T05:47:45.504Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:47:46.603Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1101}
+Response with status 200 in 1307 ms.
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T05:47:46.959Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":17,"upstream_status":200,"duration_ms":1456}
+Response with status 200 in 1659 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20unreleased&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T05:47:47.139Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T05:47:48.142Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":22,"upstream_status":200,"duration_ms":1003}
+Response with status 200 in 1173 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20instrumental&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T05:47:48.314Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T05:47:49.395Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":24,"upstream_status":200,"duration_ms":1081}
+Response with status 200 in 1248 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fuser-987916816%2Fbtg-buckz-no-hookse-by-bridgez15
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:47:49.570Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:47:50.476Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":906}
+Response with status 200 in 1074 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=underground%20acapella&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T05:47:55.655Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T05:47:56.852Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":20,"upstream_status":200,"duration_ms":1198}
+Response with status 200 in 1369 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fzion-beltran%2Fgoing-crazy
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:47:57.038Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:47:58.037Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":999}
+Response with status 200 in 1170 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fzion-beltran%2F24-we-shine-remix-da-ruckus
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:48:13.589Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:48:14.653Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1064}
+Response with status 200 in 1243 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fzion-beltran%2F26-low-down-dirty-retail
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:48:27.670Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:48:28.654Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":984}
+Response with status 200 in 1154 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Funaiportu23%2Funai-portu-the-underground-promo
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:48:29.679Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:48:30.447Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":768}
+Response with status 200 in 940 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=dancehall%20version&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T05:48:31.812Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T05:48:32.990Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":17,"upstream_status":200,"duration_ms":1178}
+Response with status 200 in 1351 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=dancehall%20refix&kind=tracks&limit=80
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T05:48:33.173Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T05:48:34.251Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":15,"upstream_status":200,"duration_ms":1078}
+Response with status 200 in 1246 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Finnovativesoundz06%2Fshatta-youth-nah-go-home-innovative-soundzivs-excellence-sound-krewesk-refix
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:48:34.428Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:48:35.222Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":794}
+Response with status 200 in 964 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Fraimusicst%2Fsuperman-kind-ai-reggae
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:48:44.513Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:48:45.644Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":1131}
+Response with status 200 in 1306 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https%3A%2F%2Fsoundcloud.com%2Ffabyonthetrack%2Fkat-deluna-whine-up-dancehall-version
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T05:48:47.687Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T05:48:48.539Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":852}
+Response with status 200 in 1029 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient&limit=2
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T05:48:59.716Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T05:49:01.389Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":7,"upstream_status":200,"duration_ms":1674}
+Response with status 200 in 1877 ms.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sc-supabase-lib
+Γ¼Ñ Loaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function auth-session with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to auth-session.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-health...
+Γ¼Ñ Reloaded function sc-health
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient
+Response with status 200 in 197 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 3 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient&limit=2
+Response with status 200 in 185 ms.

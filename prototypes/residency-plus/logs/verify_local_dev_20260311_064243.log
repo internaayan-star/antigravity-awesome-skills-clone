@@ -1,0 +1,9 @@
+[06:42:43] Starting Local Dev Verification...
+[06:42:43] Checking target: sc-health -> http://localhost:8888/.netlify/functions/sc-health
+[06:42:47] Request Failed: Unable to connect to the remote server
+[06:42:47] Checking target: sc-official-search -> http://localhost:8888/.netlify/functions/sc-official-search?q=ambient
+[06:42:51] Request Failed: Unable to connect to the remote server
+[06:42:51] Checking target: sc-official-resolve -> http://localhost:8888/.netlify/functions/sc-official-resolve?url=https://soundcloud.com/fixture/ambient-1
+[06:42:55] Request Failed: Unable to connect to the remote server
+[06:42:55] 
+[06:42:55] RESULT: FAIL

@@ -15,12 +15,36 @@ export default async function handler(req) {
 
     const origin = allowOrigin(req.headers.get("origin"));
     if (!origin && req.headers.get("origin")) return json(403, { error: "Origin not permitted." });
+<<<<<<< HEAD
     if (req.method !== "POST") return json(405, { error: "Method not allowed" }, origin);
+=======
+    if (req.method !== "POST" && req.method !== "GET") return json(405, { error: "Method not allowed" }, origin);
+>>>>>>> main
 
     try {
         const user = getJwtUser(req);
         if (!user) return json(401, { error: "Missing or invalid token" }, origin);
 
+<<<<<<< HEAD
+=======
+        if (req.method === "GET") {
+            const data = await supabaseRestCall(`crate?select=soundcloud_url,title,artist,bucket,kind,duration_ms,saved_at&order=saved_at.desc`, "GET", null, user.token);
+            if (!data) return json(200, { hasData: false, items: [] }, origin);
+
+            // Map back to local state keys
+            const mapped = data.map(r => ({
+                url: r.soundcloud_url,
+                title: r.title,
+                artist: r.artist,
+                bucket: r.bucket,
+                kind: r.kind,
+                durationMs: r.duration_ms,
+                savedAt: r.saved_at
+            }));
+            return json(200, { hasData: mapped.length > 0, items: mapped }, origin);
+        }
+
+>>>>>>> main
         const body = await req.json();
         const tracks = body.tracks || [];
         if (!Array.isArray(tracks)) return json(400, { error: "Invalid payload format" }, origin);

@@ -62,7 +62,6 @@ export default async function handler(req) {
             return json(500, { error: "Fixture mode enabled but fixture file missing.", detail: e.message });
         }
     }
-
     // OPTIONS preflight
     if (req.method === "OPTIONS") {
         const origin = req.headers.get("origin");
@@ -88,6 +87,21 @@ export default async function handler(req) {
         const status_code = 403;
         logTelemetry("origin_forbidden", { endpoint: "sc-official-resolve", origin, status_code, duration_ms: Date.now() - startMs });
         return json(status_code, { error: "Origin not permitted." });
+    }
+
+    // Dev Fixture Mode bypass
+    if (process.env.DEV_FIXTURE_MODE === "true") {
+        try {
+            const fs = await import("fs");
+            const path = await import("path");
+            const fixturePath = path.join(process.cwd(), "netlify/functions/fixtures/resolve-sample.json");
+            const mockData = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
+            logTelemetry("sc_resolve_fixture", { endpoint: "sc-official-resolve", origin: allowed, status_code: 200, duration_ms: Date.now() - startMs });
+            return json(200, mockData, allowed);
+        } catch (e) {
+            logTelemetry("sc_resolve_fixture_error", { endpoint: "sc-official-resolve", origin: allowed, error: e.message });
+            return json(500, { error: "Fixture mode enabled but could not read fixture file." }, allowed);
+        }
     }
 
     // Rate limit
@@ -120,6 +134,22 @@ export default async function handler(req) {
     try {
         token = await getAccessToken();
     } catch (err) {
+        if (process.env.DEV_USE_PROD_WRAPPER_FALLBACK === "true") {
+            const prodBase = (process.env.DEV_PROD_WRAPPER_BASE || "https://residencysolutions.netlify.app").replace(/\/$/, "");
+            const fallbackUrl = `${prodBase}/.netlify/functions/sc-official-resolve?url=${encodeURIComponent(target)}`;
+            try {
+                // Spoof origin to match production's strict legacy allowlist
+                const fRes = await fetch(fallbackUrl, { headers: { "Origin": "http://localhost:8888" } });
+                const fData = await fRes.json().catch(() => ({}));
+                if (!fRes.ok) {
+                    return json(fRes.status, { error: `[Prod Fallback] ${fData.error || fRes.statusText}` }, allowed);
+                }
+                return json(200, fData, allowed);
+            } catch (fErr) {
+                logTelemetry("sc_resolve_fallback_error", { endpoint: "sc-official-resolve", error: fErr.message });
+            }
+        }
+
         const status_code = 400;
         logTelemetry("sc_resolve_error", { endpoint: "sc-official-resolve", origin: allowed, status_code, duration_ms: Date.now() - startMs });
         return json(status_code, { error: err.message }, allowed);

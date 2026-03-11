@@ -1,0 +1,321 @@
+diff --git a/prototypes/residency-plus/index.html b/prototypes/residency-plus/index.html
+index 76adaac..c5c8a7b 100644
+--- a/prototypes/residency-plus/index.html
++++ b/prototypes/residency-plus/index.html
+@@ -1086,11 +1086,40 @@
+         </div>
+       </div>
+     </div>
++    <!-- Auth Modal (Slice 4) -->
++    <div class="drawer" id="authModal"
++      style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:9000; width:90%; max-width:320px; box-shadow:0 8px 30px rgba(0,0,0,0.8);">
++      <div class="drawerHead">
++        <div class="drawerTitle" id="authTitle">Sign In</div>
++        <button class="miniBtn" id="closeAuthBtn">✕</button>
++      </div>
++      <div class="drawerBody" style="padding:16px; display:flex; flex-direction:column; gap:12px;">
++        <div id="authSignedOutState">
++          <input type="email" id="authEmail" placeholder="Email" class="playlist-select"
++            style="width:100%; box-sizing:border-box; margin-bottom:8px; padding:8px;">
++          <input type="password" id="authPassword" placeholder="Password" class="playlist-select"
++            style="width:100%; box-sizing:border-box; margin-bottom:12px; padding:8px;">
++          <button id="authSubmitBtn" class="btnPrimary" style="width:100%; justify-content:center;">Continue</button>
++          <div style="font-size:11px; margin-top:8px; opacity:0.7; text-align:center;" id="authToggleHint">Don't have an
++            account? <a href="#" id="authToggleMode" style="color:#a855f7;">Sign Up</a></div>
++          <div id="authError" style="color:#ef4444; font-size:12px; margin-top:8px; text-align:center; display:none;">
++          </div>
++        </div>
++        <div id="authSignedInState" style="display:none; text-align:center;">
++          <div style="margin-bottom:12px; font-size:14px;">Signed in as <strong id="authCurrentUser"></strong></div>
++          <button id="authSignOutBtn" class="btn" style="width:100%; justify-content:center;">Sign Out</button>
++        </div>
++      </div>
++    </div>
+   </div>
+ 
+   <script src="https://w.soundcloud.com/player/api.js"></script>
++  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ 
+   <script>
++    // ===== FEATURE FLAGS =====
++    const AUTH_ENABLED = false; // Slice 4: Cloud Sync (default disabled for stability)
++
+     const MAX_TRACK_MS = 6 * 60 * 1000;
+     const MIN_SET_MS = 10 * 60 * 1000;
+ 
+@@ -1290,6 +1319,166 @@
+     }
+     window.SC_OK = true;
+ 
++    // Fallback keys if env vars are missing during local dev
++    const SUPA_URL = "%%SUPABASE_URL%%";
++    const SUPA_KEY = "%%SUPABASE_ANON_KEY%%";
++
++    let supabase = null;
++    let currentUser = null;
++
++    if (AUTH_ENABLED) {
++      try {
++        if (SUPA_URL && !SUPA_URL.includes("%%") && window.supabase) {
++          supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
++        }
++      } catch (e) { console.warn("Supabase init failed", e); }
++    }
++
++    const accountBtn = document.getElementById("accountBtn");
++    const authModal = document.getElementById("authModal");
++    const closeAuthBtn = document.getElementById("closeAuthBtn");
++    const authSignedOutState = document.getElementById("authSignedOutState");
++    const authSignedInState = document.getElementById("authSignedInState");
++    const authEmail = document.getElementById("authEmail");
++    const authPassword = document.getElementById("authPassword");
++    const authSubmitBtn = document.getElementById("authSubmitBtn");
++    const authToggleMode = document.getElementById("authToggleMode");
++    const authTitle = document.getElementById("authTitle");
++    const authToggleHint = document.getElementById("authToggleHint");
++    const authError = document.getElementById("authError");
++    const authCurrentUser = document.getElementById("authCurrentUser");
++    const authSignOutBtn = document.getElementById("authSignOutBtn");
++
++    let isSignUpMode = false;
++
++    if (AUTH_ENABLED) {
++      function resetAuthUI() {
++        authError.style.display = "none";
++        authEmail.value = "";
++        authPassword.value = "";
++        isSignUpMode = false;
++        authTitle.textContent = "Sign In";
++        authToggleHint.innerHTML = "Don't have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign Up</a>";
++        document.getElementById("authToggleMode").onclick = toggleAuthMode;
++      }
++
++      function toggleAuthMode(e) {
++        if (e) e.preventDefault();
++        isSignUpMode = !isSignUpMode;
++        authError.style.display = "none";
++        if (isSignUpMode) {
++          authTitle.textContent = "Create Account";
++          authToggleHint.innerHTML = "Already have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign In</a>";
++        } else {
++          authTitle.textContent = "Sign In";
++          authToggleHint.innerHTML = "Don't have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign Up</a>";
++        }
++        document.getElementById("authToggleMode").onclick = toggleAuthMode;
++      }
++
++      if (accountBtn) {
++        accountBtn.onclick = () => {
++          resetAuthUI();
++          authModal.style.display = "block";
++        };
++      }
++      if (closeAuthBtn) {
++        closeAuthBtn.onclick = () => {
++          authModal.style.display = "none";
++        };
++      }
++
++      if (authSignOutBtn) {
++        authSignOutBtn.onclick = async () => {
++          if (supabase) {
++            await supabase.auth.signOut();
++            authModal.style.display = "none";
++          }
++        };
++      }
++
++      if (authSubmitBtn) {
++        authSubmitBtn.onclick = async () => {
++          if (!supabase) return showError("Supabase not configured. Set environment variables.");
++          const email = authEmail.value.trim();
++          const password = authPassword.value;
++          if (!email || !password) {
++            authError.textContent = "Email and password required";
++            authError.style.display = "block";
++            return;
++          }
++          authSubmitBtn.disabled = true;
++          authSubmitBtn.textContent = "Working...";
++          authError.style.display = "none";
++
++          try {
++            if (isSignUpMode) {
++              const { error } = await supabase.auth.signUp({ email, password });
++              if (error) throw error;
++              authError.style.color = "#22c55e";
++              authError.textContent = "Success! Please sign in.";
++              authError.style.display = "block";
++              isSignUpMode = false;
++            } else {
++              const { error } = await supabase.auth.signInWithPassword({ email, password });
++              if (error) throw error;
++              authModal.style.display = "none";
++            }
++          } catch (err) {
++            authError.style.color = "#ef4444";
++            authError.textContent = err.message;
++            authError.style.display = "block";
++          } finally {
++            authSubmitBtn.disabled = false;
++            authSubmitBtn.textContent = "Continue";
++          }
++        };
++      }
++    }
++
++    async function getNetlifyToken() {
++      if (!supabase || !AUTH_ENABLED) return null;
++      const { data: { session } } = await supabase.auth.getSession();
++      return session?.access_token || null;
++    }
++
++    if (supabase && AUTH_ENABLED) {
++      if (accountBtn) {
++        accountBtn.disabled = false;
++        accountBtn.style.opacity = "1";
++      }
++
++      supabase.auth.onAuthStateChange(async (event, session) => {
++        const user = session?.user;
++        currentUser = user || null;
++
++        if (user) {
++          if (accountBtn) accountBtn.textContent = "Account";
++          if (authSignedOutState) authSignedOutState.style.display = "none";
++          if (authSignedInState) authSignedInState.style.display = "block";
++          if (authCurrentUser) authCurrentUser.textContent = user.email;
++
++          if (event === "SIGNED_IN") {
++            const hasLocalData = (typeof crate !== 'undefined' && crate.length > 0) ||
++              (typeof history !== 'undefined' && history.length > 0) ||
++              (typeof playlists !== 'undefined' && playlists.length > 0);
++            const migratedFlag = localStorage.getItem("residency_migrated_v1");
++            if (hasLocalData && !migratedFlag) {
++              if (confirm("You are signed in! Want to upload your existing local library to the cloud?")) {
++                if (typeof migrateToCloud === 'function') await migrateToCloud(session.access_token);
++              }
++              localStorage.setItem("residency_migrated_v1", "true");
++            }
++            if (typeof fetchCloudData === 'function') await fetchCloudData(session.access_token);
++          }
++        } else {
++          if (accountBtn) accountBtn.textContent = "Sign In";
++          if (authSignedOutState) authSignedOutState.style.display = "block";
++          if (authSignedInState) authSignedInState.style.display = "none";
++        }
++      });
++    }
++
+     async function checkHealth() {
+       try {
+         const r = await fetch("/.netlify/functions/sc-health");
+@@ -2233,8 +2422,19 @@
+         pickAndPlay(matches);
+         setStatus("PLAYING");
+       } catch (e) {
++        console.error("Shuffle failed:", e);
+         showError(String(e?.message || e));
+-        setStatus("READY");
++        setStatus("DEGRADED");
++        // Last-Good-Result Fallback
++        const raw = localStorage.getItem(STORAGE_KEY_LAST);
++        if (raw) {
++          try {
++            const last = JSON.parse(raw);
++            if (last && last.url) {
++              loadItem(last, false);
++            }
++          } catch { }
++        }
+       } finally {
+         shuffleInFlight = false;
+         shuffleBtn.disabled = false;
+diff --git a/prototypes/residency-plus/netlify/functions/sc-health.js b/prototypes/residency-plus/netlify/functions/sc-health.js
+index 5a210cc..dc6fbd0 100644
+--- a/prototypes/residency-plus/netlify/functions/sc-health.js
++++ b/prototypes/residency-plus/netlify/functions/sc-health.js
+@@ -1,6 +1,9 @@
+ exports.handler = async () => {
+   const id = process.env.SOUNDCLOUD_CLIENT_ID;
+-  const ok = !!id && id.trim() !== "" && id !== "YOUR_CLIENT_ID";
++  const isFixture = process.env.DEV_FIXTURE_MODE === "true";
++  const hasId = !!id && id.trim() !== "" && id !== "YOUR_CLIENT_ID";
++  const ok = hasId || isFixture;
++
+   return {
+     statusCode: 200,
+     headers: {
+@@ -12,7 +15,7 @@ exports.handler = async () => {
+     body: JSON.stringify({
+       ok,
+       message: ok
+-        ? "SoundCloud client id detected."
++        ? (isFixture ? "SoundCloud health bypassed (Fixture Mode)." : "SoundCloud client id detected.")
+         : "Missing SOUNDCLOUD_CLIENT_ID. Set it in your shell or Netlify env vars (see .env.example).",
+     }),
+   };
+diff --git a/prototypes/residency-plus/netlify/functions/sc-official-resolve.js b/prototypes/residency-plus/netlify/functions/sc-official-resolve.js
+index 64a680c..fdcb628 100644
+--- a/prototypes/residency-plus/netlify/functions/sc-official-resolve.js
++++ b/prototypes/residency-plus/netlify/functions/sc-official-resolve.js
+@@ -13,6 +13,8 @@
+  */
+ 
+ import { getAccessToken, allowOrigin, checkRateLimit, json, logTelemetry } from "./sc-auth-lib.js";
++import fs from "node:fs";
++import path from "node:path";
+ 
+ const _SAFE_TRACK_FIELDS = [
+     "id", "kind", "title", "permalink_url", "genre", "artwork_url",
+@@ -50,6 +52,18 @@ function shapeResource(raw) {
+ export default async function handler(req) {
+     const startMs = Date.now();
+ 
++    // Dev Fixture Mode
++    if (process.env.DEV_FIXTURE_MODE === "true") {
++        try {
++            const fixturePath = path.resolve(process.cwd(), "netlify/functions/fixtures/resolve-sample.json");
++            const raw = fs.readFileSync(fixturePath, "utf8");
++            const data = JSON.parse(raw);
++            return json(200, data, "*");
++        } catch (e) {
++            return json(500, { error: "Fixture mode enabled but fixture file missing.", detail: e.message });
++        }
++    }
++
+     // OPTIONS preflight
+     if (req.method === "OPTIONS") {
+         const origin = req.headers.get("origin");
+diff --git a/prototypes/residency-plus/netlify/functions/sc-official-search.js b/prototypes/residency-plus/netlify/functions/sc-official-search.js
+index 557fe64..4a4200e 100644
+--- a/prototypes/residency-plus/netlify/functions/sc-official-search.js
++++ b/prototypes/residency-plus/netlify/functions/sc-official-search.js
+@@ -14,6 +14,8 @@
+  */
+ 
+ import { getAccessToken, allowOrigin, checkRateLimit, json, logTelemetry } from "./sc-auth-lib.js";
++import fs from "node:fs";
++import path from "node:path";
+ 
+ const _SAFE_FIELDS = [
+     "id", "title", "permalink_url", "genre", "artwork_url",
+@@ -38,6 +40,18 @@ function shapeTrack(raw) {
+ export default async function handler(req) {
+     const startMs = Date.now();
+ 
++    // Dev Fixture Mode
++    if (process.env.DEV_FIXTURE_MODE === "true") {
++        try {
++            const fixturePath = path.resolve(process.cwd(), "netlify/functions/fixtures/search-ambient.json");
++            const raw = fs.readFileSync(fixturePath, "utf8");
++            const data = JSON.parse(raw);
++            return json(200, data, "*");
++        } catch (e) {
++            return json(500, { error: "Fixture mode enabled but fixture file missing.", detail: e.message });
++        }
++    }
++
+     // OPTIONS preflight
+     if (req.method === "OPTIONS") {
+         const origin = req.headers.get("origin");
