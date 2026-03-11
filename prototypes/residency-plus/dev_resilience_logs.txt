@@ -1,0 +1,34 @@
+Γ¼Ñ Ignored general context env var: LANG (defined in process)
+Γ¼Ñ Using simple static server because '--dir' flag was specified
+Γ¼Ñ Running static server from "residency-plus"
+Γ¼Ñ Setting up local dev server
+
+Γ¼Ñ Static server listening to 3999
+Γ¼Ñ Loaded function sc-supabase-lib
+Γ¼Ñ Loaded function sc-health
+Γ¼Ñ Loaded function sc-auth-lib
+
+   Γò¡ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ Γ¼ÑΓÇë ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+   Γöé                                                   Γöé
+   Γöé   Local dev server ready: http://localhost:8889   Γöé
+   Γöé                                                   Γöé
+   Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò»
+
+Γ¼Ñ Loaded function auth-session with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to auth-session.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-crate with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-crate.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-playlists with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-playlists.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-session-state with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-session-state.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function migrate-local-data with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to migrate-local-data.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sync-history with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sync-history.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Loaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+(node:31064) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)

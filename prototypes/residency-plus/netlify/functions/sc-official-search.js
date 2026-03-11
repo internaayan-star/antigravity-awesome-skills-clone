@@ -57,13 +57,27 @@ export default async function handler(req) {
     const origin = req.headers.get("origin");
     logTelemetry("sc_search_request", { endpoint: "sc-official-search", origin });
 
-    // Origin check
     const allowed = allowOrigin(origin);
     // Allow requests with no Origin header (direct curl / server-to-server) in dev
     if (origin && !allowed) {
         const status_code = 403;
         logTelemetry("origin_forbidden", { endpoint: "sc-official-search", origin, status_code, duration_ms: Date.now() - startMs });
         return json(status_code, { error: "Origin not permitted." });
+    }
+
+    // Dev Fixture Mode bypass
+    if (process.env.DEV_FIXTURE_MODE === "true") {
+        try {
+            const fs = await import("fs");
+            const path = await import("path");
+            const fixturePath = path.join(process.cwd(), "netlify/functions/fixtures/search-ambient.json");
+            const mockData = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
+            logTelemetry("sc_search_fixture", { endpoint: "sc-official-search", origin: allowed, status_code: 200, duration_ms: Date.now() - startMs });
+            return json(200, mockData, allowed);
+        } catch (e) {
+            logTelemetry("sc_search_fixture_error", { endpoint: "sc-official-search", origin: allowed, error: e.message });
+            return json(500, { error: "Fixture mode enabled but could not read fixture file." }, allowed);
+        }
     }
 
     // Rate limit by origin (or "no-origin" for direct requests)

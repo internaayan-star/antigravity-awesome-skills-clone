@@ -2727,22 +2727,46 @@
 
         if (!ok || !matches.length) {
           const genre = genreSelect.value === "all" ? "" : ` for "${genreSelect.value}"`;
-          showError(`No tracks found${genre}. Try a different genre or hit Auto-Dig to fill the library.`);
-          setStatus("READY");
-          return;
-        }
+          showError(`No tracks found${genre}. Try a different genre or hit Auto-Dig.`);
 
-        // station filter
-        const st = currentStation();
-        if (st) {
-          // already sorted by station in getFilteredLibrary()
+          // Attempt recovery from last good item if UI is blank
+          if (!currentItem) {
+            try {
+              const raw = localStorage.getItem(STORAGE_KEY_LAST);
+              if (raw) {
+                const last = JSON.parse(raw);
+                if (last && last.url) {
+                  loadItem(last, false);
+                  setStatus("DEGRADED (using last good)");
+                }
+              }
+            } catch { }
+          } else {
+            setStatus("READY");
+          }
+          return;
         }
 
         pickAndPlay(matches);
         setStatus("PLAYING");
       } catch (e) {
         showError(String(e?.message || e));
-        setStatus("READY");
+
+        // Failover to last good if we have nothing
+        if (!currentItem) {
+          try {
+            const raw = localStorage.getItem(STORAGE_KEY_LAST);
+            if (raw) {
+              const last = JSON.parse(raw);
+              if (last && last.url) {
+                loadItem(last, false);
+                setStatus("DEGRADED (failover)");
+              }
+            }
+          } catch { }
+        } else {
+          setStatus("READY");
+        }
       } finally {
         shuffleInFlight = false;
         shuffleBtn.disabled = false;

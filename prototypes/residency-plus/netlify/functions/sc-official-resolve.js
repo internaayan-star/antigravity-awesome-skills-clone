@@ -77,6 +77,21 @@ export default async function handler(req) {
         return json(status_code, { error: "Origin not permitted." });
     }
 
+    // Dev Fixture Mode bypass
+    if (process.env.DEV_FIXTURE_MODE === "true") {
+        try {
+            const fs = await import("fs");
+            const path = await import("path");
+            const fixturePath = path.join(process.cwd(), "netlify/functions/fixtures/resolve-sample.json");
+            const mockData = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
+            logTelemetry("sc_resolve_fixture", { endpoint: "sc-official-resolve", origin: allowed, status_code: 200, duration_ms: Date.now() - startMs });
+            return json(200, mockData, allowed);
+        } catch (e) {
+            logTelemetry("sc_resolve_fixture_error", { endpoint: "sc-official-resolve", origin: allowed, error: e.message });
+            return json(500, { error: "Fixture mode enabled but could not read fixture file." }, allowed);
+        }
+    }
+
     // Rate limit
     const rlKey = allowed || "no-origin";
     const rl = checkRateLimit(rlKey);

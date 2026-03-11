@@ -61,3 +61,19 @@ Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https://soundc
 {"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T04:36:02.765Z","endpoint":"sc-official-resolve","origin":null}
 {"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T04:36:03.311Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":546}
 Response with status 200 in 734 ms.
+Request from ::1: GET /.netlify/functions/sc-health
+Response with status 200 in 2 ms.
+Request from ::1: GET /.netlify/functions/sc-official-search?q=ambient&limit=2
+{"_telemetry":true,"event":"sc_search_request","timestamp":"2026-03-11T04:53:15.489Z","endpoint":"sc-official-search","origin":null}
+{"_telemetry":true,"event":"sc_search_success","timestamp":"2026-03-11T04:53:16.683Z","endpoint":"sc-official-search","origin":null,"status_code":200,"query_length":7,"upstream_status":200,"duration_ms":1194}
+Response with status 200 in 1368 ms.
+Request from ::1: GET /.netlify/functions/sc-official-resolve?url=https://soundcloud.com/haszari/ambient-leftfield-dojo-twisted-frequency
+{"_telemetry":true,"event":"sc_resolve_request","timestamp":"2026-03-11T04:53:16.903Z","endpoint":"sc-official-resolve","origin":null}
+{"_telemetry":true,"event":"sc_resolve_success","timestamp":"2026-03-11T04:53:17.724Z","endpoint":"sc-official-resolve","origin":null,"status_code":200,"upstream_status":200,"duration_ms":821}
+Response with status 200 in 990 ms.
+Γ¼Ñ Reloading function sc-official-search...
+Γ¼Ñ Reloaded function sc-official-search with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-search.mjs. Refer to https://ntl.fyi/functions-runtime for more information.
+Γ¼Ñ Reloading function sc-official-resolve...
+Γ¼Ñ Reloaded function sc-official-resolve with warnings:
+  - The function is using the legacy CommonJS format. To start using ES modules, rename the function file to sc-official-resolve.mjs. Refer to https://ntl.fyi/functions-runtime for more information.

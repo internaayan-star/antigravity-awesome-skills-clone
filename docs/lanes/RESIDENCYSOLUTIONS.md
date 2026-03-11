@@ -110,11 +110,19 @@ prototypes/residency-plus/
 
 ## Roadmap / Upcoming Slices
 
-1. **Local Dev Wrapper Hardening** (CURRENT BLOCKER)
-   - Ensure local dev token throttling is fully resilient before starting any new product slices.
-2. **Discovery Engine Upgrade**
+0. **Local Dev Reliability Hardening / Emergency Reliability Slice**
+   - Implemented `DEV_FIXTURE_MODE` and Last-Good-Result failover.
+   - Local dev is now insulated from SoundCloud token path issues.
+1. **Discovery Engine Upgrade**
    - High priority slice before Vibe Search begins.
-3. **Vibe Search**
-   - **DO NOT START UNTIL**:
-     1. Local wrapper reliability is definitively fixed and proven.
-     2. Discovery Engine Upgrade lands successfully.
+2. **Auth + cloud persistence stabilization**
+   - Ensuring Supabase and bidirectional sync are fully mature.
+3. **SaaS plans + billing + entitlements**
+   - Integrating Stripe and access control.
+4. **Analytics + retention instrumentation**
+   - Deeper user lifecycle tracking.
+5. **Vibe Search v1**
+
+### Critical Locking Rules
+- **Vibe Search** does NOT begin until **Discovery Engine Upgrade** is complete.
+- Local dev must be reliable enough to support product iteration (Fixture Mode + Last-Good enabled).
