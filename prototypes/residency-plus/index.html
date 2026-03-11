@@ -1401,6 +1401,15 @@
 
     function setProgress(msg) { progressLine.textContent = msg || ""; }
 
+    function blobFor(it) {
+      const title = (it?.title || it?.name || "").toString();
+      const user = (it?.user?.username || "").toString();
+      const tags = (it?.tag_list || "").toString();
+      const genre = (it?.genre || "").toString();
+      const desc = (it?.description || "").toString();
+      return `${title} ${user} ${genre} ${tags} ${desc}`.toLowerCase();
+    }
+
     // ===== Netlify functions =====
     let activeController = null;
     let lastReqAt = 0;
