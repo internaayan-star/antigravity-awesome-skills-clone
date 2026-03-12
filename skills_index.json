@@ -7220,6 +7220,16 @@
     "date_added": "2026-03-04"
   },
   {
+    "id": "llm-structured-output",
+    "path": "skills/llm-structured-output",
+    "category": "uncategorized",
+    "name": "llm-structured-output",
+    "description": "Get reliable JSON, enums, and typed objects from LLMs using response_format, tool_use, and schema-constrained decoding across OpenAI, Anthropic, and Google APIs.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-03-12"
+  },
+  {
     "id": "local-legal-seo-audit",
     "path": "skills/local-legal-seo-audit",
     "category": "uncategorized",
