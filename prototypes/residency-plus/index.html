@@ -967,6 +967,8 @@
             </select>
           </div>
           <button id="makeStationBtn" class="btn" disabled>Station</button>
+          <!-- Auth: small account entry point, hidden/disabled when AUTH_ENABLED=false -->
+          <button id="accountBtn" class="btn" style="opacity:.6;" disabled>Account</button>
           <button id="openDrawerBtn" class="btn dots" title="More">⋯</button>
         </div>
       </div>
@@ -1088,9 +1090,40 @@
     </div>
   </div>
 
+  <!-- Auth Modal (hidden by default; only activated when AUTH_ENABLED=true) -->
+  <div class="drawer" id="authModal"
+    style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:9000; width:90%; max-width:320px; box-shadow:0 8px 30px rgba(0,0,0,0.8);">
+    <div class="drawerHead">
+      <div class="drawerTitle" id="authTitle">Sign In</div>
+      <button class="miniBtn" id="closeAuthBtn">✕</button>
+    </div>
+    <div class="drawerBody" style="padding:16px; display:flex; flex-direction:column; gap:12px;">
+      <div id="authSignedOutState">
+        <input type="email" id="authEmail" placeholder="Email"
+          style="width:100%; box-sizing:border-box; margin-bottom:8px; padding:8px; border-radius:999px; border:1px solid rgba(170,230,255,.18); background:rgba(2,10,24,.28); color:#f8fbff;">
+        <input type="password" id="authPassword" placeholder="Password"
+          style="width:100%; box-sizing:border-box; margin-bottom:12px; padding:8px; border-radius:999px; border:1px solid rgba(170,230,255,.18); background:rgba(2,10,24,.28); color:#f8fbff;">
+        <button id="authSubmitBtn" class="btnPrimary" style="width:100%; justify-content:center;">Continue</button>
+        <div style="font-size:11px; margin-top:8px; opacity:0.7; text-align:center;" id="authToggleHint">
+          Don't have an account?
+          <a href="#" id="authToggleMode" style="color:#a855f7;">Sign Up</a>
+        </div>
+        <div id="authError" style="color:#ef4444; font-size:12px; margin-top:8px; text-align:center; display:none;"></div>
+      </div>
+      <div id="authSignedInState" style="display:none; text-align:center;">
+        <div style="margin-bottom:12px; font-size:14px;">Signed in as <strong id="authCurrentUser"></strong></div>
+        <button id="authSignOutBtn" class="btn" style="width:100%; justify-content:center;">Sign Out</button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
+    // Feature flag: auth/cloud is hard-gated and disabled by default
+    const AUTH_ENABLED = false;
+
     const MAX_TRACK_MS = 6 * 60 * 1000;
     const MIN_SET_MS = 10 * 60 * 1000;
 
@@ -1106,6 +1139,19 @@
     const STORAGE_KEY_SOURCE = "residencySource_v1";
     const STORAGE_KEY_STATION = "residencyStation_v1";
     const STORAGE_KEY_RANGE = "residencyRange_v1";
+    const STORAGE_KEY_MIGRATED = "residency_migrated_v1";
+
+    // Supabase config (filled via deploy-time env replacement)
+    const SUPA_URL = "%%SUPABASE_URL%%";
+    const SUPA_KEY = "%%SUPABASE_ANON_KEY%%";
+
+    let supabase = null;
+    let currentUser = null;
+
+    // Cloud sync hooks (no-op until AUTH_ENABLED=true and Supabase is configured)
+    let debouncedCrateSync = null;
+    let debouncedHistorySync = null;
+    let debouncedStateSync = null;
 
     const DB_NAME = "residencyDB_v16";
     const DB_STORE = "kv";
@@ -1290,6 +1336,41 @@
     }
     window.SC_OK = true;
 
+    async function getNetlifyToken() {
+      if (!AUTH_ENABLED || !supabase) return null;
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        return session?.access_token || null;
+      } catch {
+        return null;
+      }
+    }
+
+    async function callAuthedFunction(name, method, body) {
+      if (!AUTH_ENABLED || !supabase) return null;
+      const token = await getNetlifyToken();
+      if (!token) return null;
+      const url = `/.netlify/functions/${name}`;
+      const opts = {
+        method: method || "GET",
+        headers: {
+          "authorization": `Bearer ${token}`,
+          "content-type": "application/json"
+        }
+      };
+      if (body && method && method.toUpperCase() !== "GET") {
+        opts.body = JSON.stringify(body);
+      }
+      try {
+        const res = await fetch(url, opts);
+        if (!res.ok) return null;
+        const text = await res.text();
+        return text ? JSON.parse(text) : null;
+      } catch {
+        return null;
+      }
+    }
+
     async function checkHealth() {
       try {
         const r = await fetch("/.netlify/functions/sc-health");
@@ -1473,6 +1554,7 @@
     let stationId = "__all__";
     let playedMap = {};
     let playedSet = new Set();
+    let playlists = [];
 
     // anti-skip / anti-double-shuffle
     let shuffleInFlight = false;
@@ -1675,7 +1757,8 @@
     function addToHistory(item) {
       if (!item?.url) return;
       if (history.length && history[0].url === item.url) return;
-      history.unshift(item);
+      const withTs = { ...item, playedAt: item.playedAt || new Date().toISOString() };
+      history.unshift(withTs);
       if (history.length > 250) history = history.slice(0, 250);
       saveJsonLS(STORAGE_KEY_HISTORY, history);
       if (typeof debouncedHistorySync === "function") debouncedHistorySync();
@@ -2581,6 +2664,327 @@
 
       setStatus("READY");
       await doShuffle(false);
+    });
+
+    // ===== Auth + Cloud Sync Wiring (gated by AUTH_ENABLED) =====
+    document.addEventListener("DOMContentLoaded", () => {
+      const accountBtn = document.getElementById("accountBtn");
+      const authModal = document.getElementById("authModal");
+      const closeAuthBtn = document.getElementById("closeAuthBtn");
+      const authSignedOutState = document.getElementById("authSignedOutState");
+      const authSignedInState = document.getElementById("authSignedInState");
+      const authEmail = document.getElementById("authEmail");
+      const authPassword = document.getElementById("authPassword");
+      const authSubmitBtn = document.getElementById("authSubmitBtn");
+      const authToggleHint = document.getElementById("authToggleHint");
+      const authError = document.getElementById("authError");
+      const authCurrentUser = document.getElementById("authCurrentUser");
+      const authSignOutBtn = document.getElementById("authSignOutBtn");
+
+      if (!AUTH_ENABLED) {
+        if (accountBtn) {
+          accountBtn.style.display = "none";
+        }
+        return;
+      }
+
+      // Initialize Supabase client (if configured)
+      try {
+        if (window.supabase && SUPA_URL && !SUPA_URL.includes("%%") && SUPA_KEY && !SUPA_KEY.includes("%%")) {
+          supabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+        }
+      } catch (e) {
+        console.warn("Supabase init failed", e);
+      }
+
+      if (!supabase) {
+        if (accountBtn) {
+          accountBtn.style.display = "none";
+        }
+        return;
+      }
+
+      if (accountBtn) {
+        accountBtn.disabled = false;
+        accountBtn.style.opacity = "1";
+      }
+
+      let isSignUpMode = false;
+
+      function resetAuthUI() {
+        if (!authEmail || !authPassword || !authError || !authToggleHint) return;
+        authError.style.display = "none";
+        authError.style.color = "#ef4444";
+        authEmail.value = "";
+        authPassword.value = "";
+        isSignUpMode = false;
+        authTitle.textContent = "Sign In";
+        authToggleHint.innerHTML = "Don't have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign Up</a>";
+        const t = document.getElementById("authToggleMode");
+        if (t) t.onclick = toggleAuthMode;
+      }
+
+      function toggleAuthMode(e) {
+        if (e) e.preventDefault();
+        if (!authToggleHint) return;
+        isSignUpMode = !isSignUpMode;
+        authError.style.display = "none";
+        if (isSignUpMode) {
+          authTitle.textContent = "Create Account";
+          authToggleHint.innerHTML = "Already have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign In</a>";
+        } else {
+          authTitle.textContent = "Sign In";
+          authToggleHint.innerHTML = "Don't have an account? <a href='#' id='authToggleMode' style='color:#a855f7;'>Sign Up</a>";
+        }
+        const t = document.getElementById("authToggleMode");
+        if (t) t.onclick = toggleAuthMode;
+      }
+
+      if (accountBtn && authModal) {
+        accountBtn.onclick = () => {
+          resetAuthUI();
+          authModal.style.display = "block";
+        };
+      }
+
+      if (closeAuthBtn && authModal) {
+        closeAuthBtn.onclick = () => {
+          authModal.style.display = "none";
+        };
+      }
+
+      if (authSignOutBtn && authModal) {
+        authSignOutBtn.onclick = async () => {
+          try {
+            await supabase.auth.signOut();
+          } catch { }
+          authModal.style.display = "none";
+        };
+      }
+
+      if (authSubmitBtn && authEmail && authPassword && authError) {
+        authSubmitBtn.onclick = async () => {
+          const email = authEmail.value.trim();
+          const password = authPassword.value;
+          if (!email || !password) {
+            authError.textContent = "Email and password required";
+            authError.style.display = "block";
+            return;
+          }
+          authSubmitBtn.disabled = true;
+          authSubmitBtn.textContent = "Working...";
+          authError.style.display = "none";
+          try {
+            if (isSignUpMode) {
+              const { error } = await supabase.auth.signUp({ email, password });
+              if (error) throw error;
+              authError.style.color = "#22c55e";
+              authError.textContent = "Check your email to confirm, then sign in.";
+              authError.style.display = "block";
+              isSignUpMode = false;
+            } else {
+              const { error } = await supabase.auth.signInWithPassword({ email, password });
+              if (error) throw error;
+              if (authModal) authModal.style.display = "none";
+            }
+          } catch (err) {
+            authError.style.color = "#ef4444";
+            authError.textContent = err.message || "Authentication failed.";
+            authError.style.display = "block";
+          } finally {
+            authSubmitBtn.disabled = false;
+            authSubmitBtn.textContent = "Continue";
+          }
+        };
+      }
+
+      async function syncCrateToCloud() {
+        if (!AUTH_ENABLED || !supabase || !crate || crate.length === 0) return;
+        await callAuthedFunction("sync-crate", "POST", {
+          tracks: crate.map(it => ({
+            url: it.url,
+            title: it.title,
+            artist: it.artist,
+            bucket: it.bucket,
+            kind: it.kind,
+            durationMs: it.durationMs,
+            savedAt: it.savedAt || new Date().toISOString()
+          }))
+        });
+      }
+
+      async function syncHistoryToCloud() {
+        if (!AUTH_ENABLED || !supabase || !history || history.length === 0) return;
+        await callAuthedFunction("sync-history", "POST", {
+          tracks: history.slice(0, 200).map(it => ({
+            url: it.url,
+            title: it.title,
+            artist: it.artist,
+            bucket: it.bucket,
+            playedAt: it.playedAt || new Date().toISOString()
+          }))
+        });
+      }
+
+      async function syncSessionStateToCloud() {
+        if (!AUTH_ENABLED || !supabase) return;
+        await callAuthedFunction("sync-session-state", "POST", {
+          genre: genreSelect.value,
+          source: sourceSelect.value,
+          dig_range: Number(obscureRange.value || 70),
+          station_id: stationId || "__all__"
+        });
+      }
+
+      async function syncPlaylistsToCloud() {
+        if (!AUTH_ENABLED || !supabase || !playlists || playlists.length === 0) return;
+        await callAuthedFunction("sync-playlists", "POST", { playlists });
+      }
+
+      debouncedCrateSync = debounce(syncCrateToCloud, 800);
+      debouncedHistorySync = debounce(syncHistoryToCloud, 1200);
+      debouncedStateSync = debounce(syncSessionStateToCloud, 800);
+
+      async function fetchCloudData(token) {
+        // Crate
+        try {
+          const cloudCrate = await callAuthedFunction("sync-crate", "GET");
+          if (cloudCrate && cloudCrate.hasData && Array.isArray(cloudCrate.items)) {
+            const byUrl = new Map();
+            for (const it of crate) { if (it.url) byUrl.set(it.url, it); }
+            for (const it of cloudCrate.items) {
+              if (!it.url) continue;
+              if (!byUrl.has(it.url)) {
+                byUrl.set(it.url, {
+                  url: it.url,
+                  title: it.title || "",
+                  artist: it.artist || "",
+                  bucket: it.bucket || "other",
+                  kind: it.kind || "track",
+                  durationMs: it.durationMs || 0,
+                  savedAt: it.savedAt
+                });
+              }
+            }
+            crate = Array.from(byUrl.values());
+            saveJsonLS(STORAGE_KEY_CRATE, crate);
+            renderList(crateList, crate, "crate");
+          }
+        } catch { }
+
+        // History
+        try {
+          const cloudHist = await callAuthedFunction("sync-history", "GET");
+          if (cloudHist && cloudHist.hasData && Array.isArray(cloudHist.items)) {
+            const seen = new Set(history.map(h => h.url));
+            const merged = history.slice();
+            for (const it of cloudHist.items) {
+              if (!it.url || seen.has(it.url)) continue;
+              merged.push({
+                url: it.url,
+                title: it.title || "",
+                artist: it.artist || "",
+                bucket: it.bucket || "other",
+                playedAt: it.playedAt || new Date().toISOString()
+              });
+              seen.add(it.url);
+            }
+            history = merged.slice(-250);
+            saveJsonLS(STORAGE_KEY_HISTORY, history);
+            renderList(historyList, history, "history");
+          }
+        } catch { }
+
+        // Session state (only hydrate if local is default-ish)
+        try {
+          const cloudState = await callAuthedFunction("sync-session-state", "GET");
+          if (cloudState && cloudState.hasData && cloudState.state) {
+            const localGenre = genreSelect.value;
+            const localSource = sourceSelect.value;
+            const localRange = Number(obscureRange.value || 70);
+            const localStation = stationId || "__all__";
+            const looksDefault =
+              localGenre === "all" &&
+              localSource === "both" &&
+              localRange === 70 &&
+              localStation === "__all__";
+            if (looksDefault) {
+              const s = cloudState.state;
+              if (s.genre && genreSelect.querySelector(`option[value='${s.genre}']`)) genreSelect.value = s.genre;
+              if (s.source && (s.source === "both" || s.source === "track" || s.source === "set")) sourceSelect.value = s.source;
+              if (typeof s.dig_range === "number") obscureRange.value = String(s.dig_range);
+              if (s.station_id) stationId = s.station_id;
+              try {
+                localStorage.setItem(STORAGE_KEY_GENRE, genreSelect.value);
+                localStorage.setItem(STORAGE_KEY_SOURCE, sourceSelect.value);
+                localStorage.setItem(STORAGE_KEY_RANGE, obscureRange.value);
+                localStorage.setItem(STORAGE_KEY_STATION, stationId);
+              } catch { }
+              resetContext();
+            }
+          }
+        } catch { }
+
+        // Playlists: hydrate into in-memory structure (no UI yet)
+        try {
+          const cloudPlaylists = await callAuthedFunction("sync-playlists", "GET");
+          if (cloudPlaylists && cloudPlaylists.hasData && Array.isArray(cloudPlaylists.playlists)) {
+            playlists = cloudPlaylists.playlists;
+          }
+        } catch { }
+      }
+
+      async function migrateToCloud(token) {
+        if (!AUTH_ENABLED || !supabase) return;
+        try {
+          await callAuthedFunction("migrate-local-data", "POST", {
+            crate: crate || [],
+            session: {
+              genre: genreSelect.value,
+              source: sourceSelect.value,
+              dig_range: Number(obscureRange.value || 70),
+              station_id: stationId || "__all__"
+            },
+            playlists: playlists || []
+          });
+        } catch { }
+      }
+
+      supabase.auth.onAuthStateChange(async (event, session) => {
+        const user = session?.user || null;
+        currentUser = user;
+
+        if (user) {
+          if (accountBtn) accountBtn.textContent = "Account";
+          if (authSignedOutState) authSignedOutState.style.display = "none";
+          if (authSignedInState) authSignedInState.style.display = "block";
+          if (authCurrentUser) authCurrentUser.textContent = user.email || "";
+
+          if (event === "SIGNED_IN") {
+            const hasLocalData =
+              (crate && crate.length > 0) ||
+              (history && history.length > 0) ||
+              (playlists && playlists.length > 0);
+            const migratedFlag = localStorage.getItem(STORAGE_KEY_MIGRATED);
+            if (hasLocalData && !migratedFlag) {
+              const want = window.confirm("Signed in. Migrate your existing saved crate and settings to your account?");
+              if (want) {
+                await migrateToCloud(session.access_token);
+              }
+              localStorage.setItem(STORAGE_KEY_MIGRATED, "true");
+            }
+            await fetchCloudData(session.access_token);
+            await syncCrateToCloud();
+            await syncHistoryToCloud();
+            await syncSessionStateToCloud();
+            await syncPlaylistsToCloud();
+          }
+        } else {
+          if (accountBtn) accountBtn.textContent = "Sign In";
+          if (authSignedOutState) authSignedOutState.style.display = "block";
+          if (authSignedInState) authSignedInState.style.display = "none";
+        }
+      });
     });
   </script>
 </body>

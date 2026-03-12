@@ -5,7 +5,13 @@
 import { allowOrigin, json } from "./lib/sc-auth-lib.js";
 import { getJwtUser, supabaseRestCall } from "./sc-supabase-lib.js";
 
+const AUTH_ENABLED = process.env.AUTH_ENABLED === "true";
+
 export default async function handler(req) {
+    if (!AUTH_ENABLED) {
+        const origin = allowOrigin(req.headers.get("origin"));
+        return json(200, { auth_enabled: false }, origin);
+    }
     if (req.method === "OPTIONS") {
         const origin = allowOrigin(req.headers.get("origin"));
         return new Response("", { status: 204, headers: { "access-control-allow-origin": origin || "*", "access-control-allow-headers": "content-type, authorization", "access-control-allow-methods": "GET,OPTIONS" } });

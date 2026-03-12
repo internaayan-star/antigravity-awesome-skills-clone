@@ -6,6 +6,8 @@
 import { allowOrigin, json } from "./lib/sc-auth-lib.js";
 import { getJwtUser, supabaseRestCall } from "./sc-supabase-lib.js";
 
+const AUTH_ENABLED = process.env.AUTH_ENABLED === "true";
+
 export default async function handler(req) {
     if (req.method === "OPTIONS") {
         const origin = allowOrigin(req.headers.get("origin"));
@@ -13,6 +15,7 @@ export default async function handler(req) {
     }
 
     const origin = allowOrigin(req.headers.get("origin"));
+    if (!AUTH_ENABLED) return json(200, { auth_enabled: false }, origin);
     if (!origin && req.headers.get("origin")) return json(403, { error: "Origin not permitted." });
     if (req.method !== "POST" && req.method !== "GET") return json(405, { error: "Method not allowed" }, origin);
 
