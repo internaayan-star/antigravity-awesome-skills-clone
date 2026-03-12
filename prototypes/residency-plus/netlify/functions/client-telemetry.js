@@ -38,16 +38,21 @@ export default async function handler(req) {
       return json(400, { error: "Missing event name" }, origin);
     }
 
-    // Forward to Axiom via existing logger.
-    logTelemetry(event, {
-      origin,
-      ...payload,
-    });
+    // Forward to Axiom via existing logger. This must never affect UX.
+    try {
+      logTelemetry(event, {
+        origin,
+        ...payload,
+      });
+    } catch (e) {
+      // Swallow telemetry forwarding errors; respond success to client.
+    }
 
     return json(200, { ok: true }, origin);
   } catch (err) {
-    // Do not break the app on telemetry failure.
-    return json(500, { error: err.message || "Telemetry failed" }, origin);
+    // Do not break the app on telemetry failure. Treat malformed payloads
+    // or missing body as a soft failure.
+    return json(200, { ok: false }, origin);
   }
 }
 
