@@ -10,7 +10,7 @@
     "index": "node tools/scripts/run-python.js tools/scripts/generate_index.py",
     "readme": "node tools/scripts/run-python.js tools/scripts/update_readme.py",
     "sync:metadata": "node tools/scripts/run-python.js tools/scripts/sync_repo_metadata.py",
-    "chain": "npm run validate && npm run index && npm run readme",
+    "chain": "npm run validate && npm run index && node tools/scripts/copy-file.js skills_index.json data/skills_index.json && npm run readme",
     "sync:all": "npm run sync:metadata && npm run chain",
     "catalog": "node tools/scripts/build-catalog.js",
     "build": "npm run chain && npm run catalog",

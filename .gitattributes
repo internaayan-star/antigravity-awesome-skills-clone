@@ -1,0 +1,8 @@
+# Force LF for generated files to avoid CI drift on Windows
+README.md text eol=lf
+CATALOG.md text eol=lf
+skills_index.json text eol=lf
+data/skills_index.json text eol=lf
+data/catalog.json text eol=lf
+data/bundles.json text eol=lf
+data/aliases.json text eol=lf
