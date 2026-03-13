@@ -4,7 +4,7 @@ Generated at: 2026-02-08T00:00:00.000Z
 
 Total skills: 1252
 
-## architecture (80)
+## architecture (81)
 
 | Skill | Description | Tags | Triggers |
 | --- | --- | --- | --- |
@@ -40,6 +40,7 @@ Total skills: 1252
 | `doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision do... | doc, coauthoring | doc, coauthoring, users, through, structured, co, authoring, documentation, user, wants, write, proposals |
 | `docs-architect` | Creates comprehensive technical documentation from existing codebases. Analyzes architecture, design patterns, and implementation details to produce long-for... | docs | docs, architect, creates, technical, documentation, existing, codebases, analyzes, architecture, details, produce, long |
 | `domain-driven-design` | Plan and route Domain-Driven Design work from strategic modeling to tactical implementation and evented architecture patterns. | [ddd, domain, bounded-context, architecture] | [ddd, domain, bounded-context, architecture], driven, plan, route, work, strategic, modeling, tactical, evented |
+| `electron-development` | Master Electron desktop app development with secure IPC, contextIsolation, preload scripts, multi-process architecture, electron-builder packaging, code sign... | electron | electron, development, desktop, app, secure, ipc, contextisolation, preload, scripts, multi, process, architecture |
 | `elixir-pro` | Write idiomatic Elixir code with OTP patterns, supervision trees, and Phoenix LiveView. Masters concurrency, fault tolerance, and distributed systems. | elixir | elixir, pro, write, idiomatic, code, otp, supervision, trees, phoenix, liveview, masters, concurrency |
 | `error-detective` | Search logs and codebases for error patterns, stack traces, and anomalies. Correlates errors across systems and identifies root causes. | error, detective | error, detective, search, logs, codebases, stack, traces, anomalies, correlates, errors, identifies, root |
 | `error-handling-patterns` | Master error handling patterns across languages including exceptions, Result types, error propagation, and graceful degradation to build resilient applicatio... | error, handling | error, handling, languages, including, exceptions, result, types, propagation, graceful, degradation, resilient, applications |

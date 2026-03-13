@@ -11598,6 +11598,30 @@
       "path": "skills/earllm-build/SKILL.md"
     },
     {
+      "id": "electron-development",
+      "name": "electron-development",
+      "description": "Master Electron desktop app development with secure IPC, contextIsolation, preload scripts, multi-process architecture, electron-builder packaging, code signing, and auto-update.",
+      "category": "architecture",
+      "tags": [
+        "electron"
+      ],
+      "triggers": [
+        "electron",
+        "development",
+        "desktop",
+        "app",
+        "secure",
+        "ipc",
+        "contextisolation",
+        "preload",
+        "scripts",
+        "multi",
+        "process",
+        "architecture"
+      ],
+      "path": "skills/electron-development/SKILL.md"
+    },
+    {
       "id": "elixir-pro",
       "name": "elixir-pro",
       "description": "Write idiomatic Elixir code with OTP patterns, supervision trees, and Phoenix LiveView. Masters concurrency, fault tolerance, and distributed systems.",
