@@ -42,16 +42,6 @@ jobs:
           test -f README.md
           test -f CONTRIBUTING.md
 
-      - name: Set reproducible timestamp
-        run: |
-          TS=$(grep -oP 'updated_at=\K[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+00:00' README.md 2>/dev/null | head -1)
-          if [ -n "$TS" ]; then
-            EPOCH=$(date -d "$TS" +%s 2>/dev/null || git show -s --format=%ct HEAD)
-          else
-            EPOCH=$(git show -s --format=%ct HEAD)
-          fi
-          echo "SOURCE_DATE_EPOCH=$EPOCH" >> $GITHUB_ENV
-
       - name: 🔍 Validate Skills (Soft Mode)
         run: |
           npm run validate

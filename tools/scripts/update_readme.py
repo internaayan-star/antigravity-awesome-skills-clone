@@ -113,18 +113,8 @@ def load_metadata(base_dir: str, repo: str = GITHUB_REPO) -> dict:
         if compact.isdigit():
             current_stars = int(compact)
 
-    # Preserve existing updated_at for reproducible builds (avoids drift in CI)
-    existing_updated_at = None
-    sync_match = re.search(r"updated_at=([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+00:00)", current_readme)
-    if sync_match:
-        existing_updated_at = sync_match.group(1)
-
     live_stars = fetch_star_count(repo)
-    # In CI (SOURCE_DATE_EPOCH set), use existing stars for reproducible output
-    if os.environ.get("SOURCE_DATE_EPOCH") and current_stars is not None:
-        total_stars = current_stars
-    else:
-        total_stars = live_stars if live_stars is not None else current_stars or 0
+    total_stars = live_stars if live_stars is not None else current_stars or 0
 
     return {
         "repo": repo,
@@ -135,14 +125,7 @@ def load_metadata(base_dir: str, repo: str = GITHUB_REPO) -> dict:
         "star_badge_count": format_star_badge_count(total_stars),
         "star_milestone": format_star_milestone(total_stars),
         "star_celebration": format_star_celebration(total_stars),
-        "updated_at": (
-            datetime.fromtimestamp(
-                int(os.environ.get("SOURCE_DATE_EPOCH", 0)),
-                tz=timezone.utc,
-            ).replace(microsecond=0).isoformat()
-            if os.environ.get("SOURCE_DATE_EPOCH")
-            else (existing_updated_at or datetime.now(timezone.utc).replace(microsecond=0).isoformat())
-        ),
+        "updated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "used_live_star_count": live_stars is not None,
     }
 
