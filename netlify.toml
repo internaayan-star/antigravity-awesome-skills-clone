@@ -1,0 +1,5 @@
+[build]
+  base = "prototypes/residency-plus"
+  publish = "."
+  functions = "netlify/functions"
+
