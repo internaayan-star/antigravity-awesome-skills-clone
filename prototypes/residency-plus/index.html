@@ -214,10 +214,11 @@
     .right {
       min-width: 0;
       flex: 1 1 0;
+      min-width: 220px;
     }
     #topbar-auth-slot {
       flex-shrink: 0;
-      max-width: 180px;
+      max-width: 160px;
       min-width: 0;
     }
     #topbar-auth-slot .btn,
@@ -1034,7 +1035,7 @@
           <button id="openDrawerBtn" class="btn dots" title="More">⋯</button>
         </div>
         <!-- Auth: permanent static markup. Do not remove/replace #accountBtn or slot children in JS. -->
-        <span id="topbar-auth-slot" style="display:inline-flex; flex-shrink:0; align-items:center; gap:10px; max-width:180px; min-width:0;">
+        <span id="topbar-auth-slot" style="display:inline-flex; flex-shrink:0; align-items:center; gap:10px; max-width:160px; min-width:0;">
           <button id="accountBtn" class="btn" type="button">Sign In</button>
         </span>
       </div>
@@ -4207,6 +4208,10 @@
         accountBtn.onclick = () => {
           resetAuthUI();
           checkRecoveryHash();
+          if (billingMsg) {
+            billingMsg.textContent = "";
+            billingMsg.style.display = "none";
+          }
           if (currentUser) {
             console.log("[Residency+] Account opened signed-in", { currentPlan, currentEntitlements: !!currentEntitlements });
             refreshPlanAndEntitlements();
@@ -4385,7 +4390,7 @@
             upgradeBtn.textContent = "Upgrade to RESIDENCY+";
           }, SAFETY_MS);
           const overallTimeout = new Promise((_, reject) => setTimeout(() => reject(new Error("Upgrade timed out")), OVERALL_MS));
-          const SESSION_MS = 5000;
+          const SESSION_MS = 12000;
           const run = async () => {
             let session;
             console.log("[Upgrade] about to get session");
