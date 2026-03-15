@@ -433,6 +433,7 @@ This collection would not be possible without the incredible work of the Claude 
 - **[uberSKILLS](https://github.com/uberskillsdev/uberSKILLS)**: Design, test, and deploy Claude Code Agent Skills through a visual, AI-assisted workflow.
 - **[christopherlhammer11-ai/tool-use-guardian](https://github.com/christopherlhammer11-ai/tool-use-guardian)**: Source for the Tool Use Guardian skill — tool-call reliability wrapper with retries, recovery, and failure classification.
 - **[christopherlhammer11-ai/recallmax](https://github.com/christopherlhammer11-ai/recallmax)**: Source for the RecallMax skill — long-context memory, summarization, and conversation compression for agents.
+- **[choppawave-beep/web-architect](https://github.com/choppawave-beep/web-architect)**: 4-agent design-to-code orchestrator skill — full design-to-code pipelines with Constrained Generation, 8 project profiles, and 5-dimension quality scoring (MIT).
 
 ### Inspirations
 
