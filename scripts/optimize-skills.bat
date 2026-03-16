@@ -1,98 +1,84 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal EnableDelayedExpansion
 
-echo Optimizing Antigravity skills folder to prevent agent overload...
+:: --- CONFIGURATION ---
+set "BASE_DIR=%USERPROFILE%\.gemini\antigravity"
+set "SKILLS_DIR=%BASE_DIR%\skills"
+set "LIBRARY_DIR=%BASE_DIR%\skills_library"
+set "ARCHIVE_DIR=%BASE_DIR%\skills_archive"
 
-:: Define paths
-set "SKILLS_DIR=%USERPROFILE%\.gemini\antigravity\skills"
-set "ARCHIVE_DIR=%USERPROFILE%\.gemini\antigravity\skills_archive"
+echo Optimizing Antigravity skills...
 
-:: 1. Rename the bloated folder so the agent stops looking at it
-set "CURRENT_ARCHIVE_NAME="
-if exist "%SKILLS_DIR%" (
-    if exist "%ARCHIVE_DIR%" (
-        echo Archive folder already exists. Appending timestamp...
-        set "timestamp=%date:~10,4%%date:~4,2%%date:~7,2%_%time:~0,2%%time:~3,2%%time:~6,2%"
-        set "timestamp=!timestamp: =0!"
-        set "CURRENT_ARCHIVE_NAME=skills_archive_!timestamp!"
-        echo Archiving existing skills to !CURRENT_ARCHIVE_NAME!...
-        ren "%SKILLS_DIR%" "!CURRENT_ARCHIVE_NAME!"
-    ) else (
-        set "CURRENT_ARCHIVE_NAME=skills_archive"
-        echo Archiving existing skills to skills_archive...
-        ren "%SKILLS_DIR%" "skills_archive"
+:: --- LIBRARY INITIALIZATION ---
+:: If no library exists, create one from current skills or archives.
+if not exist "%LIBRARY_DIR%" (
+    echo Initializing skills library...
+    mkdir "%LIBRARY_DIR%" 2>nul
+    
+    :: 1. Migrate from current skills folder
+    if exist "%SKILLS_DIR%" (
+        echo   + Moving current skills to library...
+        robocopy "%SKILLS_DIR%" "%LIBRARY_DIR%" /E /MOVE /NFL /NDL /NJH /NJS >nul 2>&1
+    )
+    
+    :: 2. Merge from all archives
+    for /f "delims=" %%i in ('dir /b /ad "%BASE_DIR%\skills_archive*" 2^>nul') do (
+        echo   + Merging skills from %%i...
+        robocopy "%BASE_DIR%\%%i" "%LIBRARY_DIR%" /E /NFL /NDL /NJH /NJS >nul 2>&1
     )
 )
 
-:: 2. Create a fresh, empty global skills folder
+:: --- PREPARE ACTIVE FOLDER ---
 echo Creating fresh skills folder...
-mkdir "%SKILLS_DIR%"
+if exist "%SKILLS_DIR%" (
+    :: Archive the current (probably bloated) folder before wiping
+    set "ts=%date:~10,4%%date:~4,2%%date:~7,2%_%time:~0,2%%time:~3,2%%time:~6,2%"
+    set "ts=!ts: =0!"
+    robocopy "%SKILLS_DIR%" "%ARCHIVE_DIR%_!ts!" /E /MOVE /NFL /NDL /NJH /NJS >nul 2>&1
+)
+mkdir "%SKILLS_DIR%" 2>nul
 
-:: 3. Determine which skills to copy
-echo Determining skills to copy...
-
-:: Default list if no arguments and python fails
-set "DEFAULT_ESSENTIALS=api-security-best-practices auth-implementation-patterns backend-security-coder frontend-security-coder cc-skill-security-review pci-compliance frontend-design react-best-practices react-patterns nextjs-best-practices tailwind-patterns form-cro seo-audit ui-ux-pro-max 3d-web-experience canvas-design mobile-design scroll-experience senior-fullstack frontend-developer backend-dev-guidelines api-patterns database-design stripe-integration agent-evaluation langgraph mcp-builder prompt-engineering ai-agents-architect rag-engineer llm-app-patterns rag-implementation prompt-caching context-window-management langfuse"
-
+:: --- BUNDLE EXPANSION ---
 set "ESSENTIALS="
-set "QUERIES=Essentials"
-if "%~1"=="" goto :process_skills
+:: Important: Don't echo %* or !QUERIES! directly if they might contain &
+echo Expanding bundles...
 
-:: Capture all arguments
-set "QUERIES=%*"
-
-:process_skills
-:: Try to use the python helper
 python --version >nul 2>&1
-if errorlevel 1 goto :fallback
-echo Using Python helper for bundle expansion...
-python "%~dp0..\tools\scripts\get-bundle-skills.py" !QUERIES! > "%TEMP%\skills_list.txt"
-if not exist "%TEMP%\skills_list.txt" goto :fallback
-set /p ESSENTIALS=<"%TEMP%\skills_list.txt"
-del "%TEMP%\skills_list.txt"
-
-:fallback
-:: Fallback if python failed or returned empty
-if not "!ESSENTIALS!"=="" goto :display_skills
-if "!QUERIES!"=="Essentials" (
-    echo Using default essentials list (Python unavailable)...
-    set "ESSENTIALS=%DEFAULT_ESSENTIALS%"
-) else (
-    echo Using provided arguments as literal skill names...
-    set "ESSENTIALS=!QUERIES!"
-)
-
-:display_skills
-echo Skills to restore: !ESSENTIALS!
-echo.
-
-:: If we just created an archive, use it. Otherwise, find the latest one.
-set "SRC="
-if not "!CURRENT_ARCHIVE_NAME!"=="" (
-    set "SRC=%USERPROFILE%\.gemini\antigravity\!CURRENT_ARCHIVE_NAME!"
-) else (
-    :: Find the most recent archive (ordered by name descending, so timestamped ones come first)
-    for /f "delims=" %%i in ('dir /b /ad /o-n "%USERPROFILE%\.gemini\antigravity\skills_archive*"') do (
-        set "SRC=%USERPROFILE%\.gemini\antigravity\%%i"
-        goto :found_src
+if not errorlevel 1 (
+    :: Safely pass all arguments to Python
+    python "%~dp0..\tools\scripts\get-bundle-skills.py" %* > "%TEMP%\skills_list.txt" 2>nul
+    
+    :: If no arguments, expand Essentials
+    if "%~1"=="" python "%~dp0..\tools\scripts\get-bundle-skills.py" Essentials > "%TEMP%\skills_list.txt" 2>nul
+    
+    if exist "%TEMP%\skills_list.txt" (
+        set /p ESSENTIALS=<"%TEMP%\skills_list.txt"
+        del "%TEMP%\skills_list.txt"
     )
 )
-:found_src
 
-if not exist "%SRC%" (
-    echo ERROR: Could not find source skills directory.
-    exit /b 1
-)
-
-for %%s in (!ESSENTIALS!) do (
-    if exist "!SRC!\%%s" (
-        echo   + %%s
-        xcopy "!SRC!\%%s" "!SKILLS_DIR!\%%s" /E /I /Y >nul
+:: Fallback if Python fails or returned empty
+if "!ESSENTIALS!"=="" (
+    if "%~1"=="" (
+        echo Using default essentials...
+        set "ESSENTIALS=api-security-best-practices auth-implementation-patterns backend-security-coder frontend-security-coder cc-skill-security-review pci-compliance frontend-design react-best-practices react-patterns nextjs-best-practices tailwind-patterns form-cro seo-audit ui-ux-pro-max 3d-web-experience canvas-design mobile-design scroll-experience senior-fullstack frontend-developer backend-dev-guidelines api-patterns database-design stripe-integration agent-evaluation langgraph mcp-builder prompt-engineering ai-agents-architect rag-engineer llm-app-patterns rag-implementation prompt-caching context-window-management langfuse"
     ) else (
-        echo   - %%s (not found in archive)
+        :: Just use the literal arguments
+        set "ESSENTIALS=%*"
+    )
+)
+
+:: --- RESTORATION ---
+echo Restoring selected skills...
+for %%s in (!ESSENTIALS!) do (
+    if exist "%LIBRARY_DIR%\%%s" (
+        echo   + %%s
+        robocopy "%LIBRARY_DIR%\%%s" "%SKILLS_DIR%\%%s" /E /NFL /NDL /NJH /NJS >nul 2>&1
+    ) else (
+        echo   - %%s (not found in library)
     )
 )
 
 echo.
-echo Done! Context window overload should be resolved.
+echo Done! Antigravity is now optimized.
 pause
