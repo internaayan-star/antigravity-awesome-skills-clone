@@ -344,17 +344,13 @@ That guide includes:
 - the storage folders that usually need to be cleared
 - an optional batch helper adapted from [issue #274](https://github.com/sickn33/antigravity-awesome-skills/issues/274)
 
-### Fixing Agent Overload (Windows/Linux/macOS)
+### Fixing Agent Overload (Activation Scripts)
 
-If your agent is struggling with context window limits due to too many loaded skills, run the optimization script located in the `scripts/` folder. This will archive your bloated skills directory and selectively copy back only the most critical dev/security/AI skills to stabilize the agent.
+If your agent is struggling with context window limits due to too many loaded skills, use the activation scripts. These scripts use a "Library Mode" where all 1,200+ skills are kept in a separate `skills_library` folder, and only a curated set (or your chosen bundles) are "activated" into the main `skills` folder.
 
 #### Windows
 
-Run without arguments for "Essentials", or pass bundle names/skills:
-
-```powershell
-.\scripts\optimize-skills.bat "Web Wizard" "Security Developer"
-```
+Run from the repository root:# Activate default "Essentials"
 
 ## Web App
 
