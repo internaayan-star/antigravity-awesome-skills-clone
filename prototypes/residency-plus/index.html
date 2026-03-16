@@ -1135,18 +1135,6 @@
                 <button id="clearRepeatsBtn" class="btn">Reset No-Repeats</button>
               </div>
 
-              <div class="row" id="iaBetaSection" style="display:none; flex-direction:column; gap:6px; margin-top:6px;">
-                <div class="mini" style="font-weight:600;">Internet Archive Beta</div>
-                <div class="mini" style="opacity:.8;">
-                  Internet Archive beta opens externally and does not affect Shuffle yet.
-                </div>
-                <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-                  <button type="button" id="iaBetaSearchBtn" class="miniBtn">Search IA (beta)</button>
-                  <span class="mini" id="iaBetaStatus" style="opacity:.75;"></span>
-                </div>
-                <ul class="list" id="iaBetaResults"></ul>
-              </div>
-
               <div class="row">
                 <div class="mini" style="opacity:.85">
                   Auto-dig is automatic per filter (Auto-Dig just forces a refill).
@@ -1166,6 +1154,18 @@
                   <button type="button" id="sourcesSavePresetBtn" class="miniBtn" title="Save current selection as preset">Save preset</button>
                   <button type="button" id="sourcesDeletePresetBtn" class="miniBtn" title="Delete a saved preset">Delete preset</button>
                 </div>
+              </div>
+
+              <div class="row" id="iaBetaSection" style="display:none; flex-direction:column; gap:6px; margin-top:6px;">
+                <div class="mini" style="font-weight:600;">Internet Archive Beta</div>
+                <div class="mini" style="opacity:.8;">
+                  Internet Archive beta opens externally and does not affect Shuffle yet.
+                </div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+                  <button type="button" id="iaBetaSearchBtn" class="miniBtn">Search IA (beta)</button>
+                  <span class="mini" id="iaBetaStatus" style="opacity:.75;"></span>
+                </div>
+                <ul class="list" id="iaBetaResults"></ul>
               </div>
 
               <div class="row">
@@ -1327,7 +1327,7 @@
     const STORAGE_KEY_SOURCE_PRESETS = "residencySourcePresets_v1";
 
     // Feature flags
-    const INTERNET_ARCHIVE_BETA_ENABLED = false;
+    const INTERNET_ARCHIVE_BETA_ENABLED = true;
 
     /** Discovery source ids; must match backend SOURCE_IDS. */
     const DISCOVERY_SOURCE_IDS = ["soundcloud", "youtube", "internet_archive", "bandcamp", "vimeo", "tiktok", "instagram", "uploads"];
