@@ -4428,17 +4428,15 @@
         iaBetaSection.style.display = "flex";
         iaBetaSearchBtn.onclick = async () => {
           try {
-            const activeSources = ["internet_archive"];
             let q = "";
             const vibeQ = vibeInput ? sanitizeVibePrompt(vibeInput.value) : "";
             if (vibeQ) q = vibeQ;
-            else if (searchLocalEl && searchLocalEl.value.trim()) q = searchLocalEl.value.trim();
             else if (genreSelect && genreSelect.value && genreSelect.value !== "all") q = genreSelect.value;
             if (!q) {
-              iaBetaStatus.textContent = "Add a vibe, search text, or choose a genre first.";
+              iaBetaStatus.textContent = "Enter a vibe or choose a genre first.";
               return;
             }
-            console.log("[IA beta] search submitted", { q, activeSources });
+            console.log("[IA beta] search submitted", { q });
             iaBetaStatus.textContent = "Searching IA…";
             iaBetaResults.innerHTML = "";
             const url = `/.netlify/functions/search-internet-archive?q=${encodeURIComponent(q)}&limit=24`;
