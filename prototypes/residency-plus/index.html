@@ -1135,6 +1135,18 @@
                 <button id="clearRepeatsBtn" class="btn">Reset No-Repeats</button>
               </div>
 
+              <div class="row" id="iaBetaSection" style="display:none; flex-direction:column; gap:6px; margin-top:6px;">
+                <div class="mini" style="font-weight:600;">Internet Archive Beta</div>
+                <div class="mini" style="opacity:.8;">
+                  Internet Archive beta opens externally and does not affect Shuffle yet.
+                </div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+                  <button type="button" id="iaBetaSearchBtn" class="miniBtn">Search IA (beta)</button>
+                  <span class="mini" id="iaBetaStatus" style="opacity:.75;"></span>
+                </div>
+                <ul class="list" id="iaBetaResults"></ul>
+              </div>
+
               <div class="row">
                 <div class="mini" style="opacity:.85">
                   Auto-dig is automatic per filter (Auto-Dig just forces a refill).
@@ -1314,6 +1326,9 @@
     const STORAGE_KEY_DISCOVERY_SOURCES = "residencyDiscoverySources_v1";
     const STORAGE_KEY_SOURCE_PRESETS = "residencySourcePresets_v1";
 
+    // Feature flags
+    const INTERNET_ARCHIVE_BETA_ENABLED = false;
+
     /** Discovery source ids; must match backend SOURCE_IDS. */
     const DISCOVERY_SOURCE_IDS = ["soundcloud", "youtube", "internet_archive", "bandcamp", "vimeo", "tiktok", "instagram", "uploads"];
     const DISCOVERY_SOURCE_LABELS = { soundcloud: "SoundCloud", youtube: "YouTube", internet_archive: "Internet Archive", bandcamp: "Bandcamp", vimeo: "Vimeo", tiktok: "TikTok", instagram: "Instagram", uploads: "User Uploads" };
@@ -1418,6 +1433,10 @@
     const openBtn = document.getElementById("openBtn");
     const autoDigBtn = document.getElementById("autoDigBtn");
     const exportBtn = document.getElementById("exportBtn");
+    const iaBetaSection = document.getElementById("iaBetaSection");
+    const iaBetaSearchBtn = document.getElementById("iaBetaSearchBtn");
+    const iaBetaStatus = document.getElementById("iaBetaStatus");
+    const iaBetaResults = document.getElementById("iaBetaResults");
 
     const trackTitleEl = document.getElementById("trackTitle");
     const modeLabel = document.getElementById("modeLabel");
@@ -4404,6 +4423,78 @@
       setStatus("READY");
       await doShuffle(false);
       showTutorialIfFirstRun();
+
+      if (INTERNET_ARCHIVE_BETA_ENABLED && iaBetaSection && iaBetaSearchBtn && iaBetaResults) {
+        iaBetaSection.style.display = "flex";
+        iaBetaSearchBtn.onclick = async () => {
+          try {
+            const activeSources = ["internet_archive"];
+            let q = "";
+            const vibeQ = vibeInput ? sanitizeVibePrompt(vibeInput.value) : "";
+            if (vibeQ) q = vibeQ;
+            else if (searchLocalEl && searchLocalEl.value.trim()) q = searchLocalEl.value.trim();
+            else if (genreSelect && genreSelect.value && genreSelect.value !== "all") q = genreSelect.value;
+            if (!q) {
+              iaBetaStatus.textContent = "Add a vibe, search text, or choose a genre first.";
+              return;
+            }
+            console.log("[IA beta] search submitted", { q, activeSources });
+            iaBetaStatus.textContent = "Searching IA…";
+            iaBetaResults.innerHTML = "";
+            const url = `/.netlify/functions/search-internet-archive?q=${encodeURIComponent(q)}&limit=24`;
+            const r = await fetch(url, { cache: "no-store" });
+            const text = await r.text();
+            if (!r.ok) {
+              console.error("[IA beta] search error", r.status, text);
+              iaBetaStatus.textContent = "IA search failed.";
+              return;
+            }
+            const data = text ? JSON.parse(text) : { collection: [] };
+            const col = Array.isArray(data?.collection) ? data.collection : [];
+            console.log("[IA beta] results", col.length);
+            iaBetaStatus.textContent = col.length ? `${col.length} result(s)` : "No IA results yet for this query.";
+            for (const it of col) {
+              const li = document.createElement("li");
+              li.className = "row";
+              const title = (it.title || "Untitled").toString();
+              const artist = (it.artist || it.creator || "").toString();
+              const label = document.createElement("div");
+              label.className = "mini";
+              label.textContent = title + (artist ? " — " + artist : "");
+              const meta = document.createElement("div");
+              meta.className = "mini";
+              meta.style.opacity = ".8";
+              meta.textContent = "Internet Archive (beta)";
+              const openBtn = document.createElement("button");
+              openBtn.type = "button";
+              openBtn.className = "miniBtn";
+              openBtn.textContent = "Open";
+              openBtn.onclick = () => {
+                const openUrl = it.openUrl || it.url;
+                if (openUrl) {
+                  console.log("[IA beta] open clicked", { id: it.id, openUrl });
+                  window.open(openUrl, "_blank", "noopener");
+                }
+              };
+              const wrap = document.createElement("div");
+              wrap.style.display = "flex";
+              wrap.style.flexDirection = "column";
+              wrap.style.gap = "2px";
+              wrap.appendChild(label);
+              wrap.appendChild(meta);
+              li.appendChild(wrap);
+              const btnWrap = document.createElement("div");
+              btnWrap.style.marginLeft = "auto";
+              btnWrap.appendChild(openBtn);
+              li.appendChild(btnWrap);
+              iaBetaResults.appendChild(li);
+            }
+          } catch (e) {
+            console.error("[IA beta] unexpected error", e);
+            if (iaBetaStatus) iaBetaStatus.textContent = "IA search error.";
+          }
+        };
+      }
     });
 
     // ===== Auth + Cloud Sync Wiring (gated by AUTH_ENABLED) =====
