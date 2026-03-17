@@ -1088,6 +1088,9 @@
 
           <div class="embed">
             <iframe id="scPlayer" allow="autoplay" src=""></iframe>
+            <div id="playerUploadsWrap" class="embed" style="display:none;">
+              <audio id="playerUploadsAudio" controls preload="metadata"></audio>
+            </div>
           </div>
 
           <!-- Always-visible quick actions -->
@@ -1156,16 +1159,54 @@
                 </div>
               </div>
 
-              <div class="row" id="iaBetaSection" style="display:none; flex-direction:column; gap:6px; margin-top:6px;">
-                <div class="mini" style="font-weight:600;">Internet Archive Beta</div>
+              <div class="row" id="productionUploadRow" style="display:none; flex-wrap:wrap; gap:6px; align-items:center; margin-top:6px;">
+                <span class="mini" style="font-weight:600; width:100%;">Upload file</span>
+                <input type="file" id="productionUploadInput" accept="audio/mpeg,audio/mp3,audio/wav,audio/ogg,audio/webm,audio/mp4,audio/x-m4a,audio/aac,.mp3,.wav,.ogg,.m4a" style="display:none;" />
+                <button type="button" id="productionUploadBtn" class="miniBtn">Upload file</button>
+                <span class="mini" id="productionUploadStatus" style="opacity:.75;"></span>
+              </div>
+
+              <div class="row" id="labsDiscoverySection" style="display:none; flex-direction:column; gap:6px; margin-top:6px;">
+                <div class="mini" style="font-weight:600;">Labs: Multisource discovery</div>
                 <div class="mini" style="opacity:.8;">
-                  Internet Archive beta opens externally and does not affect Shuffle yet.
+                  Internal Labs-only surface for testing multisource search. Does not affect Shuffle, Auto-Dig, or the main player.
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                  <label class="mini" style="display:flex; align-items:center; gap:4px;">
+                    <input type="checkbox" id="labsSrcYoutube" checked />
+                    <span>YouTube</span>
+                  </label>
+                  <label class="mini" style="display:flex; align-items:center; gap:4px;">
+                    <input type="checkbox" id="labsSrcInternetArchive" />
+                    <span>Internet Archive</span>
+                  </label>
+                  <label class="mini" style="display:flex; align-items:center; gap:4px;">
+                    <input type="checkbox" id="labsSrcBandcamp" />
+                    <span>Bandcamp</span>
+                  </label>
+                  <label class="mini" style="display:flex; align-items:center; gap:4px;">
+                    <input type="checkbox" id="labsSrcUploads" />
+                    <span>User Uploads</span>
+                  </label>
+                </div>
+                <div id="labsUploadRow" style="display:none; gap:6px; flex-wrap:wrap; align-items:center;">
+                  <input type="file" id="labsUploadInput" accept="audio/mpeg,audio/mp3,audio/wav,audio/ogg,audio/webm,audio/mp4,audio/x-m4a,audio/aac,.mp3,.wav,.ogg,.m4a" style="display:none;" />
+                  <button type="button" id="labsUploadBtn" class="miniBtn">Upload file</button>
+                  <span class="mini" id="labsUploadStatus" style="opacity:.75;"></span>
                 </div>
                 <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-                  <button type="button" id="iaBetaSearchBtn" class="miniBtn">Search IA (beta)</button>
-                  <span class="mini" id="iaBetaStatus" style="opacity:.75;"></span>
+                  <button type="button" id="labsSearchBtn" class="miniBtn">Search Labs</button>
+                  <span class="mini" id="labsStatus" style="opacity:.75;"></span>
                 </div>
-                <ul class="list" id="iaBetaResults"></ul>
+                <ul class="list" id="labsResults"></ul>
+                <div id="labsPlaybackShell" class="mini" style="margin-top:8px; padding:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.12); background:rgba(0,0,0,0.35); display:none; flex-direction:column; gap:6px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                    <span class="mini" style="font-weight:600;">Labs preview</span>
+                    <span class="mini" id="labsPlaybackLabel" style="opacity:.8;"></span>
+                  </div>
+                  <div id="labsPlaybackMeta" class="mini" style="opacity:.8;"></div>
+                  <div id="labsPlaybackEmbed" style="margin-top:4px;"></div>
+                </div>
               </div>
 
               <div class="row">
@@ -1328,6 +1369,9 @@
 
     // Feature flags
     const INTERNET_ARCHIVE_BETA_ENABLED = false;
+    const MULTISOURCE_LABS_ENABLED = false;
+    /** When true: Uploads as discovery source, drawer upload control, HTML5 playback for uploads. When false: no uploads in production UI. */
+    const PRODUCTION_UPLOADS_ENABLED = false;
 
     /** Discovery source ids; must match backend SOURCE_IDS. */
     const DISCOVERY_SOURCE_IDS = ["soundcloud", "youtube", "internet_archive", "bandcamp", "vimeo", "tiktok", "instagram", "uploads"];
@@ -1433,10 +1477,26 @@
     const openBtn = document.getElementById("openBtn");
     const autoDigBtn = document.getElementById("autoDigBtn");
     const exportBtn = document.getElementById("exportBtn");
-    const iaBetaSection = document.getElementById("iaBetaSection");
-    const iaBetaSearchBtn = document.getElementById("iaBetaSearchBtn");
-    const iaBetaStatus = document.getElementById("iaBetaStatus");
-    const iaBetaResults = document.getElementById("iaBetaResults");
+    const labsDiscoverySection = document.getElementById("labsDiscoverySection");
+    const labsSearchBtn = document.getElementById("labsSearchBtn");
+    const labsStatus = document.getElementById("labsStatus");
+    const labsResults = document.getElementById("labsResults");
+    const labsPlaybackShell = document.getElementById("labsPlaybackShell");
+    const labsPlaybackLabel = document.getElementById("labsPlaybackLabel");
+    const labsPlaybackMeta = document.getElementById("labsPlaybackMeta");
+    const labsPlaybackEmbed = document.getElementById("labsPlaybackEmbed");
+    const labsSrcYoutube = document.getElementById("labsSrcYoutube");
+    const labsSrcInternetArchive = document.getElementById("labsSrcInternetArchive");
+    const labsSrcBandcamp = document.getElementById("labsSrcBandcamp");
+    const labsSrcUploads = document.getElementById("labsSrcUploads");
+    const labsUploadRow = document.getElementById("labsUploadRow");
+    const labsUploadInput = document.getElementById("labsUploadInput");
+    const labsUploadBtn = document.getElementById("labsUploadBtn");
+    const labsUploadStatus = document.getElementById("labsUploadStatus");
+    const productionUploadRow = document.getElementById("productionUploadRow");
+    const productionUploadBtn = document.getElementById("productionUploadBtn");
+    const productionUploadInput = document.getElementById("productionUploadInput");
+    const productionUploadStatus = document.getElementById("productionUploadStatus");
 
     const trackTitleEl = document.getElementById("trackTitle");
     const modeLabel = document.getElementById("modeLabel");
@@ -1490,6 +1550,115 @@
         clearTimeout(timer);
         timer = setTimeout(() => fn.apply(this, args), ms);
       };
+    }
+
+    // ===== Labs state (isolated from production player) =====
+    let currentLabsItem = null;
+    let currentLabsPlaybackType = null;
+
+    function resetLabsPlaybackShell() {
+      currentLabsItem = null;
+      currentLabsPlaybackType = null;
+      if (labsPlaybackShell) labsPlaybackShell.style.display = "none";
+      if (labsPlaybackLabel) labsPlaybackLabel.textContent = "";
+      if (labsPlaybackMeta) labsPlaybackMeta.textContent = "";
+      if (labsPlaybackEmbed) labsPlaybackEmbed.innerHTML = "";
+    }
+
+    function renderLabsPlaybackForItem(item) {
+      if (!labsPlaybackShell || !labsPlaybackEmbed) return;
+      resetLabsPlaybackShell();
+      if (!item) return;
+
+      const srcId = (item.sourceId || item._sourceId || item._source || item._labsSourceId || "").toString() || "labs";
+      const srcLabel = (item.sourceLabel || item._sourceLabel || srcId).toString();
+      const playbackType = (item.playbackType || "").toString() || "external_only";
+
+      currentLabsItem = item;
+      currentLabsPlaybackType = playbackType;
+
+      console.log("[Labs][Playback] preview requested", { sourceId: srcId, playbackType });
+
+      const title = (item.title || item.name || "Untitled").toString();
+      const artist = (item.artist || item.creator || item.channelTitle || "").toString();
+      if (labsPlaybackLabel) {
+        labsPlaybackLabel.textContent = `${srcLabel} · ${playbackType}`;
+      }
+      if (labsPlaybackMeta) {
+        labsPlaybackMeta.textContent = artist ? `${title} — ${artist}` : title;
+      }
+
+      let supported = true;
+      const openUrl = item.openUrl || item.url || null;
+
+      const hasYoutubeEmbed = playbackType === "youtube_embed" &&
+        typeof item.embedUrl === "string" &&
+        (item.embedUrl.startsWith("https://www.youtube.com/embed/") || item.embedUrl.startsWith("https://www.youtube-nocookie.com/embed/"));
+
+      if (playbackType === "soundcloud_embed" && item.embedUrl) {
+        const iframe = document.createElement("iframe");
+        iframe.src = item.embedUrl;
+        iframe.width = "100%";
+        iframe.height = "166";
+        iframe.allow = "autoplay";
+        iframe.style.border = "0";
+        labsPlaybackEmbed.appendChild(iframe);
+      } else if (hasYoutubeEmbed) {
+        const iframe = document.createElement("iframe");
+        iframe.src = item.embedUrl;
+        iframe.width = "100%";
+        iframe.height = "240";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        iframe.style.border = "0";
+        labsPlaybackEmbed.appendChild(iframe);
+      } else if (playbackType === "html5_audio" && item.playableUrl) {
+        const wrapper = document.createElement("div");
+        wrapper.style.display = "flex";
+        wrapper.style.flexDirection = "row";
+        wrapper.style.gap = "8px";
+        wrapper.style.alignItems = "center";
+
+        const artworkUrl = item.artworkUrl || null;
+        if (artworkUrl) {
+          const artWrap = document.createElement("div");
+          artWrap.style.flex = "0 0 auto";
+          artWrap.style.width = "40px";
+          artWrap.style.height = "40px";
+          artWrap.style.borderRadius = "4px";
+          artWrap.style.overflow = "hidden";
+          artWrap.style.background = "rgba(255,255,255,0.05)";
+          const img = document.createElement("img");
+          img.src = artworkUrl;
+          img.alt = "";
+          img.style.width = "100%";
+          img.style.height = "100%";
+          img.style.objectFit = "cover";
+          artWrap.appendChild(img);
+          wrapper.appendChild(artWrap);
+        }
+
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.src = item.playableUrl;
+        audio.style.width = artworkUrl ? "200px" : "100%";
+        wrapper.appendChild(audio);
+
+        labsPlaybackEmbed.appendChild(wrapper);
+      } else {
+        supported = false;
+        const msg = document.createElement("div");
+        msg.className = "mini";
+        msg.style.opacity = ".8";
+        msg.textContent = openUrl
+          ? "Preview not supported in Labs yet. Use Open."
+          : "Preview not supported for this item.";
+        labsPlaybackEmbed.appendChild(msg);
+      }
+
+      console.log("[Labs][Playback] render result", { sourceId: srcId, playbackType, supported });
+
+      labsPlaybackShell.style.display = "flex";
     }
 
     // ===== Formatting helpers =====
@@ -1990,11 +2159,17 @@
     async function searchUploads(q, limit) {
       try {
         const url = `/.netlify/functions/search-uploads?q=${encodeURIComponent(q)}&limit=${Math.min(50, limit)}`;
-        const r = await fetch(url, { cache: "no-store" });
+        const opts = { cache: "no-store" };
+        if (PRODUCTION_UPLOADS_ENABLED && typeof getNetlifyToken === "function") {
+          const token = await getNetlifyToken();
+          if (token) opts.headers = { Authorization: `Bearer ${token}` };
+        }
+        const r = await fetch(url, opts);
         const text = await r.text();
         if (!r.ok) return { collection: [], _source: "uploads" };
         const data = JSON.parse(text);
         const col = Array.isArray(data?.collection) ? data.collection : [];
+        if (PRODUCTION_UPLOADS_ENABLED && typeof console !== "undefined" && console.log) console.log("[Uploads] search count", col.length);
         return { collection: col.map(it => ({ ...it, _source: "uploads" })), _source: "uploads" };
       } catch {
         return { collection: [], _source: "uploads" };
@@ -2020,6 +2195,7 @@
     async function multiSourceSearch(q, kind, limit, isPool = true) {
       loadDiscoverySourcesState();
       const sources = getActiveDiscoverySources();
+      if (PRODUCTION_UPLOADS_ENABLED && sources.includes("uploads") && typeof console !== "undefined" && console.log) console.log("[Uploads] source selected for discovery");
       const tasks = (sources.length ? sources : ["soundcloud"])
         .filter(id => SOURCE_ADAPTERS[id])
         .map(id => () => SOURCE_ADAPTERS[id](q, kind, limit, isPool));
@@ -2085,11 +2261,11 @@
       const entitled = getEntitledSources();
       return DISCOVERY_SOURCE_IDS.filter(id => !entitled.includes(id));
     }
-    /** Sources that are both selected and entitled; use this for discovery. */
+    /** Sources that are both selected and entitled; use this for discovery. Uploads only when PRODUCTION_UPLOADS_ENABLED. */
     function getActiveDiscoverySources() {
       const entitled = getEntitledSources();
       const selected = selectedSources.length ? selectedSources : ["soundcloud"];
-      return selected.filter(id => entitled.includes(id));
+      return selected.filter(id => entitled.includes(id) && (id !== "uploads" || PRODUCTION_UPLOADS_ENABLED));
     }
 
     // ===== Vibe Search state =====
@@ -2825,6 +3001,54 @@
           acts.appendChild(saveHist);
         }
 
+        if (PRODUCTION_UPLOADS_ENABLED && (type === "crate" || type === "history") && (item._source === "uploads" || item.sourceId === "uploads") && item._sourceId) {
+          const editBtn = document.createElement("button");
+          editBtn.className = "icon";
+          editBtn.textContent = "Edit";
+          editBtn.title = "Edit metadata";
+          editBtn.onclick = async () => {
+            const newTitle = window.prompt("Title", item.title || "") || item.title || "";
+            const newArtist = window.prompt("Artist", item.artist || "") || item.artist || "";
+            if (newTitle === (item.title || "") && newArtist === (item.artist || "")) return;
+            const resp = await callAuthedFunction("uploads-update", "PATCH", { id: item._sourceId, title: newTitle, artist: newArtist });
+            if (resp && resp.ok) {
+              item.title = newTitle;
+              item.artist = newArtist;
+              const libIdx = library.findIndex(x => x.url === item.url);
+              if (libIdx !== -1) { library[libIdx].title = newTitle; library[libIdx].artist = newArtist; }
+              if (type === "crate") { const ci = crate.findIndex(x => x.url === item.url); if (ci !== -1) crate[ci].title = newTitle; crate[ci].artist = newArtist; saveJsonLS(STORAGE_KEY_CRATE, crate); }
+              if (type === "history") { const hi = history.findIndex(x => x.url === item.url); if (hi !== -1) history[hi].title = newTitle; history[hi].artist = newArtist; saveJsonLS(STORAGE_KEY_HISTORY, history); }
+              if (typeof idbSet === "function") await idbSet(STORAGE_KEY_LIBRARY, library);
+              name.textContent = newTitle || "Untitled";
+              meta.textContent = [item.kind, newArtist, item.bucket].filter(Boolean).join(" · ");
+            }
+          };
+          acts.appendChild(editBtn);
+          const delBtn = document.createElement("button");
+          delBtn.className = "icon";
+          delBtn.textContent = "Del";
+          delBtn.title = "Delete upload";
+          delBtn.onclick = async () => {
+            if (!window.confirm("Delete this upload from storage and remove from lists?")) return;
+            const resp = await callAuthedFunction("uploads-delete", "POST", { id: item._sourceId });
+            if (resp && resp.ok) {
+              const url = item.url;
+              const libIdx = library.findIndex(x => x.url === url);
+              if (libIdx !== -1) library.splice(libIdx, 1);
+              const crateIdx = crate.findIndex(x => x.url === url);
+              if (crateIdx !== -1) { crate.splice(crateIdx, 1); saveJsonLS(STORAGE_KEY_CRATE, crate); }
+              const histIdx = history.findIndex(x => x.url === url);
+              if (histIdx !== -1) { history.splice(histIdx, 1); saveJsonLS(STORAGE_KEY_HISTORY, history); }
+              if (typeof idbSet === "function") await idbSet(STORAGE_KEY_LIBRARY, library);
+              if (typeof debouncedCrateSync === "function") debouncedCrateSync();
+              if (typeof debouncedHistorySync === "function") debouncedHistorySync();
+              renderList(crateList, crate, "crate");
+              renderList(historyList, history, "history");
+            }
+          };
+          acts.appendChild(delBtn);
+        }
+
         li.appendChild(info);
         li.appendChild(acts);
         el.appendChild(li);
@@ -2983,6 +3207,7 @@
         _sourceId: gen?.id ?? gen?.url ?? url,
         artworkUrl: gen?.artworkUrl ?? gen?.image ?? null
       };
+      if (sourceId === "uploads" && (gen?.playableUrl || url)) item.playableUrl = gen.playableUrl || url;
       return pushUnique(item);
     }
 
@@ -3200,6 +3425,70 @@
     async function loadItem(item, autoplay = true) {
       if (!item?.url) return;
 
+      const isUploads = (item._source === "uploads" || item.sourceId === "uploads");
+      if (isUploads && !PRODUCTION_UPLOADS_ENABLED) {
+        return;
+      }
+      if (PRODUCTION_UPLOADS_ENABLED && isUploads) {
+        // — Reset SoundCloud player so it does not leak or play behind uploads —
+        if (typeof widgetPause === "function") widgetPause();
+        if (playerFrame) {
+          playerFrame.style.display = "none";
+          playerFrame.src = "about:blank";
+        }
+        const wrap = document.getElementById("playerUploadsWrap");
+        const audioEl = document.getElementById("playerUploadsAudio");
+        if (wrap) wrap.style.display = "block";
+        if (audioEl) {
+          audioEl.pause();
+          audioEl.currentTime = 0;
+          audioEl.removeAttribute("src");
+          audioEl.src = item.playableUrl || item.url;
+          audioEl.autoplay = !!autoplay;
+          if (autoplay) audioEl.play().catch(() => {});
+        }
+        currentItem = item;
+        clearStatus();
+        setStatus(autoplay ? "PLAYING" : "ARMED");
+        const titleText = item.title || "—";
+        trackTitleEl.textContent = titleText;
+        trackTitleEl.title = titleText;
+        trackTitleEl.classList.remove("trackLoading");
+        const artist = item.artist ? item.artist : "";
+        const bucket = item.bucket ? item.bucket : "";
+        miniNow.textContent = [artist, bucket].filter(Boolean).join(" · ") || "Unknown";
+        openBtn.disabled = false;
+        openBtn.dataset.url = item.url;
+        saveBtn.disabled = false;
+        makeStationBtn.disabled = true;
+        try { localStorage.setItem(STORAGE_KEY_LAST, JSON.stringify(item)); } catch { }
+        setPill(pillKey, item.keyGuess ? `Key: ${item.keyGuess}` : null);
+        setPill(pillBpm, item.bpmGuess ? `BPM: ${item.bpmGuess}` : null);
+        setPill(pillLen, item.durationMs ? `Len: ${fmtMs(item.durationMs)}` : null);
+        setPill(pillRel, item.uploadedAt ? `Uploaded: ${fmtDate(item.uploadedAt)}` : null);
+        setPill(pillSource, item._sourceLabel || "User Uploads");
+        applyStatsPills(item);
+        addToHistory(item);
+        savePlayedUrl(item.url);
+        updateModeLabel();
+        if (typeof console !== "undefined" && console.log) console.log("[Uploads] player switched to uploads", item.title || item.url);
+        return;
+      }
+
+      // SoundCloud (or other) path: fully reset uploads player, then show widget
+      const uploadsWrap = document.getElementById("playerUploadsWrap");
+      const uploadsAudio = document.getElementById("playerUploadsAudio");
+      if (uploadsAudio) {
+        uploadsAudio.pause();
+        uploadsAudio.currentTime = 0;
+        uploadsAudio.removeAttribute("src");
+      }
+      if (uploadsWrap) uploadsWrap.style.display = "none";
+      if (playerFrame) {
+        playerFrame.style.display = "";
+        if (PRODUCTION_UPLOADS_ENABLED && typeof console !== "undefined" && console.log) console.log("[Uploads] player switched to soundcloud", item?.title || item?.url);
+      }
+
       currentItem = item;
       clearStatus();
       setStatus(autoplay ? "PLAYING" : "ARMED");
@@ -3228,7 +3517,7 @@
       setPill(pillLen, `Len: ${fmtMs(item.durationMs)}`);
       setPill(pillRel, `Uploaded: ${fmtDate(item.uploadedAt)}`);
       setPill(pillSource, item._sourceLabel || (item._source ? (DISCOVERY_SOURCE_LABELS[item._source] || item._source) : null));
-      applyStatsPills(item, statsToggle.checked);
+      applyStatsPills(item);
 
       addToHistory(item);
       savePlayedUrl(item.url);
@@ -3448,6 +3737,7 @@
 
     async function createStation() {
       if (!currentItem?.url) return;
+      if (currentItem._source === "uploads" || currentItem.sourceId === "uploads") return;
       makeStationBtn.disabled = true;
       makeStationBtn.textContent = "…";
       try {
@@ -3529,7 +3819,8 @@
       const unlocked = getEntitledSources();
       const unlockedSet = new Set(unlocked);
       discoverySourcesWrap.textContent = "";
-      for (const id of DISCOVERY_SOURCE_IDS) {
+      const sourceIdsToShow = DISCOVERY_SOURCE_IDS.filter(id => id !== "uploads" || PRODUCTION_UPLOADS_ENABLED);
+      for (const id of sourceIdsToShow) {
         const label = DISCOVERY_SOURCE_LABELS[id] || id;
         const isUnlocked = unlockedSet.has(id);
         const checked = selectedSources.includes(id);
@@ -3726,7 +4017,8 @@
     };
 
     function updateButtons() {
-      makeStationBtn.disabled = !currentItem?.url;
+      const isUploads = currentItem && (currentItem._source === "uploads" || currentItem.sourceId === "uploads");
+      makeStationBtn.disabled = !currentItem?.url || !!isUploads;
       openBtn.disabled = !currentItem?.url;
       saveBtn.disabled = !currentItem?.url;
     }
@@ -4424,45 +4716,277 @@
       await doShuffle(false);
       showTutorialIfFirstRun();
 
-      if (INTERNET_ARCHIVE_BETA_ENABLED && iaBetaSection && iaBetaSearchBtn && iaBetaResults) {
-        iaBetaSection.style.display = "flex";
-        iaBetaSearchBtn.onclick = async () => {
+      if (MULTISOURCE_LABS_ENABLED && labsDiscoverySection && labsSearchBtn && labsResults) {
+        labsDiscoverySection.style.display = "flex";
+        if (labsUploadRow) labsUploadRow.style.display = "flex";
+        if (labsUploadBtn && labsUploadInput) {
+          const LABS_UPLOAD_MAX_BYTES = 50 * 1024 * 1024;
+          const LABS_UPLOAD_ALLOWED_EXT = /\.(mp3|wav|ogg|webm|m4a|aac|mp4|flac)$/i;
+          const LABS_UPLOAD_ALLOWED_MIME = /^audio\//i;
+          const setStatus = (t) => { if (labsUploadStatus) labsUploadStatus.textContent = t; };
+          const setUploadBusy = (busy) => {
+            if (labsUploadBtn) labsUploadBtn.disabled = busy;
+            if (labsUploadInput) labsUploadInput.disabled = busy;
+          };
+          labsUploadBtn.onclick = () => { if (!labsUploadBtn.disabled) labsUploadInput.click(); };
+          labsUploadInput.onchange = async () => {
+            const file = labsUploadInput.files && labsUploadInput.files[0];
+            labsUploadInput.value = "";
+            if (!file) return;
+            if (!AUTH_ENABLED || !rplusSupabase) {
+              setStatus("Sign in to upload.");
+              return;
+            }
+            const token = await getNetlifyToken();
+            if (!token) {
+              setStatus("Sign in to upload.");
+              return;
+            }
+            if (file.size > LABS_UPLOAD_MAX_BYTES) {
+              setStatus("File too large (max 50 MB).");
+              return;
+            }
+            const extOk = LABS_UPLOAD_ALLOWED_EXT.test(file.name);
+            const mimeOk = !file.type || LABS_UPLOAD_ALLOWED_MIME.test(file.type);
+            if (!extOk || !mimeOk) {
+              setStatus("File type not allowed. Use audio (MP3, WAV, OGG, M4A, etc.).");
+              return;
+            }
+            setUploadBusy(true);
+            let prep = null;
+            try {
+              setStatus("Preparing…");
+              prep = await callAuthedFunction("uploads-prepare", "POST", { filename: file.name, mime_type: file.type || null, file_size: file.size });
+              if (!prep || !prep.path) {
+                const msg = prep && prep.message ? prep.message : "Prepare failed.";
+                setStatus(msg);
+                setUploadBusy(false);
+                return;
+              }
+              if (prep.error === "file_too_large" || prep.error === "invalid_file_type") {
+                setStatus(prep.message || "Invalid file.");
+                setUploadBusy(false);
+                return;
+              }
+              setStatus("Uploading…");
+              const { error: upErr } = await rplusSupabase.storage.from("uploads").upload(prep.path, file, { contentType: file.type || "audio/mpeg", upsert: true });
+              if (upErr) {
+                console.error("[Labs][Upload] storage error", upErr);
+                setStatus("Upload failed.");
+                setUploadBusy(false);
+                return;
+              }
+              const publicUrl = rplusSupabase.storage.from("uploads").getPublicUrl(prep.path).data.publicUrl;
+              setStatus("Extracting metadata…");
+              let durationMs = null;
+              try {
+                const audio = new Audio();
+                const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 10000));
+                await Promise.race([
+                  new Promise((res, rej) => { audio.onloadedmetadata = res; audio.onerror = rej; audio.src = URL.createObjectURL(file); }),
+                  timeout
+                ]);
+                if (isFinite(audio.duration) && audio.duration > 0) durationMs = Math.round(audio.duration * 1000);
+                URL.revokeObjectURL(audio.src);
+              } catch (_) {}
+              setStatus("Registering…");
+              const rawTitle = (file.name && file.name.replace(/\.[^.]*$/, "").trim()) || "";
+              const title = rawTitle || "Untitled";
+              const reg = await callAuthedFunction("uploads-register", "POST", {
+                title,
+                storage_url: publicUrl,
+                original_filename: file.name,
+                mime_type: file.type || null,
+                duration_ms: durationMs,
+                artist: ""
+              });
+              if (!reg || !reg.ok) {
+                setStatus("Register failed. Cleaning up…");
+                try {
+                  await rplusSupabase.storage.from("uploads").remove([prep.path]);
+                  console.log("[Labs][Upload] cleaned up orphan object after register failure", prep.path);
+                } catch (cleanupErr) {
+                  console.error("[Labs][Upload] cleanup failed", cleanupErr);
+                }
+                setStatus("Register failed. Upload removed.");
+                setUploadBusy(false);
+                return;
+              }
+              setStatus("Done. Refreshing…");
+              if (labsSrcUploads) labsSrcUploads.checked = true;
+              labsSearchBtn.click();
+              setStatus("");
+            } catch (e) {
+              console.error("[Labs][Upload] error", e);
+              setStatus("Upload error.");
+              if (prep && prep.path) {
+                try {
+                  await rplusSupabase.storage.from("uploads").remove([prep.path]);
+                  console.log("[Labs][Upload] cleaned up after error", prep.path);
+                } catch (_) {}
+              }
+            }
+            setUploadBusy(false);
+          };
+        }
+        labsSearchBtn.onclick = async () => {
           try {
             let q = "";
             const vibeQ = vibeInput ? sanitizeVibePrompt(vibeInput.value) : "";
             if (vibeQ) q = vibeQ;
             else if (genreSelect && genreSelect.value && genreSelect.value !== "all") q = genreSelect.value;
+
+            const activeSources = [];
+            if (labsSrcYoutube?.checked) activeSources.push("youtube");
+            if (labsSrcInternetArchive?.checked) activeSources.push("internet_archive");
+            if (labsSrcBandcamp?.checked) activeSources.push("bandcamp");
+            if (labsSrcUploads?.checked) activeSources.push("uploads");
+
+            if (!activeSources.length) {
+              if (labsStatus) labsStatus.textContent = "Select at least one Labs source.";
+              return;
+            }
             if (!q) {
-              iaBetaStatus.textContent = "Enter a vibe or choose a genre first.";
-              return;
+              if (activeSources.length === 1 && activeSources[0] === "uploads") q = " ";
+              else {
+                if (labsStatus) labsStatus.textContent = "Enter a vibe or choose a genre first.";
+                return;
+              }
             }
-            console.log("[IA beta] search submitted", { q });
-            iaBetaStatus.textContent = "Searching IA…";
-            iaBetaResults.innerHTML = "";
-            const url = `/.netlify/functions/search-internet-archive?q=${encodeURIComponent(q)}&limit=24`;
-            const r = await fetch(url, { cache: "no-store" });
-            const text = await r.text();
-            if (!r.ok) {
-              console.error("[IA beta] search error", r.status, text);
-              iaBetaStatus.textContent = "IA search failed.";
-              return;
+
+            console.log("[Labs][Discovery] search submitted", { q, activeSources });
+            if (labsStatus) labsStatus.textContent = "Searching Labs…";
+            labsResults.innerHTML = "";
+
+            const uploadToken = activeSources.includes("uploads") ? await getNetlifyToken() : null;
+            const requests = activeSources.map(src => {
+              let fnPath = null;
+              if (src === "youtube") fnPath = "/.netlify/functions/labs-search-youtube";
+              else if (src === "internet_archive") fnPath = "/.netlify/functions/labs-search-internet-archive";
+              else if (src === "bandcamp") fnPath = "/.netlify/functions/labs-search-bandcamp";
+              else if (src === "uploads") fnPath = "/.netlify/functions/labs-search-uploads";
+              if (!fnPath) return Promise.resolve({ sourceId: src, items: [] });
+              const url = `${fnPath}?q=${encodeURIComponent(q)}&limit=24`;
+              const fetchOpts = src === "uploads" && uploadToken
+                ? { cache: "no-store", headers: { Authorization: `Bearer ${uploadToken}` } }
+                : { cache: "no-store" };
+              return fetch(url, fetchOpts)
+                .then(r => r.text().then(text => ({ r, text })))
+                .then(({ r, text }) => {
+                  if (!r.ok) {
+                    console.error("[Labs][Discovery] fetch error", { src, status: r.status, body: text });
+                    return { sourceId: src, items: [] };
+                  }
+                  let data = {};
+                  try { data = text ? JSON.parse(text) : {}; } catch { data = {}; }
+                  const col = Array.isArray(data?.collection) ? data.collection : [];
+                  console.log("[Labs][Discovery] source results", { src, count: col.length });
+                  return { sourceId: src, items: col };
+                })
+                .catch(err => {
+                  console.error("[Labs][Discovery] unexpected error", { src, err });
+                  return { sourceId: src, items: [] };
+                });
+            });
+
+            const perSource = await Promise.all(requests);
+            const merged = [];
+            for (const bucket of perSource) {
+              const src = bucket.sourceId;
+              const items = Array.isArray(bucket.items) ? bucket.items : [];
+              for (const it of items) {
+                merged.push({ ...it, _labsSourceId: src });
+              }
             }
-            const data = text ? JSON.parse(text) : { collection: [] };
-            const col = Array.isArray(data?.collection) ? data.collection : [];
-            console.log("[IA beta] results", col.length);
-            iaBetaStatus.textContent = col.length ? `${col.length} result(s)` : "No IA results yet for this query.";
-            for (const it of col) {
+
+            const counts = perSource.reduce((acc, b) => {
+              acc[b.sourceId] = (Array.isArray(b.items) ? b.items.length : 0);
+              return acc;
+            }, {});
+            console.log("[Labs][Discovery] merged results", { counts, total: merged.length });
+
+            if (labsStatus) {
+              const per = Object.entries(counts).map(([k, v]) => `${k}:${v}`).join(", ");
+              labsStatus.textContent = merged.length ? `${merged.length} item(s) [${per}]` : "No Labs results for this query yet.";
+            }
+
+            const labelForSource = (srcId) => {
+              if (srcId === "youtube") return "YouTube";
+              if (srcId === "internet_archive") return "Internet Archive";
+              if (srcId === "bandcamp") return "Bandcamp";
+              if (srcId === "uploads") return "User Uploads";
+              return srcId || "Unknown";
+            };
+
+            resetLabsPlaybackShell();
+
+            for (const it of merged) {
               const li = document.createElement("li");
               li.className = "row";
-              const title = (it.title || "Untitled").toString();
-              const artist = (it.artist || it.creator || "").toString();
-              const label = document.createElement("div");
-              label.className = "mini";
-              label.textContent = title + (artist ? " — " + artist : "");
-              const meta = document.createElement("div");
-              meta.className = "mini";
-              meta.style.opacity = ".8";
-              meta.textContent = "Internet Archive (beta)";
+
+              const title = (it.title || it.name || "Untitled").toString();
+              const artist = (it.artist || it.creator || it.channelTitle || "").toString();
+              const sourceId = (it.sourceId || it._sourceId || it._source || it._labsSourceId || "").toString() || "labs";
+              const sourceLabel = (it.sourceLabel || it._sourceLabel || labelForSource(sourceId)).toString();
+              const playbackType = (it.playbackType || "").toString();
+              const artworkUrl = it.artworkUrl || it.thumbnailUrl || null;
+
+              const main = document.createElement("div");
+              main.style.display = "flex";
+              main.style.flexDirection = "row";
+              main.style.gap = "8px";
+              main.style.alignItems = "center";
+
+              if (artworkUrl && (sourceId === "youtube" || sourceId === "uploads" || sourceId === "bandcamp")) {
+                const thumbWrap = document.createElement("div");
+                thumbWrap.style.flex = "0 0 auto";
+                const thumbSize = sourceId === "youtube" ? 72 : 40;
+                thumbWrap.style.width = thumbSize + "px";
+                thumbWrap.style.height = thumbSize + "px";
+                thumbWrap.style.overflow = "hidden";
+                thumbWrap.style.borderRadius = "4px";
+                thumbWrap.style.background = "rgba(255,255,255,0.05)";
+                const img = document.createElement("img");
+                img.src = artworkUrl;
+                img.alt = "";
+                img.style.width = "100%";
+                img.style.height = "100%";
+                img.style.objectFit = "cover";
+                thumbWrap.appendChild(img);
+                main.appendChild(thumbWrap);
+              }
+
+              const textCol = document.createElement("div");
+              textCol.style.display = "flex";
+              textCol.style.flexDirection = "column";
+              textCol.style.gap = "2px";
+
+              const titleEl = document.createElement("div");
+              titleEl.className = "mini";
+              titleEl.textContent = title;
+
+              const artistLine = document.createElement("div");
+              artistLine.className = "mini";
+              artistLine.style.opacity = ".85";
+              artistLine.textContent = artist || "";
+
+              const metaEl = document.createElement("div");
+              metaEl.className = "mini";
+              metaEl.style.opacity = ".8";
+              const typeLabel = playbackType || "external_only";
+              metaEl.textContent = `${sourceLabel} · ${typeLabel}`;
+
+              textCol.appendChild(titleEl);
+              if (artist) textCol.appendChild(artistLine);
+              textCol.appendChild(metaEl);
+
+              main.appendChild(textCol);
+
+              const btnWrap = document.createElement("div");
+              btnWrap.style.marginLeft = "auto";
+              btnWrap.style.display = "flex";
+              btnWrap.style.gap = "4px";
+
               const openBtn = document.createElement("button");
               openBtn.type = "button";
               openBtn.className = "miniBtn";
@@ -4470,27 +4994,180 @@
               openBtn.onclick = () => {
                 const openUrl = it.openUrl || it.url;
                 if (openUrl) {
-                  console.log("[IA beta] open clicked", { id: it.id, openUrl });
+                  console.log("[Labs][Discovery] open clicked", { sourceId, id: it.id, openUrl });
                   window.open(openUrl, "_blank", "noopener");
                 }
               };
-              const wrap = document.createElement("div");
-              wrap.style.display = "flex";
-              wrap.style.flexDirection = "column";
-              wrap.style.gap = "2px";
-              wrap.appendChild(label);
-              wrap.appendChild(meta);
-              li.appendChild(wrap);
-              const btnWrap = document.createElement("div");
-              btnWrap.style.marginLeft = "auto";
+
+              const canPreview = playbackType === "soundcloud_embed" ||
+                playbackType === "youtube_embed" ||
+                (playbackType === "html5_audio" && (it.playableUrl));
+
+              if (canPreview && labsPlaybackShell && labsPlaybackEmbed) {
+                const previewBtn = document.createElement("button");
+                previewBtn.type = "button";
+                previewBtn.className = "miniBtn";
+                previewBtn.textContent = "Preview";
+                previewBtn.onclick = () => {
+                  console.log("[Labs][Playback] preview button clicked", { sourceId, id: it.id, playbackType });
+                  renderLabsPlaybackForItem(it);
+                };
+                btnWrap.appendChild(previewBtn);
+              }
+
+              if (sourceId === "uploads" && it.id) {
+                const editBtn = document.createElement("button");
+                editBtn.type = "button";
+                editBtn.className = "miniBtn";
+                editBtn.textContent = "Edit";
+                editBtn.onclick = async () => {
+                  const newTitle = window.prompt("Title", title) || title;
+                  const newArtist = window.prompt("Artist", artist) || artist;
+                  if (newTitle === title && newArtist === artist) return;
+                  const resp = await callAuthedFunction("uploads-update", "PATCH", { id: it.id, title: newTitle, artist: newArtist });
+                  if (resp && resp.ok) { titleEl.textContent = newTitle; artistLine.textContent = newArtist; if (artistLine.parentNode) artistLine.style.display = newArtist ? "" : "none"; }
+                };
+                btnWrap.appendChild(editBtn);
+                const deleteBtn = document.createElement("button");
+                deleteBtn.type = "button";
+                deleteBtn.className = "miniBtn";
+                deleteBtn.textContent = "Delete";
+                deleteBtn.onclick = async () => {
+                  if (!window.confirm("Delete this upload? The file will be removed from storage.")) return;
+                  const resp = await callAuthedFunction("uploads-delete", "POST", { id: it.id });
+                  if (resp && resp.ok) {
+                    const storageUrl = resp.storage_url || it.storage_url || it.playableUrl || it.url;
+                    if (storageUrl && rplusSupabase) {
+                      const path = storageUrl.includes("/uploads/") ? storageUrl.split("/uploads/")[1] : null;
+                      if (path) try { await rplusSupabase.storage.from("uploads").remove([path]); } catch (_) {}
+                    }
+                    li.remove();
+                    if (labsPlaybackShell && currentLabsItem && currentLabsItem.id === it.id) resetLabsPlaybackShell();
+                  }
+                };
+                btnWrap.appendChild(deleteBtn);
+              }
+
               btnWrap.appendChild(openBtn);
+              li.appendChild(main);
               li.appendChild(btnWrap);
-              iaBetaResults.appendChild(li);
+              labsResults.appendChild(li);
             }
           } catch (e) {
-            console.error("[IA beta] unexpected error", e);
-            if (iaBetaStatus) iaBetaStatus.textContent = "IA search error.";
+            console.error("[Labs][Discovery] unexpected handler error", e);
+            if (labsStatus) labsStatus.textContent = "Labs search error.";
           }
+        };
+      }
+
+      if (PRODUCTION_UPLOADS_ENABLED && productionUploadRow && productionUploadBtn && productionUploadInput) {
+        productionUploadRow.style.display = "flex";
+        const PROD_UPLOAD_MAX_BYTES = 50 * 1024 * 1024;
+        const PROD_UPLOAD_ALLOWED_EXT = /\.(mp3|wav|ogg|webm|m4a|aac|mp4|flac)$/i;
+        const PROD_UPLOAD_ALLOWED_MIME = /^audio\//i;
+        const setProdStatus = (t) => { if (productionUploadStatus) productionUploadStatus.textContent = t || ""; };
+        const setProdUploadBusy = (busy) => {
+          if (productionUploadBtn) productionUploadBtn.disabled = busy;
+          if (productionUploadInput) productionUploadInput.disabled = busy;
+        };
+        productionUploadBtn.onclick = () => { if (!productionUploadBtn.disabled) productionUploadInput.click(); };
+        productionUploadInput.onchange = async () => {
+          const file = productionUploadInput.files && productionUploadInput.files[0];
+          productionUploadInput.value = "";
+          if (!file) return;
+          if (!AUTH_ENABLED || !rplusSupabase) {
+            setProdStatus("Sign in to upload.");
+            return;
+          }
+          const token = await getNetlifyToken();
+          if (!token) {
+            setProdStatus("Sign in to upload.");
+            return;
+          }
+          if (file.size > PROD_UPLOAD_MAX_BYTES) {
+            setProdStatus("File too large (max 50 MB).");
+            return;
+          }
+          const extOk = PROD_UPLOAD_ALLOWED_EXT.test(file.name);
+          const mimeOk = !file.type || PROD_UPLOAD_ALLOWED_MIME.test(file.type);
+          if (!extOk || !mimeOk) {
+            setProdStatus("Use audio (MP3, WAV, OGG, M4A, etc.).");
+            return;
+          }
+          setProdUploadBusy(true);
+          let prep = null;
+          try {
+            setProdStatus("Preparing…");
+            prep = await callAuthedFunction("uploads-prepare", "POST", { filename: file.name, mime_type: file.type || null, file_size: file.size });
+            if (!prep || !prep.path) {
+              setProdStatus(prep && prep.message ? prep.message : "Prepare failed.");
+              setProdUploadBusy(false);
+              return;
+            }
+            if (prep.error === "file_too_large" || prep.error === "invalid_file_type") {
+              setProdStatus(prep.message || "Invalid file.");
+              setProdUploadBusy(false);
+              return;
+            }
+            setProdStatus("Uploading…");
+            const { error: upErr } = await rplusSupabase.storage.from("uploads").upload(prep.path, file, { contentType: file.type || "audio/mpeg", upsert: true });
+            if (upErr) {
+              setProdStatus("Upload failed.");
+              setProdUploadBusy(false);
+              return;
+            }
+            const publicUrl = rplusSupabase.storage.from("uploads").getPublicUrl(prep.path).data.publicUrl;
+            let durationMs = null;
+            try {
+              const audio = new Audio();
+              const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 10000));
+              await Promise.race([
+                new Promise((res, rej) => { audio.onloadedmetadata = res; audio.onerror = rej; audio.src = URL.createObjectURL(file); }),
+                timeout
+              ]);
+              if (isFinite(audio.duration) && audio.duration > 0) durationMs = Math.round(audio.duration * 1000);
+              URL.revokeObjectURL(audio.src);
+            } catch (_) {}
+            setProdStatus("Registering…");
+            const rawTitle = (file.name && file.name.replace(/\.[^.]*$/, "").trim()) || "";
+            const title = rawTitle || "Untitled";
+            const reg = await callAuthedFunction("uploads-register", "POST", {
+              title,
+              storage_url: publicUrl,
+              original_filename: file.name,
+              mime_type: file.type || null,
+              duration_ms: durationMs,
+              artist: ""
+            });
+            if (!reg || !reg.ok) {
+              setProdStatus("Register failed.");
+              try { await rplusSupabase.storage.from("uploads").remove([prep.path]); } catch (_) {}
+              setProdUploadBusy(false);
+              return;
+            }
+            const bucket = genreSelect && genreSelect.value && genreSelect.value !== "all" ? genreSelect.value : "other";
+            const gen = {
+              id: reg.id || reg.uuid,
+              title,
+              artist: reg.artist || "",
+              url: publicUrl,
+              playableUrl: publicUrl,
+              durationMs: durationMs || reg.duration_ms || 0,
+              uploadedAt: reg.created_at || new Date().toISOString(),
+              artworkUrl: reg.artwork_url || null
+            };
+            const added = typeof addLibraryItemFromNormalized === "function" && addLibraryItemFromNormalized(gen, bucket, "uploads");
+            if (added && typeof idbSet === "function") await idbSet(STORAGE_KEY_LIBRARY, library);
+            setProdStatus(added ? "Upload complete." : "Upload complete.");
+            setTimeout(() => setProdStatus(""), 3000);
+          } catch (e) {
+            console.error("[Production][Upload] error", e);
+            setProdStatus("Upload error.");
+            if (prep && prep.path) {
+              try { await rplusSupabase.storage.from("uploads").remove([prep.path]); } catch (_) {}
+            }
+          }
+          setProdUploadBusy(false);
         };
       }
     });
