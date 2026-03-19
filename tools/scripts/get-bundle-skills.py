@@ -18,8 +18,8 @@ def format_skills_for_batch(skill_ids):
     safe_skill_ids = filter_safe_skill_ids(skill_ids)
     if not safe_skill_ids:
         return ""
-    # Use space separator to stay compatible with Windows batch 'set /p' command
-    return " ".join(safe_skill_ids) + "\n"
+    # Use newline separator for robustness (avoiding Windows command line length limits)
+    return "\n".join(safe_skill_ids) + "\n"
 
 
 def get_bundle_skills(bundle_queries, bundles_path=None):
