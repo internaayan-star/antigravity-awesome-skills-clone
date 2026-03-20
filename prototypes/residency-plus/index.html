@@ -3574,15 +3574,96 @@
       return matches.length > 0;
     }
 
+    // ===== Player Guard (fail-closed) =====
+    // Critical safety: never allow arbitrary/app URLs into player rendering paths.
+    function isAllowedSoundCloudUrl(url) {
+      if (!url || typeof url !== "string") return false;
+      let u = null;
+      try { u = new URL(url); } catch { return false; }
+      if (!u || !/^https?:$/.test(u.protocol)) return false;
+      const host = (u.hostname || "").toLowerCase();
+      const allowedHosts = new Set(["soundcloud.com", "m.soundcloud.com", "on.soundcloud.com", "api.soundcloud.com", "w.soundcloud.com"]);
+      return allowedHosts.has(host);
+    }
+
+    function isAllowedUploadsAudioUrl(url) {
+      if (!url || typeof url !== "string") return false;
+      let u = null;
+      try { u = new URL(url); } catch { return false; }
+      if (!u || !/^https?:$/.test(u.protocol)) return false;
+
+      let supaHost = null;
+      try { supaHost = new URL(SUPA_URL).host; } catch { supaHost = null; }
+      if (!supaHost) return false;
+      if ((u.hostname || "").toLowerCase() !== String(supaHost).toLowerCase()) return false;
+
+      const pathname = (u.pathname || "").toLowerCase();
+      const looksLikeSupabaseUploads =
+        pathname.includes("/storage/v1/object/public/uploads/") ||
+        pathname.includes("/storage/v1/object/uploads/");
+      if (!looksLikeSupabaseUploads) return false;
+
+      const allowedExt = new Set(["mp3", "wav", "ogg", "m4a", "aac", "flac", "webm"]);
+      const m = pathname.match(/\.([a-z0-9]{2,8})$/);
+      if (!m) return false;
+      const ext = m[1];
+      return allowedExt.has(ext);
+    }
+
+    // Allow remote images only; artwork must never influence playback decisions.
+    function isSafeArtworkUrl(url) {
+      if (!url || typeof url !== "string") return false;
+      let u = null;
+      try { u = new URL(url); } catch { return false; }
+      if (!u || !/^https?:$/.test(u.protocol)) return false;
+      const pathname = (u.pathname || "").toLowerCase();
+      return /\.(png|jpe?g|gif|webp|bmp|svg)$/.test(pathname);
+    }
+
     // ===== Load + resolve + stats reconciliation =====
     async function loadItem(item, autoplay = true) {
-      if (!item?.url) return;
+      if (!item) return;
 
-      const isUploads = (item._source === "uploads" || item.sourceId === "uploads");
+      const itemSource = (item._source || item.sourceId || "").toString();
+
+      const isUploads = (itemSource === "uploads");
+      const uploadsCandidateUrl = item.playableUrl || item.url || "";
+      const soundcloudCandidateUrl = item.openUrl || item.url || "";
+      if (!uploadsCandidateUrl && !soundcloudCandidateUrl) {
+        setStatus("Unable to play this item.");
+        return;
+      }
       if (isUploads && !PRODUCTION_UPLOADS_ENABLED) {
         return;
       }
       if (PRODUCTION_UPLOADS_ENABLED && isUploads) {
+        if (!isAllowedUploadsAudioUrl(uploadsCandidateUrl)) {
+          if (isAllowedSoundCloudUrl(uploadsCandidateUrl)) {
+            console.warn("[PlayerGuard] blocked mismatched source/url", { expected: "uploads", url: uploadsCandidateUrl });
+          } else {
+            console.warn("[PlayerGuard] rejected invalid uploads url", { url: uploadsCandidateUrl });
+          }
+          try { if (typeof widgetPause === "function") widgetPause(); } catch { }
+          try {
+            const uploadsWrap = document.getElementById("playerUploadsWrap");
+            if (uploadsWrap) uploadsWrap.style.display = "none";
+            const audioEl = document.getElementById("playerUploadsAudio");
+            if (audioEl) {
+              audioEl.pause();
+              audioEl.currentTime = 0;
+              audioEl.removeAttribute("src");
+            }
+            if (playerFrame) {
+              playerFrame.style.display = "none";
+              playerFrame.src = "about:blank";
+            }
+          } catch { }
+          setStatus("Unable to play this item.");
+          return;
+        }
+        console.log("[PlayerGuard] uploads accepted", { url: uploadsCandidateUrl });
+        const guardedItem = { ...item, url: uploadsCandidateUrl, playableUrl: uploadsCandidateUrl };
+
         // — Reset SoundCloud player so it does not leak or play behind uploads —
         if (typeof widgetPause === "function") widgetPause();
         if (playerFrame) {
@@ -3596,11 +3677,11 @@
           audioEl.pause();
           audioEl.currentTime = 0;
           audioEl.removeAttribute("src");
-          audioEl.src = item.playableUrl || item.url;
+          audioEl.src = uploadsCandidateUrl;
           audioEl.autoplay = !!autoplay;
           if (autoplay) audioEl.play().catch(() => {});
         }
-        currentItem = item;
+        currentItem = guardedItem;
         clearStatus();
         setStatus(autoplay ? "PLAYING" : "ARMED");
         const titleText = item.title || "—";
@@ -3611,24 +3692,50 @@
         const bucket = item.bucket ? item.bucket : "";
         miniNow.textContent = [artist, bucket].filter(Boolean).join(" · ") || "Unknown";
         openBtn.disabled = false;
-        openBtn.dataset.url = item.url;
+        openBtn.dataset.url = uploadsCandidateUrl;
         saveBtn.disabled = false;
         makeStationBtn.disabled = true;
-        try { localStorage.setItem(STORAGE_KEY_LAST, JSON.stringify(item)); } catch { }
+        try { localStorage.setItem(STORAGE_KEY_LAST, JSON.stringify(guardedItem)); } catch { }
         setPill(pillKey, item.keyGuess ? `Key: ${item.keyGuess}` : null);
         setPill(pillBpm, item.bpmGuess ? `BPM: ${item.bpmGuess}` : null);
         setPill(pillLen, item.durationMs ? `Len: ${fmtMs(item.durationMs)}` : null);
         setPill(pillRel, item.uploadedAt ? `Uploaded: ${fmtDate(item.uploadedAt)}` : null);
         setPill(pillSource, item._sourceLabel || "User Uploads");
-        applyStatsPills(item);
-        addToHistory(item);
-        savePlayedUrl(item.url);
+        applyStatsPills(guardedItem);
+        addToHistory(guardedItem);
+        savePlayedUrl(uploadsCandidateUrl);
         updateModeLabel();
-        if (typeof console !== "undefined" && console.log) console.log("[Uploads] player switched to uploads", item.title || item.url);
+        if (typeof console !== "undefined" && console.log) console.log("[Uploads] player switched to uploads", item.title || uploadsCandidateUrl);
         return;
       }
 
       // SoundCloud (or other) path: fully reset uploads player, then show widget
+      if (!isAllowedSoundCloudUrl(soundcloudCandidateUrl)) {
+        if (isAllowedUploadsAudioUrl(soundcloudCandidateUrl)) {
+          console.warn("[PlayerGuard] blocked mismatched source/url", { expected: "soundcloud", url: soundcloudCandidateUrl });
+        } else {
+          console.warn("[PlayerGuard] rejected invalid soundcloud url", { url: soundcloudCandidateUrl });
+        }
+        try { if (typeof widgetPause === "function") widgetPause(); } catch { }
+        try {
+          const uploadsWrap = document.getElementById("playerUploadsWrap");
+          if (uploadsWrap) uploadsWrap.style.display = "none";
+          const audioEl = document.getElementById("playerUploadsAudio");
+          if (audioEl) {
+            audioEl.pause();
+            audioEl.currentTime = 0;
+            audioEl.removeAttribute("src");
+          }
+          if (playerFrame) {
+            playerFrame.style.display = "none";
+            playerFrame.src = "about:blank";
+          }
+        } catch { }
+        setStatus("Unable to play this item.");
+        return;
+      }
+      console.log("[PlayerGuard] soundcloud accepted", { url: soundcloudCandidateUrl });
+
       const uploadsWrap = document.getElementById("playerUploadsWrap");
       const uploadsAudio = document.getElementById("playerUploadsAudio");
       if (uploadsAudio) {
@@ -3642,7 +3749,8 @@
         if (PRODUCTION_UPLOADS_ENABLED && typeof console !== "undefined" && console.log) console.log("[Uploads] player switched to soundcloud", item?.title || item?.url);
       }
 
-      currentItem = item;
+      const guardedScItem = { ...item, url: soundcloudCandidateUrl, openUrl: soundcloudCandidateUrl };
+      currentItem = guardedScItem;
       clearStatus();
       setStatus(autoplay ? "PLAYING" : "ARMED");
 
@@ -3657,23 +3765,23 @@
       const meta = [artist, bucket].filter(Boolean).join(" · ");
       miniNow.textContent = meta || "Unknown";
 
-      widgetLoad(item.url, autoplay);
+      widgetLoad(soundcloudCandidateUrl, autoplay);
 
       openBtn.disabled = false;
       saveBtn.disabled = false;
       makeStationBtn.disabled = false;
-      openBtn.dataset.url = item.url;
-      try { localStorage.setItem(STORAGE_KEY_LAST, JSON.stringify(item)); } catch { }
+      openBtn.dataset.url = soundcloudCandidateUrl;
+      try { localStorage.setItem(STORAGE_KEY_LAST, JSON.stringify(guardedScItem)); } catch { }
 
       setPill(pillKey, item.keyGuess ? `Key: ${item.keyGuess}` : null);
       setPill(pillBpm, item.bpmGuess ? `BPM: ${item.bpmGuess}` : null);
       setPill(pillLen, `Len: ${fmtMs(item.durationMs)}`);
       setPill(pillRel, `Uploaded: ${fmtDate(item.uploadedAt)}`);
       setPill(pillSource, item._sourceLabel || (item._source ? (DISCOVERY_SOURCE_LABELS[item._source] || item._source) : null));
-      applyStatsPills(item);
+      applyStatsPills(guardedScItem);
 
-      addToHistory(item);
-      savePlayedUrl(item.url);
+      addToHistory(guardedScItem);
+      savePlayedUrl(soundcloudCandidateUrl);
       updateModeLabel();
 
       // Resolve in background (SoundCloud only): update duration + stats, and auto-skip if wrong bucket.
@@ -3682,7 +3790,7 @@
           setPill(pillSource, item._sourceLabel || (DISCOVERY_SOURCE_LABELS[item._source] || item._source));
           return;
         }
-        const resolved = await scResolve(item.url);
+        const resolved = await scResolve(soundcloudCandidateUrl);
 
         // Determine kind/duration (resolve gives best duration)
         const durationMs = Number(resolved?.duration || item.durationMs || 0);
@@ -3698,7 +3806,7 @@
         const bucket = item.bucket || "other";
         if (!bucketPass(bucket, rb)) {
           // blacklist this URL in current context but avoid immediately chaining more network requests
-          savePlayedUrl(item.url);
+          savePlayedUrl(soundcloudCandidateUrl);
           widgetPause();
           setStatus("SKIPPED (bucket)");
           return;
@@ -3716,7 +3824,7 @@
         };
 
         // Persist improvements
-        const idx = library.findIndex(x => x.url === item.url);
+        const idx = library.findIndex(x => x.url === soundcloudCandidateUrl);
         if (idx !== -1) {
           library[idx] = { ...library[idx], ...currentItem };
           await idbSet(STORAGE_KEY_LIBRARY, library);
@@ -3725,7 +3833,7 @@
         // Enforce mode durations
         const mode = sourceSelect.value;
         if (!isAllowedByMode(kind, durationMs, mode)) {
-          savePlayedUrl(item.url);
+          savePlayedUrl(soundcloudCandidateUrl);
           widgetPause();
           setStatus("SKIPPED (length)");
           return;
