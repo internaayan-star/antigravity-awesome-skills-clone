@@ -3268,10 +3268,15 @@
       const bucket = genreSelect.value;
       const mode = sourceSelect.value;
       const st = currentStation();
+      let activeSources = [];
+      try { activeSources = getActiveDiscoverySources ? getActiveDiscoverySources() : []; } catch { }
+      const activeSourceSet = Array.isArray(activeSources) && activeSources.length ? new Set(activeSources) : null;
 
       const out = [];
       for (const t of library) {
         if (!t?.url) continue;
+        const src = (t._source || t.sourceId || "soundcloud").toString();
+        if (activeSourceSet && !activeSourceSet.has(src)) continue;
 
         const kind = t.kind || "track";
         if (mode !== "both" && kind !== mode) continue;
