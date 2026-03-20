@@ -1755,10 +1755,21 @@
     }
     window.SC_OK = true;
 
+    function getRplusSupabaseClient() {
+      return window.rplusSupabase || null;
+    }
+
     async function getNetlifyToken() {
-      if (!AUTH_ENABLED || !rplusSupabase) return null;
+      console.log("[Uploads] supabase client present", !!window.rplusSupabase);
+      const sb = getRplusSupabaseClient();
+      if (!AUTH_ENABLED || !sb) return null;
+      if (!sb?.auth?.getSession) {
+        console.error("[Uploads] missing Supabase client");
+        if (productionUploadStatus) productionUploadStatus.textContent = "Upload unavailable right now.";
+        return null;
+      }
       try {
-        const { data: { session } } = await rplusSupabase.auth.getSession();
+        const { data: { session } } = await sb.auth.getSession();
         return session?.access_token || null;
       } catch {
         return null;
@@ -5075,8 +5086,14 @@
           const file = productionUploadInput.files && productionUploadInput.files[0];
           productionUploadInput.value = "";
           if (!file) return;
-          if (!AUTH_ENABLED || !rplusSupabase) {
+          const sb = getRplusSupabaseClient();
+          if (!AUTH_ENABLED || !sb) {
             setProdStatus("Sign in to upload.");
+            return;
+          }
+          if (!sb?.auth?.getSession) {
+            console.error("[Uploads] missing Supabase client");
+            setProdStatus("Upload unavailable right now.");
             return;
           }
           const token = await getNetlifyToken();
@@ -5250,6 +5267,7 @@
       try {
         if (window.supabase && SUPA_URL && !SUPA_URL.includes("%%") && SUPA_KEY && !SUPA_KEY.includes("%%")) {
           rplusSupabase = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+          window.rplusSupabase = rplusSupabase;
         }
       } catch (e) {
         console.warn("Supabase init failed", e);
