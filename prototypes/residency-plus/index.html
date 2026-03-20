@@ -2447,12 +2447,13 @@
       instagram: searchScaffold("instagram")
     };
     /** Run search only on selected AND entitled sources. Returns merged collection with source attribution. */
-    async function multiSourceSearch(q, kind, limit, isPool = true) {
+    async function multiSourceSearch(q, kind, limit, isPool = true, skipSources = null) {
       loadDiscoverySourcesState();
       const sources = getActiveDiscoverySources();
       if (PRODUCTION_UPLOADS_ENABLED && sources.includes("uploads") && typeof console !== "undefined" && console.log) console.log("[Uploads] source selected for discovery");
       const uploadsSelected = PRODUCTION_UPLOADS_ENABLED && sources.includes("uploads");
-      const tasks = (sources.length ? sources : ["soundcloud"])
+      const effectiveSources = skipSources ? sources.filter(id => !skipSources.has(id)) : sources;
+      const tasks = (effectiveSources.length ? effectiveSources : ["soundcloud"])
         .filter(id => SOURCE_ADAPTERS[id])
         .map(id => () => SOURCE_ADAPTERS[id](q, kind, limit, isPool));
       if (!tasks.length) return { collection: [], bySource: {} };
@@ -3630,7 +3631,7 @@
         for (const q of queries) {
           tasks.push(async () => {
             await sleep(Math.random() * 200); // jitter
-            return { kind: "tracks", data: await multiSourceSearch(q, "tracks", 80, true), bucket: packKey };
+            return { kind: "tracks", data: await multiSourceSearch(q, "tracks", 80, true, new Set(["uploads"])), bucket: packKey };
           });
         }
       }
@@ -3638,7 +3639,7 @@
         for (const q of queries.slice(0, 2)) {
           tasks.push(async () => {
             await sleep(Math.random() * 200); // jitter
-            return { kind: "playlists", data: await multiSourceSearch(q, "playlists", 70, true), bucket: packKey };
+            return { kind: "playlists", data: await multiSourceSearch(q, "playlists", 70, true, new Set(["uploads"])), bucket: packKey };
           });
         }
       }
