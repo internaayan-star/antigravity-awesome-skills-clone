@@ -1,59 +1,86 @@
-/**
- * uploads-prepare.js — Return an upload path for the current user (Labs upload flow).
- * Client uploads to Supabase Storage at that path using their JWT; then calls uploads-register.
- * Path convention: {user_id}/{upload_id}/{filename}. Secrets server-side only.
- */
-import { allowOrigin, json } from "./lib/sc-auth-lib.js";
-import { getJwtUser } from "./sc-supabase-lib.js";
-
-const AUTH_ENABLED = process.env.AUTH_ENABLED === "true";
-const BUCKET = "uploads";
+const crypto = require("crypto");
+const { allowOrigin, json } = require("./lib/sc-auth-lib.js");
+const { getJwtUser } = require("./lib/sc-supabase-cjs.js");
 
 function sanitizeFilename(name) {
-  if (typeof name !== "string") return "audio";
-  const base = name.replace(/[/\\]/g, "").trim() || "audio";
-  const ext = base.includes(".") ? base.slice(base.lastIndexOf(".")) : "";
-  const stem = base.slice(0, base.length - ext.length).replace(/[^a-zA-Z0-9._-]/g, "_").slice(0, 120);
-  return (stem + ext) || "audio";
+  return String(name || "")
+    .trim()
+    .replace(/[^\w.\-]+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }
 
-export default async function handler(req) {
-  if (req.method === "OPTIONS") {
-    const origin = allowOrigin(req.headers.get("origin"));
-    return new Response("", {
-      status: 204,
+exports.handler = async function (event) {
+  const headers = event.headers || {};
+  const origin = headers.origin || headers.Origin || "";
+
+  if (event.httpMethod === "OPTIONS") {
+    const allowed = allowOrigin(origin) || "*";
+    return {
+      statusCode: 204,
       headers: {
-        "access-control-allow-origin": origin || "*",
+        "access-control-allow-origin": allowed,
         "access-control-allow-headers": "content-type, authorization",
-        "access-control-allow-methods": "POST,OPTIONS",
-      },
-    });
+        "access-control-allow-methods": "POST, OPTIONS",
+        vary: "Origin"
+      }
+    };
   }
 
-  const origin = allowOrigin(req.headers.get("origin"));
-  if (!origin && req.headers.get("origin")) return json(403, { error: "Origin not permitted." }, origin);
-  if (req.method !== "POST") return json(405, { error: "Method not allowed" }, origin);
-
-  if (!AUTH_ENABLED) {
-    return json(401, { error: "Auth disabled" }, origin);
+  if (event.httpMethod !== "POST") {
+    return json(
+      405,
+      { error: "method_not_allowed", message: "Use POST." },
+      allowOrigin(origin) || "*"
+    );
   }
 
-  const user = getJwtUser(req);
-  if (!user) {
-    return json(401, { error: "Missing or invalid token" }, origin);
-  }
-
-  let body;
   try {
-    body = await req.json();
-  } catch {
-    return json(400, { error: "Invalid JSON" }, origin);
+    const user = await getJwtUser(event);
+    if (!user || !user.id) {
+      return json(
+        401,
+        { error: "unauthorized", message: "Sign in required." },
+        allowOrigin(origin) || "*"
+      );
+    }
+
+    const body = JSON.parse(event.body || "{}");
+    const filename = sanitizeFilename(body.filename);
+    if (!filename) {
+      return json(
+        400,
+        { error: "invalid_filename", message: "Filename is required." },
+        allowOrigin(origin) || "*"
+      );
+    }
+
+    const uploadId = crypto.randomUUID();
+    const path = `${user.id}/${uploadId}/${filename}`;
+
+    console.log("[uploads-prepare] ok", {
+      uid: user.id,
+      filename,
+      path
+    });
+
+    return json(
+      200,
+      {
+        uploadId,
+        path,
+        bucket: "uploads"
+      },
+      allowOrigin(origin) || "*"
+    );
+  } catch (err) {
+    console.error("[uploads-prepare] fatal", err);
+    return json(
+      500,
+      {
+        error: "prepare_failed",
+        message: err && err.message ? err.message : "Unknown prepare error"
+      },
+      allowOrigin(origin) || "*"
+    );
   }
-
-  const filename = typeof body.filename === "string" ? body.filename.trim() : "audio";
-  const safeName = sanitizeFilename(filename);
-  const uploadId = crypto.randomUUID();
-  const path = `${user.uid}/${uploadId}/${safeName}`;
-
-  return json(200, { uploadId, path, bucket: BUCKET }, origin);
-}
+};
