@@ -6,40 +6,62 @@
  * unavailable, it safely falls back to free-tier entitlements.
  */
 
-import { allowOrigin, json, logTelemetry } from "./lib/sc-auth-lib.js";
-import { getJwtUser, supabaseRestCall } from "./sc-supabase-lib.js";
-import { getEntitlementsForPlan } from "./lib/entitlements-lib.js";
+const { allowOrigin, json, logTelemetry } = require("./lib/sc-auth-lib.js");
+const { getJwtUser, supabaseRestCall } = require("./lib/sc-supabase-cjs.js");
+const { getEntitlementsForPlan } = require("./lib/entitlements-lib.js");
 
 const AUTH_ENABLED = process.env.AUTH_ENABLED === "true";
 
-export default async function handler(req) {
-  if (req.method === "OPTIONS") {
-    const origin = allowOrigin(req.headers.get("origin"));
-    return new Response("", {
-      status: 204,
+function buildReqFromEvent(event) {
+  const headers = event.headers || {};
+  return {
+    headers: {
+      get: (name) => {
+        const k = Object.keys(headers).find(x => x.toLowerCase() === name.toLowerCase());
+        return k ? headers[k] : null;
+      }
+    }
+  };
+}
+
+exports.handler = async function (event) {
+  const method = event.httpMethod;
+  const headers = event.headers || {};
+  const origin = headers.origin || headers.Origin || "";
+  const allowed = allowOrigin(origin) || null;
+
+  if (method === "OPTIONS") {
+    return {
+      statusCode: 204,
       headers: {
-        "access-control-allow-origin": origin || "*",
+        "access-control-allow-origin": allowed || "*",
         "access-control-allow-headers": "content-type, authorization",
         "access-control-allow-methods": "GET,OPTIONS",
-      },
-    });
+        vary: "Origin"
+      }
+    };
   }
 
-  const origin = allowOrigin(req.headers.get("origin"));
-  if (!origin && req.headers.get("origin")) return json(403, { error: "Origin not permitted." });
+  if (method !== "GET") {
+    return json(405, { error: "Method not allowed" }, allowed || "*");
+  }
+
+  if (!allowed && origin) {
+    return json(403, { error: "Origin not permitted." }, "*");
+  }
 
   try {
     if (!AUTH_ENABLED) {
       const ent = getEntitlementsForPlan("free");
       logTelemetry("entitlements_fetched", { endpoint: "get-entitlements", origin, plan: ent.plan, authenticated: false, auth_enabled: false });
-      return json(200, { auth_enabled: false, plan: ent.plan, entitlements: ent }, origin);
+      return json(200, { auth_enabled: false, plan: ent.plan, entitlements: ent }, allowed || "*");
     }
 
-    const user = getJwtUser(req);
+    const user = getJwtUser(buildReqFromEvent(event));
     if (!user) {
       const ent = getEntitlementsForPlan("free");
       logTelemetry("entitlements_fetched", { endpoint: "get-entitlements", origin, plan: ent.plan, authenticated: false, auth_enabled: true });
-      return json(200, { authenticated: false, plan: ent.plan, entitlements: ent }, origin);
+      return json(200, { authenticated: false, plan: ent.plan, entitlements: ent }, allowed || "*");
     }
 
     let plan = "free";
@@ -58,10 +80,9 @@ export default async function handler(req) {
       authenticated: true,
       plan: ent.plan,
       entitlements: ent,
-    }, origin);
+    }, allowed || "*");
   } catch (err) {
     logTelemetry("entitlements_error", { endpoint: "get-entitlements", origin, error: err.message });
-    return json(500, { error: err.message }, origin);
+    return json(500, { error: err.message }, allowed || "*");
   }
-}
-
+};

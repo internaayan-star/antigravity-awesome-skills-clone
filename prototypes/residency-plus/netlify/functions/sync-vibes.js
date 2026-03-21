@@ -13,44 +13,61 @@
  *  - palette (jsonb, nullable)      // normalized palette payload
  *  - updated_at (timestamptz)
  */
-import { allowOrigin, json, logTelemetry } from "./lib/sc-auth-lib.js";
-import { getJwtUser, supabaseRestCall } from "./sc-supabase-lib.js";
+
+const { allowOrigin, json, logTelemetry } = require("./lib/sc-auth-lib.js");
+const { getJwtUser, supabaseRestCall } = require("./lib/sc-supabase-cjs.js");
 
 const AUTH_ENABLED = process.env.AUTH_ENABLED === "true";
 
-export default async function handler(req) {
-  if (req.method === "OPTIONS") {
-    const origin = allowOrigin(req.headers.get("origin"));
-    return new Response("", {
-      status: 204,
-      headers: {
-        "access-control-allow-origin": origin || "*",
-        "access-control-allow-headers": "content-type, authorization",
-        "access-control-allow-methods": "GET,POST,OPTIONS"
+function buildReqFromEvent(event) {
+  const headers = event.headers || {};
+  return {
+    headers: {
+      get: (name) => {
+        const k = Object.keys(headers).find(x => x.toLowerCase() === name.toLowerCase());
+        return k ? headers[k] : null;
       }
-    });
+    }
+  };
+}
+
+exports.handler = async function (event) {
+  const method = event.httpMethod;
+  const headers = event.headers || {};
+  const origin = headers.origin || headers.Origin || "";
+  const allowed = allowOrigin(origin) || null;
+
+  if (method === "OPTIONS") {
+    return {
+      statusCode: 204,
+      headers: {
+        "access-control-allow-origin": allowed || "*",
+        "access-control-allow-headers": "content-type, authorization",
+        "access-control-allow-methods": "GET,POST,OPTIONS",
+        vary: "Origin"
+      }
+    };
   }
 
-  const origin = allowOrigin(req.headers.get("origin"));
   if (!AUTH_ENABLED) {
     logTelemetry("sync_disabled", { endpoint: "sync-vibes", origin });
-    return json(200, { auth_enabled: false }, origin);
+    return json(200, { auth_enabled: false }, allowed || "*");
   }
-  if (!origin && req.headers.get("origin")) {
-    return json(403, { error: "Origin not permitted." });
+  if (!allowed && origin) {
+    return json(403, { error: "Origin not permitted." }, "*");
   }
-  if (req.method !== "GET" && req.method !== "POST") {
-    return json(405, { error: "Method not allowed" }, origin);
+  if (method !== "GET" && method !== "POST") {
+    return json(405, { error: "Method not allowed" }, allowed || "*");
   }
 
   try {
-    const user = getJwtUser(req);
+    const user = getJwtUser(buildReqFromEvent(event));
     if (!user) {
       logTelemetry("sync_auth_invalid", { endpoint: "sync-vibes", origin });
-      return json(401, { error: "Missing or invalid token" }, origin);
+      return json(401, { error: "Missing or invalid token" }, allowed || "*");
     }
 
-    if (req.method === "GET") {
+    if (method === "GET") {
       const rows = await supabaseRestCall(
         "vibes?select=kind,label,prompt,palette,updated_at&order=updated_at.desc&limit=100",
         "GET",
@@ -60,7 +77,7 @@ export default async function handler(req) {
 
       if (!rows || rows.length === 0) {
         logTelemetry("sync_vibes_hydrate_empty", { endpoint: "sync-vibes", origin });
-        return json(200, { hasData: false, items: [] }, origin);
+        return json(200, { hasData: false, items: [] }, allowed || "*");
       }
 
       const items = rows.map((r) => ({
@@ -77,15 +94,12 @@ export default async function handler(req) {
         count: items.length
       });
 
-      return json(200, { hasData: items.length > 0, items }, origin);
+      return json(200, { hasData: items.length > 0, items }, allowed || "*");
     }
 
     // POST: push local vibes to cloud
-    const body = await req.json();
+    const body = JSON.parse(event.body || "{}");
     const vibes = Array.isArray(body.vibes) ? body.vibes : [];
-    if (!Array.isArray(vibes)) {
-      return json(400, { error: "Invalid payload format" }, origin);
-    }
 
     // Keep payload intentionally small and future-friendly.
     const nowIso = new Date().toISOString();
@@ -117,14 +131,13 @@ export default async function handler(req) {
       synced: payload.length
     });
 
-    return json(200, { synced: payload.length }, origin);
+    return json(200, { synced: payload.length }, allowed || "*");
   } catch (err) {
     logTelemetry("sync_vibes_error", {
       endpoint: "sync-vibes",
       origin,
       error: err.message
     });
-    return json(500, { error: err.message }, origin);
+    return json(500, { error: err.message }, allowed || "*");
   }
-}
-
+};
