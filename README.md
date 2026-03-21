@@ -214,6 +214,15 @@ These skills are continuously reviewed and hardened, but the collection is not "
 - `@frontend-design` for UI and interaction quality.
 - `@security-auditor` for security-focused reviews.
 
+
+### Community Contributed Skills
+
+- [Overnight Worker](https://github.com/fullstackcrew-alpha/skill-overnight-worker) - Autonomous overnight work agent. Assign tasks before sleep, get structured results by morning.
+- [Cost Optimizer](https://github.com/fullstackcrew-alpha/skill-cost-optimizer) - Save 60-80% on AI token costs with smart model routing, context compression, and heartbeat tuning.
+- [DevOps Agent](https://github.com/fullstackcrew-alpha/skill-devops-agent) - One-click deploy, monitoring setup, scheduled backups, fault diagnosis with safety-first design.
+- [CN Content Matrix](https://github.com/fullstackcrew-alpha/skill-cn-content-matrix) - Chinese multi-platform content generator for Xiaohongshu, WeChat, Douyin, Bilibili with true style transfer.
+- [Smart PR Review](https://github.com/fullstackcrew-alpha/skill-smart-pr-review) - Opinionated AI code reviewer with 6-layer deep review, Devil's Advocate mode, MUST FIX/SHOULD FIX/SUGGESTION output.
+
 ## Three Real Examples
 
 ```text
