@@ -2152,6 +2152,13 @@
       if (miniNow) miniNow.textContent = "";
       if (openBtn) openBtn.disabled = true;
       if (saveBtn) saveBtn.disabled = true;
+
+      setPill(pillKey, null);
+      setPill(pillBpm, null);
+      setPill(pillLen, null);
+      setPill(pillRel, null);
+      setPill(pillSource, null);
+      applyStatsPills(null);
     }
 
     // Source-aware rerender used to prevent nested UI regressions.
