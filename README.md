@@ -506,6 +506,7 @@ This collection would not be possible without the incredible work of the Claude 
 - **[shmlkv/dna-claude-analysis](https://github.com/shmlkv/dna-claude-analysis)**: Personal genome analysis toolkit — Python scripts analyzing raw DNA data across 17 categories (health risks, ancestry, pharmacogenomics, nutrition, psychology, etc.) with terminal-style single-page HTML visualization.
 - **[AlmogBaku/debug-skill](https://github.com/AlmogBaku/debug-skill)**: Interactive debugger skill for AI agents — breakpoints, stepping, variable inspection, and stack traces via the `dap` CLI. Supports Python, Go, Node.js/TypeScript, Rust, and C/C++.
 - **[uberSKILLS](https://github.com/uberskillsdev/uberSKILLS)**: Design, test, and deploy Claude Code Agent Skills through a visual, AI-assisted workflow.
+- **[byronxlg/skillfold](https://github.com/byronxlg/skillfold)**: Configuration language and compiler for multi-agent AI pipelines. Compiles a single YAML config into platform-specific output for Claude Code, Cursor, Windsurf, Codex, Copilot, Gemini, Goose, Roo Code, Kiro, and Junie. Handles skill composition, typed state schemas, execution flows, and orchestrator generation. [Website](https://byronxlg.github.io/skillfold/) · [npm](https://www.npmjs.com/package/skillfold).
 - **[christopherlhammer11-ai/tool-use-guardian](https://github.com/christopherlhammer11-ai/tool-use-guardian)**: Source for the Tool Use Guardian skill — tool-call reliability wrapper with retries, recovery, and failure classification.
 - **[christopherlhammer11-ai/recallmax](https://github.com/christopherlhammer11-ai/recallmax)**: Source for the RecallMax skill — long-context memory, summarization, and conversation compression for agents.
 - **[tsilverberg/webapp-uat](https://github.com/tsilverberg/webapp-uat)**: Full browser UAT skill — Playwright testing with console/network error capture, WCAG 2.2 AA accessibility checks, i18n validation, responsive testing, and P0-P3 bug triage. Read-only by default, works with React, Vue, Angular, Ionic, Next.js.
@@ -572,7 +573,7 @@ We officially thank the following contributors for their help in making this rep
 - [@ziuus](https://github.com/ziuus)
 - [@Wolfe-Jam](https://github.com/Wolfe-Jam)
 - [@Wittlesus](https://github.com/Wittlesus)
-- [@wahidzzz](https://github.com/wahidzzz)
+- [@wahidzzh](https://github.com/wahidzzh)
 - [@Vonfry](https://github.com/Vonfry)
 - [@vprudnikoff](https://github.com/vprudnikoff)
 - [@viktor-ferenczi](https://github.com/viktor-ferenczi)
