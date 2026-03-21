@@ -1,6 +1,9 @@
 ---
 name: dispatching-parallel-agents
-description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
+description: "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies"
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Dispatching Parallel Agents
@@ -12,7 +15,6 @@ When you have multiple unrelated failures (different test files, different subsy
 **Core principle:** Dispatch one agent per independent problem domain. Let them work concurrently.
 
 ## When to Use
-
 ```dot
 digraph when_to_use {
     "Multiple failures?" [shape=diamond];

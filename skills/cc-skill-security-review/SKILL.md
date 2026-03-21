@@ -1,16 +1,16 @@
 ---
-name: security-review
-description: Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.
-author: affaan-m
-version: "1.0"
+name: cc-skill-security-review
+description: "This skill ensures all code follows security best practices and identifies potential vulnerabilities. Use when implementing authentication or authorization, handling user input or file uploads, or creating new API endpoints."
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Security Review Skill
 
 This skill ensures all code follows security best practices and identifies potential vulnerabilities.
 
-## When to Activate
-
+## When to Use
 - Implementing authentication or authorization
 - Handling user input or file uploads
 - Creating new API endpoints
@@ -494,3 +494,6 @@ Before ANY production deployment:
 ---
 
 **Remember**: Security is not optional. One vulnerability can compromise the entire platform. When in doubt, err on the side of caution.
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

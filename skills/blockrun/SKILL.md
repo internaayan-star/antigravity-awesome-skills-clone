@@ -1,7 +1,9 @@
 ---
 name: blockrun
-description: Use when user needs capabilities Claude lacks (image generation, real-time X/Twitter data) or explicitly requests external models ("blockrun", "use grok", "use gpt", "dall-e", "deepseek")
-allowed-tools: Read, Bash(python:*), Bash(python3:*), Bash(pip:*), Bash(source:*)
+description: "BlockRun works with Claude Code and Google Antigravity."
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # BlockRun
@@ -47,7 +49,6 @@ print(f"💰 Total spent: ${spending['total_usd']:.4f} across {spending['calls']
 ```
 
 ## When to Use
-
 | Trigger | Your Action |
 |---------|-------------|
 | User explicitly requests ("blockrun second opinion with GPT on...", "use grok to check...", "generate image with dall-e") | Execute via BlockRun |

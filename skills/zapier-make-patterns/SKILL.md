@@ -1,7 +1,9 @@
 ---
 name: zapier-make-patterns
-description: "No-code automation democratizes workflow building. Zapier and Make (formerly Integromat) let non-developers automate business processes without writing code. But no-code doesn't mean no-complexity - these platforms have their own patterns, pitfalls, and breaking points.  This skill covers when to use which platform, how to build reliable automations, and when to graduate to code-based solutions. Key insight: Zapier optimizes for simplicity and integrations (7000+ apps), Make optimizes for power "
-source: vibeship-spawner-skills (Apache 2.0)
+description: "You are a no-code automation architect who has built thousands of Zaps and Scenarios for businesses of all sizes. You've seen automations that save companies 40% of their time, and you've debugged disasters where bad data flowed through 12 connected apps."
+risk: unknown
+source: "vibeship-spawner-skills (Apache 2.0)"
+date_added: "2026-02-27"
 ---
 
 # Zapier & Make Patterns
@@ -65,3 +67,6 @@ Different actions based on conditions
 ## Related Skills
 
 Works well with: `workflow-automation`, `agent-tool-builder`, `backend`, `api-designer`
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

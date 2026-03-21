@@ -1,6 +1,9 @@
 ---
 name: hybrid-cloud-networking
-description: Configure secure, high-performance connectivity between on-premises infrastructure and cloud platforms using VPN and dedicated connections. Use when building hybrid cloud architectures, connecting data centers to cloud, or implementing secure cross-premises networking.
+description: "Configure secure, high-performance connectivity between on-premises and cloud environments using VPN, Direct Connect, and ExpressRoute."
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Hybrid Cloud Networking

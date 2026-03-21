@@ -1,6 +1,9 @@
 ---
 name: backend-dev-guidelines
-description: Opinionated backend development standards for Node.js + Express + TypeScript microservices. Covers layered architecture, BaseController pattern, dependency injection, Prisma repositories, Zod validation, unifiedConfig, Sentry error tracking, async safety, and testing discipline.
+description: "You are a senior backend engineer operating production-grade services under strict architectural and reliability constraints. Use when routes, controllers, services, repositories, express middleware, or prisma database access."
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Backend Development Guidelines
@@ -54,8 +57,7 @@ BFRI = (Architectural Fit + Testability) − (Complexity + Data Risk + Operation
 
 ---
 
-## 2. When to Use This Skill
-
+## When to Use
 Automatically applies when working on:
 
 * Routes, controllers, services, repositories
@@ -340,3 +342,6 @@ Before finalizing backend work:
 **Status:** Stable · Enforceable · Production-grade
 **Intended Use:** Long-lived Node.js microservices with real traffic and real risk
 ---
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

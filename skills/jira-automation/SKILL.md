@@ -1,8 +1,9 @@
 ---
 name: jira-automation
 description: "Automate Jira tasks via Rube MCP (Composio): issues, projects, sprints, boards, comments, users. Always search tools first for current schemas."
-requires:
-  mcp: [rube]
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Jira Automation via Rube MCP
@@ -18,7 +19,6 @@ Automate Jira operations through Composio's Jira toolkit via Rube MCP.
 ## Setup
 
 **Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `jira`
@@ -183,3 +183,6 @@ Automate Jira operations through Composio's Jira toolkit via Rube MCP.
 | List filters | JIRA_LIST_FILTERS | (none) |
 | Project roles | JIRA_GET_PROJECT_ROLES | projectIdOrKey |
 | Project versions | JIRA_GET_PROJECT_VERSIONS | projectIdOrKey |
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

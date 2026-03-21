@@ -1,10 +1,19 @@
 node_modules/
 __pycache__/
+.ruff_cache/
 .worktrees/
+.tmp/
+.DS_Store
+
+# npm pack artifacts
+antigravity-awesome-skills-*.tgz
 
 walkthrough.md
 .agent/rules/
+.claude-plugin/
+.codex/
 .gemini/
+.release-clone-*/
 LOCAL_CONFIG.md
 data/node_modules
 
@@ -27,12 +36,24 @@ scripts/*html*.py
 scripts/*similar*.py
 scripts/*count*.py
 
+# Temporary analysis scripts (tools/scripts/)
+tools/scripts/*voltagent*.py
+tools/scripts/*html*.py
+tools/scripts/*similar*.py
+tools/scripts/*count*.py
+
 # Optional baseline for legacy JS validator (scripts/validate-skills.js)
 validation-baseline.json
 
 ChatGPT_Context/
 ChatGPT_Context.zip
 
+# Web app generated assets (from npm run app:setup)
+apps/web-app/public/skills/
+apps/web-app/public/skills.json
+
+# Local duplicate/download artifacts
+skills/spline-3d-integration/*.zip
 
 # Local Netlify folder
 .netlify
@@ -51,4 +72,3 @@ prototypes/residency-plus/run_smoke.ps1
 
 # Prototype secrets (belt-and-suspenders — also caught by .env rule above)
 prototypes/residency-plus/.env
-

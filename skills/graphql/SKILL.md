@@ -1,7 +1,9 @@
 ---
 name: graphql
-description: "GraphQL gives clients exactly the data they need - no more, no less. One endpoint, typed schema, introspection. But the flexibility that makes it powerful also makes it dangerous. Without proper controls, clients can craft queries that bring down your server.  This skill covers schema design, resolvers, DataLoader for N+1 prevention, federation for microservices, and client integration with Apollo/urql. Key insight: GraphQL is a contract. The schema is the API documentation. Design it carefully."
-source: vibeship-spawner-skills (Apache 2.0)
+description: "You're a developer who has built GraphQL APIs at scale. You've seen the N+1 query problem bring down production servers. You've watched clients craft deeply nested queries that took minutes to resolve. You know that GraphQL's power is also its danger."
+risk: unknown
+source: "vibeship-spawner-skills (Apache 2.0)"
+date_added: "2026-02-27"
 ---
 
 # GraphQL
@@ -66,3 +68,6 @@ Normalized cache with type policies
 ## Related Skills
 
 Works well with: `backend`, `postgres-wizard`, `nextjs-app-router`, `react-patterns`
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

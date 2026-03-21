@@ -1,8 +1,9 @@
 ---
 name: confluence-automation
 description: "Automate Confluence page creation, content search, space management, labels, and hierarchy navigation via Rube MCP (Composio). Always search tools first for current schemas."
-requires:
-  mcp: [rube]
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Confluence Automation via Rube MCP
@@ -18,7 +19,6 @@ Automate Confluence operations including page creation and updates, content sear
 ## Setup
 
 **Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
-
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `confluence`
@@ -206,3 +206,6 @@ Confluence uses two pagination styles:
 | Add label | `CONFLUENCE_ADD_CONTENT_LABEL` | content ID, label |
 | Page versions | `CONFLUENCE_GET_PAGE_VERSIONS` | `id` |
 | Space labels | `CONFLUENCE_GET_LABELS_FOR_SPACE` | space ID |
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

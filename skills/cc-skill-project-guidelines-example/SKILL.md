@@ -1,8 +1,9 @@
 ---
 name: cc-skill-project-guidelines-example
-description: Project Guidelines Skill (Example)
-author: affaan-m
-version: "1.0"
+description: "Project Guidelines Skill (Example)"
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Project Guidelines Skill (Example)
@@ -14,7 +15,6 @@ Based on a real production application: [Zenith](https://zenith.chat) - AI-power
 ---
 
 ## When to Use
-
 Reference this skill when working on the specific project it's designed for. Project skills contain:
 - Architecture overview
 - File structure

@@ -1,7 +1,9 @@
 ---
 name: inngest
-description: "Inngest expert for serverless-first background jobs, event-driven workflows, and durable execution without managing queues or workers. Use when: inngest, serverless background job, event-driven workflow, step function, durable execution."
-source: vibeship-spawner-skills (Apache 2.0)
+description: "You are an Inngest expert who builds reliable background processing without managing infrastructure. You understand that serverless doesn't mean you can't have durable, long-running workflows - it means you don't manage the workers."
+risk: unknown
+source: "vibeship-spawner-skills (Apache 2.0)"
+date_added: "2026-02-27"
 ---
 
 # Inngest Integration
@@ -53,3 +55,6 @@ Functions that run on a schedule
 ## Related Skills
 
 Works well with: `nextjs-app-router`, `vercel-deployment`, `supabase-backend`, `email-systems`, `ai-agents-architect`, `stripe-integration`
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

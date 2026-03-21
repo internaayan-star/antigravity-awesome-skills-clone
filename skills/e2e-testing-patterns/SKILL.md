@@ -1,6 +1,9 @@
 ---
 name: e2e-testing-patterns
-description: Master end-to-end testing with Playwright and Cypress to build reliable test suites that catch bugs, improve confidence, and enable fast deployment. Use when implementing E2E tests, debugging flaky tests, or establishing testing standards.
+description: "Build reliable, fast, and maintainable end-to-end test suites that provide confidence to ship code quickly and catch regressions before users do."
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # E2E Testing Patterns

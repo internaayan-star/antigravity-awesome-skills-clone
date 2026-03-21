@@ -1,7 +1,9 @@
 ---
-name: pptx
-description: "Presentation creation, editing, and analysis. When Claude needs to work with presentations (.pptx files) for: (1) Creating new presentations, (2) Modifying or editing content, (3) Working with layouts, (4) Adding comments or speaker notes, or any other presentation tasks"
-license: Proprietary. LICENSE.txt has complete terms
+name: pptx-official
+description: "A user may ask you to create, edit, or analyze the contents of a .pptx file. A .pptx file is essentially a ZIP archive containing XML files and other resources that you can read or edit. You have different tools and workflows available for different tasks."
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # PPTX creation, editing, and analysis
@@ -482,3 +484,6 @@ Required dependencies (should already be installed):
 - **LibreOffice**: `sudo apt-get install libreoffice` (for PDF conversion)
 - **Poppler**: `sudo apt-get install poppler-utils` (for pdftoppm to convert PDF to images)
 - **defusedxml**: `pip install defusedxml` (for secure XML parsing)
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

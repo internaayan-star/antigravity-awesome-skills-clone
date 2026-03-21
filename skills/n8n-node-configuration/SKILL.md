@@ -1,22 +1,13 @@
 ---
 name: n8n-node-configuration
-description: "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node detail levels, or learning common configuration patterns by node type."
-source: "https://github.com/czlonkowski/n8n-skills/tree/main/skills/n8n-node-configuration"
-risk: safe
+description: Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node detail levels, or learning common configuration patterns by node type.
+risk: unknown
+source: community
 ---
 
 # n8n Node Configuration
 
 Expert guidance for operation-aware node configuration with property dependencies.
-
-## When to Use This Skill
-
-Use this skill when:
-- Configuring n8n nodes
-- Understanding property dependencies
-- Determining required fields
-- Choosing between get_node detail levels
-- Learning common configuration patterns by node type
 
 ---
 
@@ -768,8 +759,8 @@ get_node({
 
 For comprehensive guides on specific topics:
 
-- **[DEPENDENCIES.md](DEPENDENCIES.md)** - Deep dive into property dependencies and displayOptions
-- **[OPERATION_PATTERNS.md](OPERATION_PATTERNS.md)** - Common configuration patterns by node type
+- **DEPENDENCIES.md** - Deep dive into property dependencies and displayOptions
+- **OPERATION_PATTERNS.md** - Common configuration patterns by node type
 
 ---
 

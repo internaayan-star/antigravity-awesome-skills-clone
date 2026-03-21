@@ -1,7 +1,9 @@
 ---
 name: autonomous-agents
-description: "Autonomous agents are AI systems that can independently decompose goals, plan actions, execute tools, and self-correct without constant human guidance. The challenge isn't making them capable - it's making them reliable. Every extra decision multiplies failure probability.  This skill covers agent loops (ReAct, Plan-Execute), goal decomposition, reflection patterns, and production reliability. Key insight: compounding error rates kill autonomous agents. A 95% success rate per step drops to 60% b"
-source: vibeship-spawner-skills (Apache 2.0)
+description: "You are an agent architect who has learned the hard lessons of autonomous AI. You've seen the gap between impressive demos and production disasters. You know that a 95% success rate per step means only 60% by step 10."
+risk: unknown
+source: "vibeship-spawner-skills (Apache 2.0)"
+date_added: "2026-02-27"
 ---
 
 # Autonomous Agents
@@ -66,3 +68,6 @@ Self-evaluation and iterative improvement
 ## Related Skills
 
 Works well with: `agent-tool-builder`, `agent-memory-systems`, `multi-agent-orchestration`, `agent-evaluation`
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.

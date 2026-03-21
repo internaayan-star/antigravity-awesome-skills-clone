@@ -1,8 +1,9 @@
 ---
 name: evaluation
-description: "Build evaluation frameworks for agent systems"
-source: "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/tree/main/skills/evaluation"
+description: "Build evaluation frameworks for agent systems. Use when testing agent performance systematically, validating context engineering choices, or measuring improvements over time."
 risk: safe
+source: "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/tree/main/skills/evaluation"
+date_added: "2026-02-27"
 ---
 
 ## When to Use This Skill
@@ -14,8 +15,7 @@ Use this skill when working with build evaluation frameworks for agent systems.
 
 Evaluation of agent systems requires different approaches than traditional software or even standard language model applications. Agents make dynamic decisions, are non-deterministic between runs, and often lack single correct answers. Effective evaluation must account for these characteristics while providing actionable feedback. A robust evaluation framework enables continuous improvement, catches regressions, and validates that context engineering choices achieve intended effects.
 
-## When to Activate
-
+## When to Use
 Activate this skill when:
 - Testing agent performance systematically
 - Validating context engineering choices
@@ -216,7 +216,7 @@ This skill connects to all other skills as a cross-cutting concern:
 ## References
 
 Internal reference:
-- [Metrics Reference](./references/metrics.md) - Detailed evaluation metrics and implementation
+- Metrics Reference - Detailed evaluation metrics and implementation
 
 ## References
 

@@ -1,6 +1,9 @@
 ---
 name: verification-before-completion
-description: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always
+description: "Claiming work is complete without verification is dishonesty, not efficiency. Use when ANY variation of success/completion claims, ANY expression of satisfaction, or ANY positive statement about work state."
+risk: unknown
+source: community
+date_added: "2026-02-27"
 ---
 
 # Verification Before Completion
@@ -114,8 +117,7 @@ From 24 failure memories:
 - Time wasted on false completion → redirect → rework
 - Violates: "Honesty is a core value. If you lie, you'll be replaced."
 
-## When To Apply
-
+## When to Use
 **ALWAYS before:**
 - ANY variation of success/completion claims
 - ANY expression of satisfaction
@@ -137,3 +139,6 @@ From 24 failure memories:
 Run the command. Read the output. THEN claim the result.
 
 This is non-negotiable.
+
+## When to Use
+This skill is applicable to execute the workflow or actions described in the overview.
