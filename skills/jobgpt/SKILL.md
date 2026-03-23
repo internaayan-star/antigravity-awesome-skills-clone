@@ -28,13 +28,11 @@ Built by [6figr.com](https://6figr.com/jobgpt-ai), the platform supports 150+ co
 
 This skill requires the JobGPT MCP server:
 
-1. Sign up at [6figr.com/jobgpt-ai](https://6figr.com/jobgpt-ai)
-2. Go to Account → MCP Integrations → Generate API Key
-3. Add the MCP server to your AI tool:
-
-```bash
-npx jobgpt-mcp-server
-```
+1. **Create an account** — Sign up at [6figr.com/jobgpt-ai](https://6figr.com/jobgpt-ai)
+2. **Get an API key** — Go to [6figr.com/account](https://6figr.com/account), scroll to MCP Integrations, and click Generate API Key. The key starts with `mcp_`.
+3. **Add the MCP server:**
+   - Claude Code: `claude mcp add jobgpt -t http -u https://mcp.6figr.com/mcp --header "Authorization: <api-key>"`
+   - Other tools: Add `jobgpt-mcp-server` as an MCP server with env var `JOBGPT_API_KEY` set. Install via `npx jobgpt-mcp-server`.
 
 Set the `JOBGPT_API_KEY` environment variable to your API key.
 
@@ -68,7 +66,7 @@ The skill uses `import_job_by_url` to import the job from any supported platform
 
 > "Find recruiters for this job and draft an outreach email"
 
-The skill finds recruiters with `get_job_recruiters`, helps craft a personalized message, and sends it with `send_outreach`.
+The skill finds recruiters with `get_job_recruiters` and helps craft a personalized message. The draft is presented to the user for review — `send_outreach` is only called after explicit user confirmation.
 
 ### Check Application Stats
 
