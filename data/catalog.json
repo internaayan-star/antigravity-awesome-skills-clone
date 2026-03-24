@@ -31504,8 +31504,8 @@
     {
       "id": "wordpress-woocommerce-development",
       "name": "wordpress-woocommerce-development",
-      "description": "WooCommerce store development workflow covering store setup, payment integration, shipping configuration, and customization.",
-      "category": "workflow",
+      "description": "WooCommerce store development workflow covering store setup, payment integration, shipping configuration, customization, and WordPress 7.0 features: AI connectors, DataViews, and collaboration tools.",
+      "category": "data-ai",
       "tags": [
         "wordpress",
         "woocommerce"
@@ -31521,7 +31521,8 @@
         "integration",
         "shipping",
         "configuration",
-        "customization"
+        "customization",
+        "features"
       ],
       "path": "skills/wordpress-woocommerce-development/SKILL.md"
     },
