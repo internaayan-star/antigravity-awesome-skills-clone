@@ -323,6 +323,7 @@ That will copy the generated skill index into `apps/web-app/public/skills.json`,
 
 ## Community
 
+- [SkillFlow](https://github.com/rafsilva85/skillflow-mcp-server) - Open marketplace for AI agent skills and MCP servers. Browse, discover, and install 500+ skills.
 - [Discussions](https://github.com/sickn33/antigravity-awesome-skills/discussions) for questions and feedback.
 - [Issues](https://github.com/sickn33/antigravity-awesome-skills/issues) for bugs and improvement requests.
 - [`SECURITY.md`](SECURITY.md) for security reporting.
