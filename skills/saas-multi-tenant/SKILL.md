@@ -77,23 +77,23 @@ async function tenantMiddleware(req, res, next) {
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
-    await client.query("SET LOCAL app.current_tenant_id = $1", [tenantId]);
+    // Use set_config — SET LOCAL does not accept bind placeholders ($1)
+    await client.query("SELECT set_config('app.current_tenant_id', $1, true)", [tenantId]);
     req.db = client;
     req.tenantId = tenantId;
+
+    // Cleanup on response finish — guarantees release even if handler skips next()
+    res.on("finish", async () => {
+      try { await client.query("COMMIT"); } catch { await client.query("ROLLBACK"); }
+      client.release();
+    });
+
     next();
   } catch (err) {
+    await client.query("ROLLBACK").catch(() => {});
     client.release();
     next(err);
   }
-}
-
-// Cleanup middleware — runs after route handler
-async function tenantCleanup(req, res, next) {
-  if (req.db) {
-    await req.db.query("COMMIT");
-    req.db.release();
-  }
-  next();
 }
 ```
 
@@ -111,13 +111,18 @@ function createTenantPrisma(tenantId: string): PrismaClient {
   prisma.$use(async (params, next) => {
     if (GLOBAL_TABLES.has(params.model ?? "")) return next(params);
 
-    // Inject tenant filter on reads
-    if (["findMany", "findFirst", "findUnique", "count", "aggregate"].includes(params.action)) {
+    // Initialize args.where — Prisma passes undefined args for calls like findMany()
+    params.args = params.args ?? {};
+    params.args.where = params.args.where ?? {};
+
+    // Inject tenant filter on reads (skip findUnique — it only accepts unique-field selectors)
+    if (["findMany", "findFirst", "count", "aggregate"].includes(params.action)) {
       params.args.where = { ...params.args.where, tenantId };
     }
 
     // Inject tenant_id on creates
     if (["create", "createMany"].includes(params.action)) {
+      params.args.data = params.args.data ?? {};
       if (params.action === "createMany") {
         params.args.data = params.args.data.map((d: any) => ({ ...d, tenantId }));
       } else {
