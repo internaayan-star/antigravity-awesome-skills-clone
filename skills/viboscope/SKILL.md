@@ -2,7 +2,7 @@
 name: viboscope
 description: "Psychological compatibility matching — find cofounders, collaborators, and friends through validated psychometrics"
 category: collaboration
-risk: safe
+risk: network
 source: community
 date_added: "2026-03-29"
 author: ivanschmidt
@@ -27,7 +27,7 @@ Viboscope helps find compatible people — cofounders, project partners, friends
 ### Step 1: Install
 
 ```bash
-curl -s https://viboscope.com/api/v1/skill -o viboscope.md
+curl -fsS https://viboscope.com/api/v1/skill -o viboscope.md
 ```
 
 Save to your platform's skills directory.
