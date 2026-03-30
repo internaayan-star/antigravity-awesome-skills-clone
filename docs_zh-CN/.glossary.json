@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "1.0.4",
+    "version": "1.0.5",
     "created": "2026-03-27",
     "last_updated": "2026-03-27",
-    "total_terms": 52
+    "total_terms": 58
   },
   "terms": {
     "skills": {
@@ -305,6 +305,41 @@
       "translation": "工具箱",
       "context": "Collection of tools or skills",
       "examples": ["skills toolbox", "toolbox analogy"]
+    },
+    "installer": {
+      "translation": "安装程序",
+      "context": "Installation program or script",
+      "examples": ["installer CLI", "run installer"]
+    },
+    "flag": {
+      "translation": "标志",
+      "context": "Command line flag or option",
+      "examples": ["install flag", "command flag"]
+    },
+    "narrow": {
+      "translation": "狭窄",
+      "context": "Limited scope or focus",
+      "examples": ["narrow single-domain", "narrow focus"]
+    },
+    "single-domain": {
+      "translation": "单一域",
+      "context": "Focused on one domain or area",
+      "examples": ["single-domain starter pack", "single-domain skills"]
+    },
+    "onboarding": {
+      "translation": "入门",
+      "context": "Getting started with a tool or system",
+      "examples": ["onboarding docs", "user onboarding"]
+    },
+    "pr": {
+      "translation": "拉取请求",
+      "context": "Pull request - keep as PR in code",
+      "examples": ["create PR", "PR summary", "pull request"]
+    },
+    "chat": {
+      "translation": "聊天",
+      "context": "Chat conversation interface",
+      "examples": ["chat workflows", "in chat", "chat interface"]
     }
   }
 }
