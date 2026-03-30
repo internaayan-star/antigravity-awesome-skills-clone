@@ -6,9 +6,9 @@
 ## Summary
 
 - **Total Files:** 68
-- **Completed:** 8
+- **Completed:** 12
 - **In Progress:** 0
-- **Remaining:** 60
+- **Remaining:** 56
 
 ## Progress by Priority
 
@@ -29,16 +29,16 @@
 - [ ] users/visual-guide.md
 - [ ] users/best-claude-code-skills-github.md
 - [ ] users/best-cursor-skills-github.md
-- [ ] users/skills-vs-mcp-tools.md
+- [x] users/skills-vs-mcp-tools.md
 - [ ] users/local-config.md
 - [ ] users/kiro-integration.md
 - [ ] users/antigravity-awesome-skills-vs-awesome-claude-skills.md
 - [ ] users/security-skills.md
-- [ ] users/agent-overload-recovery.md
+- [x] users/agent-overload-recovery.md
 - [ ] users/windows-truncation-recovery.md
-- [ ] users/workflows.md
+- [x] users/workflows.md
 - [ ] users/ai-agent-skills.md
-- [ ] users/bundles.md
+- [x] users/bundles.md
 - [ ] WORKFLOWS.md
 - [ ] EXAMPLES.md
 - [ ] USAGE.md
@@ -92,7 +92,7 @@
 
 ## Glossary Statistics
 
-- **Total Terms:** 62
+- **Total Terms:** 75
 - **Last Updated:** 2026-03-27
 - **Glossary File:** `.glossary.json`
 
@@ -100,7 +100,7 @@
 
 - **Batch 1 (Priority 1):** Complete - 4/4 files ✓
 - **Batch 2 (Priority 2):** Complete - 4/4 files ✓
-- **Batch 3 (Priority 3):** Not started - 0/17 files
+- **Batch 3 (Priority 3):** In Progress - 4/17 files
 - **Batch 4 (Priority 4):** Not started - 0/6 files
 - **Batch 5 (Priority 5):** Not started - 0/35 files
 
@@ -112,5 +112,6 @@
 - Files are checked for broken links and glossary consistency
 - Priority 1 core documentation is now complete ✓
 - Priority 2 tool-specific guides are now complete ✓
-- Foundation glossary started at 52 terms, now at 62 terms
+- Foundation glossary started at 52 terms, now at 75 terms
 - Priority 2: 4/4 files complete ✓
+- Priority 3 Batch 1: 4/4 files complete ✓

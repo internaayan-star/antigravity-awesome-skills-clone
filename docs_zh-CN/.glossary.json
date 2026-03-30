@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "1.0.6",
+    "version": "1.0.7",
     "created": "2026-03-27",
     "last_updated": "2026-03-27",
-    "total_terms": 62
+    "total_terms": 75
   },
   "terms": {
     "skills": {
@@ -360,6 +360,136 @@
       "translation": "任务框架",
       "context": "How a task is structured or framed",
       "examples": ["task framing", "improve task framing"]
+    },
+    "orchestration": {
+      "translation": "编排",
+      "context": "Coordinating multiple components or services",
+      "examples": ["workflow orchestration", "agent orchestration"]
+    },
+    "retrieval": {
+      "translation": "检索",
+      "context": "Fetching data or information",
+      "examples": ["retrieval augmented generation", "data retrieval"]
+    },
+    "embedding": {
+      "translation": "嵌入",
+      "context": "Vector embeddings for AI/ML",
+      "examples": ["embedding strategies", "vector embeddings"]
+    },
+    "vector database": {
+      "translation": "向量数据库",
+      "context": "Database for vector embeddings",
+      "examples": ["vector database engineer", "vector search"]
+    },
+    "observability": {
+      "translation": "可观察性",
+      "context": "System monitoring and observability",
+      "examples": ["observability engineer", "observability tools"]
+    },
+    "tracing": {
+      "translation": "追踪",
+      "context": "Distributed tracing or request tracking",
+      "examples": ["distributed tracing", "request tracing"]
+    },
+    "mvp": {
+      "translation": "MVP",
+      "context": "Minimum Viable Product - keep as MVP",
+      "examples": ["SaaS MVP", "MVP release"]
+    },
+    "saas": {
+      "translation": "SaaS",
+      "context": "Software as a Service - keep as SaaS",
+      "examples": ["SaaS product", "SaaS MVP"]
+    },
+    "kpi": {
+      "translation": "KPI",
+      "context": "Key Performance Indicator - keep as KPI",
+      "examples": ["KPI dashboard", "define KPIs"]
+    },
+    "domain": {
+      "translation": "域",
+      "context": "Domain or field of expertise",
+      "examples": ["domain expert", "domain-driven design"]
+    },
+    "bounded context": {
+      "translation": "限界上下文",
+      "context": "DDD bounded context",
+      "examples": ["bounded contexts", "context mapping"]
+    },
+    "ubiquitous language": {
+      "translation": "通用语言",
+      "context": "DDD ubiquitous language",
+      "examples": ["define ubiquitous language", "shared language"]
+    },
+    "aggregate": {
+      "translation": "聚合",
+      "context": "DDD aggregate pattern",
+      "examples": ["aggregate root", "design aggregates"]
+    },
+    "invariant": {
+      "translation": "不变量",
+      "context": "Business rules or invariants",
+      "examples": ["encode invariants", "domain invariants"]
+    },
+    "cqrs": {
+      "translation": "CQRS",
+      "context": "Command Query Responsibility Segregation - keep as CQRS",
+      "examples": ["CQRS implementation", "CQRS pattern"]
+    },
+    "event sourcing": {
+      "translation": "事件溯源",
+      "context": "Event sourcing pattern",
+      "examples": ["event sourcing architect", "event store"]
+    },
+    "projection": {
+      "translation": "投影",
+      "context": "Read model projection in event sourcing",
+      "examples": ["projection patterns", "materialized projections"]
+    },
+    "saga": {
+      "translation": "Saga",
+      "context": "Saga pattern for distributed transactions",
+      "examples": ["saga orchestration", "saga pattern"]
+    },
+    "threat modeling": {
+      "translation": "威胁建模",
+      "context": "Security threat modeling",
+      "examples": ["threat modeling expert", "threat model"]
+    },
+    "attack tree": {
+      "translation": "攻击树",
+      "context": "Security attack tree analysis",
+      "examples": ["attack tree construction", "attack paths"]
+    },
+    "penetration testing": {
+      "translation": "渗透测试",
+      "context": "Security penetration testing",
+      "examples": ["pen testing", "penetration testing methodology"]
+    },
+    "fuzzing": {
+      "translation": "模糊测试",
+      "context": "API fuzzing or fuzz testing",
+      "examples": ["API fuzzing", "fuzz testing"]
+    },
+    "idor": {
+      "translation": "IDOR",
+      "context": "Insecure Direct Object Reference - keep as IDOR",
+      "examples": ["IDOR testing", "IDOR vulnerability"]
+    },
+    "e2e": {
+      "translation": "端到端",
+      "context": "End-to-end testing - keep as E2E in code",
+      "examples": ["E2E testing", "E2E patterns"]
+    },
+    "truncation": {
+      "translation": "截断",
+      "context": "Context truncation or data truncation",
+      "examples": ["context truncation", "truncation error"]
+    },
+    "trajectory": {
+      "translation": "轨迹",
+      "context": "Agent trajectory or execution path",
+      "examples": ["trajectory conversion", "agent trajectory"]
     }
   }
 }
