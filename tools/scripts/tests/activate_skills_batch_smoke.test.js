@@ -30,7 +30,7 @@ try {
   fs.mkdirSync(path.join(baseDir, "skills", "legacy-skill"), { recursive: true });
   fs.writeFileSync(path.join(baseDir, "skills", "legacy-skill", "SKILL.md"), "legacy", "utf8");
 
-  const result = spawnSync(
+const result = spawnSync(
     "cmd.exe",
     ["/d", "/c", `${scriptPath} --clear brainstorming custom-skill`],
     {
@@ -79,6 +79,44 @@ try {
     result.stdout,
     /Done! Antigravity skills are now activated\./,
     "script should report successful activation",
+  );
+
+  const missingHelperBaseDir = path.join(root, "antigravity-missing-helper");
+  const missingHelperResult = spawnSync(
+    "cmd.exe",
+    ["/d", "/c", `${scriptPath} --clear custom-skill`],
+    {
+      cwd: repoRoot,
+      env: {
+        ...process.env,
+        AG_BASE_DIR: missingHelperBaseDir,
+        AG_REPO_SKILLS_DIR: repoSkills,
+        AG_BUNDLE_HELPER: path.join(root, "missing-bundle-helper.py"),
+        AG_PYTHON_BIN: "__missing_python__",
+        AG_NO_PAUSE: "1",
+      },
+      encoding: "utf8",
+      timeout: 20000,
+      maxBuffer: 1024 * 1024 * 20,
+    },
+  );
+
+  if (missingHelperResult.error) {
+    if (missingHelperResult.error.code === "EPERM" || missingHelperResult.error.code === "EACCES") {
+      console.log("Skipping activate-skills.bat smoke test; this sandbox blocks cmd.exe child processes.");
+      process.exit(0);
+    }
+    throw missingHelperResult.error;
+  }
+
+  assert.strictEqual(
+    missingHelperResult.status,
+    0,
+    missingHelperResult.stderr || missingHelperResult.stdout,
+  );
+  assert.ok(
+    fs.existsSync(path.join(missingHelperBaseDir, "skills", "custom-skill", "SKILL.md")),
+    "explicit skill args should still activate when the bundle helper path is missing",
   );
 } finally {
   fs.rmSync(root, { recursive: true, force: true });

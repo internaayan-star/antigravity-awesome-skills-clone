@@ -77,13 +77,20 @@ echo Expanding bundles...
 
 if exist "%SKILLS_LIST_FILE%" del "%SKILLS_LIST_FILE%" 2>nul
 
-if exist "%BUNDLE_HELPER%" "%PYTHON_BIN%" --version >nul 2>&1
-if not errorlevel 1 (
-    :: Safely pass all arguments to Python (filtering out --clear)
-    "%PYTHON_BIN%" "%BUNDLE_HELPER%" !EXTRA_ARGS! > "%SKILLS_LIST_FILE%" 2>nul
-    
-    :: If no other arguments, expand Essentials
-    if "!EXTRA_ARGS!"=="" "%PYTHON_BIN%" "%BUNDLE_HELPER%" Essentials > "%SKILLS_LIST_FILE%" 2>nul
+if exist "%BUNDLE_HELPER%" (
+    "%PYTHON_BIN%" --version >nul 2>&1
+    if not errorlevel 1 (
+        :: Safely pass all arguments to Python (filtering out --clear)
+        "%PYTHON_BIN%" "%BUNDLE_HELPER%" !EXTRA_ARGS! > "%SKILLS_LIST_FILE%" 2>nul
+        
+        :: If no other arguments, expand Essentials
+        if "!EXTRA_ARGS!"=="" "%PYTHON_BIN%" "%BUNDLE_HELPER%" Essentials > "%SKILLS_LIST_FILE%" 2>nul
+    )
+)
+
+:: Empty output should be treated the same as failure so fallback logic still runs
+if exist "%SKILLS_LIST_FILE%" (
+    for %%i in ("%SKILLS_LIST_FILE%") do if %%~zi EQU 0 del "%SKILLS_LIST_FILE%" 2>nul
 )
 
 :: Fallback if Python fails or returned empty
