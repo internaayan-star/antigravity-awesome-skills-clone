@@ -496,7 +496,6 @@ We officially thank the following contributors for their help in making this rep
 - [@ALEKGG1](https://github.com/ALEKGG1)
 - [@8144225309](https://github.com/8144225309)
 - [@1bcMax](https://github.com/1bcMax)
-- [@olgasafonova](https://github.com/olgasafonova)
 - [@sharmanilay](https://github.com/sharmanilay)
 - [@KhaiTrang1995](https://github.com/KhaiTrang1995)
 - [@LocNguyenSGU](https://github.com/LocNguyenSGU)
@@ -524,6 +523,7 @@ We officially thank the following contributors for their help in making this rep
 - [@jonathimer](https://github.com/jonathimer)
 - [@Jonohobs](https://github.com/Jonohobs)
 - [@JaskiratAnand](https://github.com/JaskiratAnand)
+- [@Al-Garadi](https://github.com/Al-Garadi)
 
 ## Star History
 
