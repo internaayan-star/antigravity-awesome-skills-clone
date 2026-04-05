@@ -3,7 +3,7 @@ name: merge-batch-e2e-test
 description: "Synthetic skill used to exercise the maintainer merge workflow end-to-end."
 risk: safe
 source: community
-source_repo: fake-owner/fake-repo
+source_repo: Dimillian/Skills
 source_type: community
 date_added: "2026-04-05"
 ---
