@@ -318,6 +318,7 @@
       "skills": [
         "007",
         "accessibility-compliance-accessibility-audit",
+        "aegisops-ai",
         "agentic-actions-auditor",
         "ai-engineering-toolkit",
         "ai-md",
@@ -462,6 +463,7 @@
     "k8s-core": {
       "description": "Kubernetes and service mesh essentials.",
       "skills": [
+        "aegisops-ai",
         "azure-identity-dotnet",
         "azure-identity-py",
         "azure-messaging-webpubsubservice-py",

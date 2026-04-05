@@ -418,8 +418,8 @@
     {
       "id": "aegisops-ai",
       "name": "aegisops-ai",
-      "description": "Autonomous DevSecOps & FinOps Guardrails.",
-      "category": "data-ai",
+      "description": "Autonomous DevSecOps & FinOps Guardrails. Orchestrates Gemini 3 Flash to audit Linux Kernel patches, Terraform cost drifts, and K8s compliance.",
+      "category": "security",
       "tags": [
         "aegisops",
         "ai"
@@ -430,7 +430,13 @@
         "autonomous",
         "devsecops",
         "finops",
-        "guardrails"
+        "guardrails",
+        "orchestrates",
+        "gemini",
+        "flash",
+        "audit",
+        "linux",
+        "kernel"
       ],
       "path": "skills/aegisops-ai/SKILL.md"
     },
