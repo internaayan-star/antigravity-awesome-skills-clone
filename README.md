@@ -525,6 +525,7 @@ We officially thank the following contributors for their help in making this rep
 - [@JaskiratAnand](https://github.com/JaskiratAnand)
 - [@Al-Garadi](https://github.com/Al-Garadi)
 - [@olgasafonova](https://github.com/olgasafonova)
+- [@HMAKT99](https://github.com/HMAKT99)
 
 ## Star History
 
