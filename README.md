@@ -526,6 +526,21 @@ We officially thank the following contributors for their help in making this rep
 - [@Al-Garadi](https://github.com/Al-Garadi)
 - [@olgasafonova](https://github.com/olgasafonova)
 - [@HMAKT99](https://github.com/HMAKT99)
+- [@cryptoque](https://github.com/cryptoque)
+- [@derricke](https://github.com/derricke)
+- [@digitamaz](https://github.com/digitamaz)
+- [@Elkidogz](https://github.com/Elkidogz)
+- [@fruitwyatt](https://github.com/fruitwyatt)
+- [@hqhq1025](https://github.com/hqhq1025)
+- [@htafolla](https://github.com/htafolla)
+- [@MetcalfSolutions](https://github.com/MetcalfSolutions)
+- [@playbookTV](https://github.com/playbookTV)
+- [@sebastiondev](https://github.com/sebastiondev)
+- [@spideyashith](https://github.com/spideyashith)
+- [@tomjwxf](https://github.com/tomjwxf)
+- [@umutbozdag](https://github.com/umutbozdag)
+- [@warmskull](https://github.com/warmskull)
+- [@WHOISABHISHEKADHIKARI](https://github.com/WHOISABHISHEKADHIKARI)
 
 ## Star History
 
